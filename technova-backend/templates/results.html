@@ -138,6 +138,28 @@
         .btn-primary:hover { background: var(--primary-hover); }
         .btn-secondary { background: white; border: 1px solid #d1d5db; color: #374151 !important; }
         .btn-secondary:hover { background: #f9fafb; }
+
+        /* Risks & Resources tab */
+        .rr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        @media (max-width: 900px) { .rr-grid { grid-template-columns: 1fr; } }
+        .rr-card { background: var(--card-bg); border-radius: 12px; padding: 1.75rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid var(--border-color); }
+        .rr-card h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 1rem; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem; }
+        .risk-row { padding: 1rem; margin-bottom: 0.75rem; border-radius: 8px; background: #f8fafc; border-left: 4px solid var(--border-color); }
+        .risk-row.sev-high { border-left-color: var(--danger); background: #fef2f2; }
+        .risk-row.sev-medium { border-left-color: var(--warning); background: #fffbeb; }
+        .risk-row.sev-low { border-left-color: #64748b; background: #f8fafc; }
+        .risk-title { font-weight: 700; font-size: 1rem; margin-bottom: 0.35rem; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap; }
+        .sev-badge { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; padding: 2px 8px; border-radius: 4px; }
+        .sev-badge.high { background: #fecaca; color: #991b1b; }
+        .sev-badge.medium { background: #fde68a; color: #92400e; }
+        .sev-badge.low { background: #e2e8f0; color: #475569; }
+        .risk-desc { font-size: 0.95rem; color: #4b5563; line-height: 1.55; }
+        .res-area { margin-bottom: 1.25rem; }
+        .res-area:last-child { margin-bottom: 0; }
+        .res-area h4 { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+        .res-area ul { margin: 0; padding-left: 1.25rem; color: #374151; font-size: 0.95rem; line-height: 1.6; }
+        .res-area li { margin-bottom: 0.35rem; }
+        .rr-footnote { font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color); }
     </style>
 </head>
 <body>
@@ -169,11 +191,12 @@
             </div>
         </div>
 
-        <!-- 3-Tab Navigation -->
+        <!-- Tab Navigation -->
         <div class="tabs-nav">
             <button class="tab-btn active" onclick="switchTab('tab-initial', this)">Initial Results</button>
             <button class="tab-btn" onclick="switchTab('tab-scenario', this)">Simulated Scenario</button>
             <button class="tab-btn" onclick="switchTab('tab-strategy', this)">Strategy & Suggestions</button>
+            <button class="tab-btn" onclick="switchTab('tab-risks', this)">Risks & Resources</button>
         </div>
 
         {% set ov_color = '#10b981' if analysis.score >= 75 else ('#f59e0b' if analysis.score >= 50 else ('#ef4444' if analysis.score >= 25 else '#991b1b')) %}
@@ -357,6 +380,65 @@
                     {% endfor %}
                 </ul>
             </div>
+        </div>
+
+        <!-- ==============================
+             TAB 4: RISKS & RESOURCES
+             ============================== -->
+        <div id="tab-risks" class="tab-content">
+            {% set rr = analysis.risks_resources if analysis.risks_resources else {} %}
+            {% set risks_list = rr['risks'] if rr and 'risks' in rr else [] %}
+            {% set areas = rr['resource_areas'] if rr and 'resource_areas' in rr else [] %}
+            <div class="rr-grid">
+                <div class="rr-card">
+                    <h3><i class="fas fa-exclamation-triangle" style="color: var(--warning);"></i> Risk register</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">
+                        Grounded in your idea text and the model’s signals (not live external market feeds).
+                    </p>
+                    {% if risks_list %}
+                        {% for risk in risks_list %}
+                        {% set sev = ((risk['severity'] if risk is mapping and 'severity' in risk else risk.severity) or 'medium')|lower %}
+                        <div class="risk-row sev-{{ sev if sev in ['high','medium','low'] else 'medium' }}">
+                            <div class="risk-title">
+                                <span>{{ risk['title'] if risk is mapping and 'title' in risk else risk.title }}</span>
+                                <span class="sev-badge {{ sev if sev in ['high','medium','low'] else 'medium' }}">{{ sev if sev in ['high','medium','low'] else 'medium' }} risk</span>
+                            </div>
+                            <div class="risk-desc">{{ risk['description'] if risk is mapping and 'description' in risk else risk.description }}</div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <p style="color: var(--text-muted);">No risk items available. Run a new analysis or check your API configuration.</p>
+                    {% endif %}
+                </div>
+                <div class="rr-card">
+                    <h3><i class="fas fa-clipboard-check" style="color: var(--primary);"></i> Resource checklist</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">
+                        Practical buckets to plan capital, people, and operations for this concept.
+                    </p>
+                    {% if areas %}
+                        {% for area in areas %}
+                        <div class="res-area">
+                            <h4>{{ area['title'] }}</h4>
+                            <ul>
+                                {% set ritems = area['items'] if area is mapping and 'items' in area else [] %}
+                                {% for item in ritems %}
+                                <li>{{ item }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <p style="color: var(--text-muted);">No resource areas available.</p>
+                    {% endif %}
+                </div>
+            </div>
+            <p class="rr-footnote">
+                {% if rr.get('source') == 'gemini' %}
+                <i class="fas fa-robot"></i> Generated with Gemini from your description and model outputs.
+                {% else %}
+                <i class="fas fa-sliders-h"></i> Generated from model scores and inputs (Gemini unavailable or fallback).
+                {% endif %}
+            </p>
         </div>
 
         <!-- Global Action Buttons -->
