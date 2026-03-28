@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startup Decision Intelligence</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <!-- Subtle Floating Background Shapes -->
+    <div class="bg-shapes">
+        <div class="shape shape-1"><i data-lucide="bar-chart-2"></i></div>
+        <div class="shape shape-2"><i data-lucide="arrow-up-right"></i></div>
+        <div class="shape shape-3"><i data-lucide="lightbulb"></i></div>
+    </div>
+
+    <!-- Floating Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i data-lucide="lightbulb" class="logo-icon"></i>
+                <span>Startup Decision Intelligence</span>
+            </div>
+
+            <div class="nav-links">
+                <a href="#overview">Overview</a>
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#technologies">Technologies</a>
+                <a href="#use-cases">Use Cases</a>
+            </div>
+
+            <div class="nav-actions">
+                <a href="https://technova-backend-startup-1.onrender.com/login" class="btn btn-primary btn-small">Login / Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Lab Hero Section -->
+    <section class="hero" id="overview">
+        <div class="hero-container">
+            <!-- Left Side -->
+            <div class="hero-content">
+                <h1>AI-Powered Startup Decision Intelligence</h1>
+                <h2 class="subheading">Evaluate startup ideas, analyze risks, simulate outcomes, and generate strategic
+                    growth plans before real investment.</h2>
+                <p>A decision-intelligence platform that combines machine learning and generative AI to help
+                    entrepreneurs validate ideas, understand market dynamics, and build structured strategies.</p>
+                <div class="hero-buttons">
+                    <a href="https://technova-backend-startup-1.onrender.com/login" class="btn btn-primary btn-glow">Let's Start</a>
+                    <a href="#features" class="btn btn-secondary">Explore Features</a>
+                </div>
+            </div>
+
+            <!-- Right Side Illustration (Lab Scene) -->
+            <div class="hero-visual">
+                <div class="strategy-lab">
+                    <!-- Dashboard Base -->
+                    <div class="dashboard-panel">
+                        <div class="panel-header">
+                            <i data-lucide="target" class="panel-icon"></i> Strategy Formulation
+                        </div>
+                        <div class="panel-body">
+                            <!-- Growth Graph -->
+                            <div class="graph-container">
+                                <svg class="growth-chart" viewBox="0 0 200 100">
+                                    <path class="line-path" d="M10,90 Q40,80 70,50 T130,40 T190,10" fill="none"
+                                        stroke="var(--coral)" stroke-width="3" stroke-linecap="round" />
+                                    <circle class="data-point point-1" cx="70" cy="50" r="4" />
+                                    <circle class="data-point point-2" cx="130" cy="40" r="4" />
+                                    <circle class="data-point point-3" cx="190" cy="10" r="4" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Floating Data Panels -->
+                    <div class="floating-panel panel-risk">
+                        <i data-lucide="shield-alert"></i> Risk: 14%
+                    </div>
+
+                    <div class="floating-panel panel-market">
+                        <div class="bars pulse-bars">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="floating-panel panel-idea">
+                        <i data-lucide="zap" class="pulse-icon"></i> Validation High
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Core Platform Features</h2>
+                <p class="section-subtitle">Comprehensive tools for startup analysis and strategy generation.</p>
+            </div>
+            <div class="features-grid">
+
+                <!-- Card 1 -->
+                <div class="feature-card reveal" style="--delay: 0.1s; --card-accent: var(--lavender);">
+                    <div class="card-header">
+                        <div class="icon-wrapper">
+                            <i data-lucide="lightbulb"></i>
+                            <i data-lucide="search" class="sub-icon"></i>
+                        </div>
+                        <span class="ai-tag">AI Analysis</span>
+                    </div>
+                    <h3>IdeaLens</h3>
+                    <p>Evaluates startup feasibility and market alignment.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="feature-card reveal" style="--delay: 0.2s; --card-accent: var(--peach);">
+                    <div class="card-header">
+                        <div class="icon-wrapper">
+                            <i data-lucide="trending-up"></i>
+                        </div>
+                        <span class="ai-tag">ML Scoring</span>
+                    </div>
+                    <h3>MarketPulse</h3>
+                    <p>Analyzes market demand, competition, and trends.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="feature-card reveal" style="--delay: 0.3s; --card-accent: var(--mint);">
+                    <div class="card-header">
+                        <div class="icon-wrapper">
+                            <i data-lucide="shield-alert"></i>
+                        </div>
+                        <span class="ai-tag">Scenario Simulation</span>
+                    </div>
+                    <h3>RiskRadar</h3>
+                    <p>Identifies financial, operational, and scalability risks.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="feature-card reveal" style="--delay: 0.4s; --card-accent: var(--soft-coral);">
+                    <div class="card-header">
+                        <div class="icon-wrapper">
+                            <i data-lucide="map"></i>
+                        </div>
+                        <span class="ai-tag">Generative Planning</span>
+                    </div>
+                    <h3>StrategyForge</h3>
+                    <p>Generates strategic growth plans and revenue models.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Diagram Section -->
+    <section class="architecture bg-light" id="architecture">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Inside the Brain</h2>
+                <p class="section-subtitle">How our Agent-Based Coordination model evaluates your idea.</p>
+            </div>
+
+            <div class="arch-diagram-enhanced">
+                <!-- User Input -->
+                <div class="arch-node-enhanced user-node">
+                    <div class="icon-ring"><i data-lucide="user"></i></div>
+                    <div class="node-text">
+                        <h4>User Input</h4>
+                        <span>Startup idea & parameters</span>
+                    </div>
+                </div>
+
+                <div class="arch-path path-vertical">
+                    <div class="data-pulse"></div>
+                </div>
+
+                <!-- Core Engine -->
+                <div class="arch-node-enhanced engine-node">
+                    <div class="icon-ring"><i data-lucide="cpu"></i></div>
+                    <div class="node-text">
+                        <h4>IdeaLens Engine</h4>
+                        <span>Initial heuristic scanning</span>
+                    </div>
+                </div>
+
+                <div class="arch-split-path">
+                    <div class="path-drop left-drop">
+                        <div class="data-pulse delay-1"></div>
+                    </div>
+                    <div class="path-drop right-drop">
+                        <div class="data-pulse delay-2"></div>
+                    </div>
+                </div>
+
+                <!-- Split Analysis -->
+                <div class="split-nodes-enhanced">
+                    <div class="arch-node-enhanced analysis-node">
+                        <div class="icon-ring"><i data-lucide="trending-up"></i></div>
+                        <div class="node-text">
+                            <h4>MarketPulse</h4>
+                            <span>Trend & demand modeling</span>
+                        </div>
+                    </div>
+                    <div class="arch-node-enhanced analysis-node">
+                        <div class="icon-ring"><i data-lucide="shield-alert"></i></div>
+                        <div class="node-text">
+                            <h4>RiskRadar</h4>
+                            <span>Vulnerability detection</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arch-merge-path">
+                    <div class="path-drop left-drop reverse">
+                        <div class="data-pulse delay-3"></div>
+                    </div>
+                    <div class="path-drop right-drop reverse">
+                        <div class="data-pulse delay-4"></div>
+                    </div>
+                </div>
+
+                <!-- Final Output -->
+                <div class="arch-node-enhanced output-node">
+                    <div class="icon-ring"><i data-lucide="map"></i></div>
+                    <div class="node-text">
+                        <h4>StrategyForge</h4>
+                        <span>Actionable growth roadmap</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Tabs Section -->
+    <section class="use-cases" id="use-cases">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Who Is This For?</h2>
+                <p class="section-subtitle">Tailored strategic intelligence for different stages of growth.</p>
+            </div>
+
+            <div class="tabs-container">
+                <!-- Tab Triggers -->
+                <div class="tabs-nav">
+                    <button class="tab-btn active" data-target="tab-founders">
+                        <i data-lucide="rocket"></i> Early-Stage Founders
+                    </button>
+                    <button class="tab-btn" data-target="tab-investors">
+                        <i data-lucide="briefcase"></i> Venture Capitalists
+                    </button>
+                    <button class="tab-btn" data-target="tab-enterprise">
+                        <i data-lucide="building"></i> Corporate Innovation
+                    </button>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="tabs-content-wrapper">
+                    <!-- Founder Tab -->
+                    <div class="tab-panel active" id="tab-founders">
+                        <div class="tab-panel-inner">
+                            <div class="tab-text">
+                                <h3>Validate Before You Build.</h3>
+                                <p>Stop guessing. Use data to test your assumptions, identify your target audience, and
+                                    build a robust go-to-market strategy before spending a dime on engineering.</p>
+                                <ul class="tab-features">
+                                    <li><i data-lucide="check-circle-2"></i> Product-Market Fit Analysis</li>
+                                    <li><i data-lucide="check-circle-2"></i> Competitor Gap Identification</li>
+                                </ul>
+                            </div>
+                            <div class="tab-visual visual-founder">
+                                <i data-lucide="coffee" class="huge-icon"></i>
+                                <div class="floating-stat">Score: 89%</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Investor Tab -->
+                    <div class="tab-panel" id="tab-investors">
+                        <div class="tab-panel-inner">
+                            <div class="tab-text">
+                                <h3>De-risk Your Deal Flow.</h3>
+                                <p>Run prospective startups through our simulator to identify hidden operational risks,
+                                    evaluate market sizing accuracy, and stress-test founder assumptions.</p>
+                                <ul class="tab-features">
+                                    <li><i data-lucide="check-circle-2"></i> Automated Due Diligence</li>
+                                    <li><i data-lucide="check-circle-2"></i> Scalability Risk Scoring</li>
+                                </ul>
+                            </div>
+                            <div class="tab-visual visual-investor">
+                                <i data-lucide="pie-chart" class="huge-icon"></i>
+                                <div class="floating-stat">Risk: Low</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Enterprise Tab -->
+                    <div class="tab-panel" id="tab-enterprise">
+                        <div class="tab-panel-inner">
+                            <div class="tab-text">
+                                <h3>Accelerate Internal Ventures.</h3>
+                                <p>Empower your innovation teams to rapidly prototype and evaluate new corporate
+                                    spin-offs. Compare internal ideas against global market trends.</p>
+                                <ul class="tab-features">
+                                    <li><i data-lucide="check-circle-2"></i> Resource Allocation Models</li>
+                                    <li><i data-lucide="check-circle-2"></i> Trend Forecasting Integration</li>
+                                </ul>
+                            </div>
+                            <div class="tab-visual visual-enterprise">
+                                <i data-lucide="globe" class="huge-icon"></i>
+                                <div class="floating-stat">Trend: Up</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Metrics Marquee -->
+    <div class="metrics-banner">
+        <div class="marquee-content">
+            <span class="metric-item"><i data-lucide="activity"></i> 10K+ Startups Evaluated</span>
+            <span class="metric-item"><i data-lucide="zap"></i> 150M+ Data Points Analyzed</span>
+            <span class="metric-item"><i data-lucide="pie-chart"></i> 94% Strategy Accuracy</span>
+            <span class="metric-item"><i data-lucide="trending-up"></i> 3x Faster Validation</span>
+            <!-- Duplicated for seamless scrolling -->
+            <span class="metric-item" aria-hidden="true"><i data-lucide="activity"></i> 10K+ Startups Evaluated</span>
+            <span class="metric-item" aria-hidden="true"><i data-lucide="zap"></i> 150M+ Data Points Analyzed</span>
+            <span class="metric-item" aria-hidden="true"><i data-lucide="pie-chart"></i> 94% Strategy Accuracy</span>
+            <span class="metric-item" aria-hidden="true"><i data-lucide="trending-up"></i> 3x Faster Validation</span>
+        </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">A synchronized AI pipeline simulating the strategic planning process.</p>
+            </div>
+
+            <div class="process-timeline">
+
+                <div class="timeline-step">
+                    <div class="step-icon-wrapper"><i data-lucide="lightbulb" class="step-icon"></i></div>
+                    <div class="step-content">
+                        <span class="step-number">01</span>
+                        <h4>Idea Analysis Module</h4>
+                        <p>The system analyzes the feasibility and uniqueness of a proposed business concept. It
+                            identifies target users, value propositions, and potential challenges.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-step">
+                    <div class="step-icon-wrapper"><i data-lucide="bar-chart-2" class="step-icon"></i></div>
+                    <div class="step-content">
+                        <span class="step-number">02</span>
+                        <h4>Market & Trend Evaluation</h4>
+                        <p>Using data-driven techniques, this component assesses market demand, competition, and
+                            emerging trends to determine the viability of the idea.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-step">
+                    <div class="step-icon-wrapper"><i data-lucide="shield-alert" class="step-icon"></i></div>
+                    <div class="step-content">
+                        <span class="step-number">03</span>
+                        <h4>Risk & Resource Assessment</h4>
+                        <p>Machine learning models estimate potential risks, resource requirements, and operational
+                            challenges associated with launching the startup.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-step">
+                    <div class="step-icon-wrapper"><i data-lucide="map" class="step-icon"></i></div>
+                    <div class="step-content">
+                        <span class="step-number">04</span>
+                        <h4>Strategy Generation</h4>
+                        <p>Generative AI produces a structured business strategy covering areas such as product
+                            positioning, marketing approach, revenue models, and growth plans.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-step">
+                    <div class="step-icon-wrapper"><i data-lucide="layers" class="step-icon"></i></div>
+                    <div class="step-content">
+                        <span class="step-number">05</span>
+                        <h4>Decision Coordination</h4>
+                        <p>A limited number of AI agents organize the analysis and synthesis stages, ensuring a coherent
+                            output without requiring complex multi-agent negotiation.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies Section -->
+    <section class="technologies" id="technologies">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Technologies Involved</h2>
+                <p class="section-subtitle">Powered by modern artificial intelligence and data science.</p>
+            </div>
+
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <i data-lucide="cpu" class="tech-icon"></i>
+                    <h4>Machine Learning (ML)</h4>
+                    <p>For trend analysis, classification, and risk estimation.</p>
+                </div>
+                <div class="tech-card">
+                    <i data-lucide="sparkles" class="tech-icon"></i>
+                    <h4>Generative AI (GenAI)</h4>
+                    <p>For generating business plans, strategies, and explanations.</p>
+                </div>
+                <div class="tech-card">
+                    <i data-lucide="message-square" class="tech-icon"></i>
+                    <h4>Natural Language Processing</h4>
+                    <p>For understanding user inputs and extracting business parameters.</p>
+                </div>
+                <div class="tech-card">
+                    <i data-lucide="git-merge" class="tech-icon"></i>
+                    <h4>Agent-Based Coordination</h4>
+                    <p>Minimal coordination for structuring the decision-making workflow.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="get-started">
+        <div class="container cta-container">
+            <div class="cta-content">
+                <h2>Got an idea? Let's evaluate it together.</h2>
+                <p>Join our strategy lab today and turn your abstract concept into a structured, data-driven plan.</p>
+                <a href="https://technova-backend-startup-1.onrender.com/login" class="btn btn-primary btn-glow btn-large">Let's Start</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-icon"><i data-lucide="hexagon"></i></div>
+                        <span>Capiche</span>
+                    </div>
+                    <p class="tagline">Capiche is an experimental Agent-Based Coordination model designed to
+                        analyze and evaluate startup ideas using advanced heuristic scanning and market intelligence.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                        <a href="#" aria-label="Github"><i data-lucide="github"></i></a>
+                        <a href="#" aria-label="Linkedin"><i data-lucide="linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links-grid">
+                    <div class="footer-column">
+                        <h4>Platform</h4>
+                        <a href="#features">Features</a>
+                        <a href="#how-it-works">How It Works</a>
+                        <a href="#technologies">Technologies</a>
+                        <a href="#">Pricing</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <a href="#">Documentation</a>
+                        <a href="#">Case Studies</a>
+                        <a href="#">Blog</a>
+                        <a href="#">Help Center</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <a href="#">About Us</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AI Startup Strategy Simulator. All rights reserved.</p>
+            </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Floating Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Feature Cards Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: "0px 0px -50px 0px" });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Also reveal on page load in case they are already in view
+        window.addEventListener('load', () => {
+            revealElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight) {
+                    el.classList.add('active');
+                }
+            });
+        });
+        // Tab Switching Logic
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabPanels = document.querySelectorAll('.tab-panel');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabPanels.forEach(p => p.classList.remove('active'));
+
+                // Add active class to clicked
+                btn.classList.add('active');
+                const targetId = btn.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+
+    </script>
+</body>
+
+</html>

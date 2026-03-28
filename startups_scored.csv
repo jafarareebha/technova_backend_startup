@@ -1,0 +1,953 @@
+industry_sector,founding_team_size,initial_funding_usd,num_funding_rounds,market_type,country_region,num_competitors_proxy,year_founded,outcome,market_demand,pain_point_severity,idea_novelty,scalability,barriers_to_entry,revenue_model_strength,acquisition_difficulty,willingness_to_pay
+Local,2.0,3900000.0,2,Unknown,USA,1511.0,2008,active,7,5,4,6,4,6,6,6
+Mobile,4.0,113750000.0,6,Unknown,USA,1015.0,2004,acquired,8,5,4,9,5,8,6,6
+Manufacturing,2.0,611387.0,2,B2B,USA,84.0,2002,failed,6,5,6,6,6,6,5,6
+Coupons,2.0,1073497.0,2,Unknown,FRA,8445.0,2008,failed,6,4,3,5,4,5,7,5
+Productivity Software,3.0,14500000.0,1,Unknown,USA,699.0,2003,acquired,7,5,6,9,6,7,5,6
+Software,1.0,6000000.0,1,Unknown,USA,3413.0,2002,failed,6,4,3,7,4,5,7,5
+Corporate Training,2.0,74000000.0,1,Unknown,AUS,1511.0,2013,ipo,8,6,4,7,6,8,5,7
+Entertainment,2.0,10600000.0,2,B2C,USA,8445.0,2008,acquired,7,4,4,7,3,7,9,5
+Biotechnology,2.0,46000000.0,6,Unknown,USA,1084.0,2005,ipo,10,9,7,7,8,10,5,9
+Software,3.0,22000000.0,2,Unknown,USA,3702.0,2003,active,7,5,4,8,5,7,6,6
+Cloud Data Services,2.0,31376300.0,2,B2B,USA,2318.0,2010,active,8,6,4,9,5,8,5,7
+Domains,2.0,42658161.0,2,Unknown,USA,1511.0,2007,ipo,8,6,4,7,6,8,5,7
+Market Research,2.0,3017000.0,3,Unknown,USA,634.0,2012,active,7,5,5,6,6,7,5,6
+Shopping,2.0,138000.0,1,Unknown,CHE,5210.0,2011,failed,5,4,3,5,4,5,7,5
+Finance Technology,2.0,19569145.0,6,Unknown,AUS,1511.0,2006,ipo,10,8,4,8,6,10,4,9
+E-Commerce,2.0,450000.0,1,B2C,USA,274.0,2011,active,7,5,5,8,6,6,6,6
+Semiconductors,2.0,5675631.0,3,Unknown,USA,208.0,2006,active,7,6,7,6,8,7,5,6
+Blogging Platforms,4.0,40500000.0,5,Unknown,USA,98.0,2007,active,8,5,6,7,6,7,5,6
+Software,2.0,7981405.0,2,Unknown,USA,2602.0,1999,active,7,5,5,8,4,7,6,6
+Software,2.0,27000000.0,3,Unknown,GBR,3413.0,2002,acquired,8,5,4,9,5,7,6,6
+Automotive,2.0,15700000.0,2,Unknown,USA,97.0,2011,acquired,7,5,6,7,6,7,5,6
+Auctions,2.0,34000000.0,1,Unknown,USA,1511.0,1992,acquired,7,5,5,7,5,7,6,6
+Email Marketing,2.0,87168000.0,1,B2B,DEU,2602.0,1999,acquired,8,6,5,8,5,9,5,8
+E-Commerce,2.0,1000000.0,2,B2C,TUR,5210.0,2011,acquired,8,5,4,9,4,7,7,6
+Analytics,1.0,2300000.0,2,B2B,USA,684.0,2011,active,7,6,5,9,6,10,3,10
+Curated Web,2.0,3400000.0,1,B2C,USA,5695.0,2013,active,7,4,3,6,3,6,9,5
+Data Centers,2.0,33521971.0,6,Unknown,CAN,229.0,1996,acquired,8,5,7,7,6,8,5,6
+Health Care,2.0,54000000.0,1,Unknown,USA,917.0,2003,ipo,9,8,5,7,6,10,5,9
+Apps,3.0,2000000.0,2,Unknown,USA,4079.0,2010,failed,6,4,3,5,4,5,7,5
+Biotechnology,2.0,45500000.0,2,Unknown,USA,1126.0,2010,active,8,9,6,6,7,9,6,8
+Health Care,2.0,10500000.0,1,Unknown,ISR,214.0,2004,failed,7,7,5,5,6,7,6,7
+Social Network Media,3.0,802100.0,2,B2C,DEU,3456.0,2007,failed,5,3,3,5,3,4,10,4
+Biotechnology,2.0,12551875.0,2,Unknown,USA,1511.0,2006,active,8,9,6,6,7,9,6,8
+Curated Web,2.0,1200000.0,1,B2C,USA,9634.0,2010,acquired,7,4,4,7,3,6,9,5
+Games,1.0,300000.0,1,B2C,USA,9638.0,2009,active,6,4,4,6,3,5,9,5
+Biotechnology,2.0,376848.0,1,Unknown,CAN,740.0,2012,active,7,9,7,5,8,8,5,8
+Biotechnology,2.0,9520000.0,3,Unknown,USA,1511.0,1995,ipo,9,9,8,7,8,10,5,9
+Web Hosting,2.0,57000000.0,3,Unknown,USA,1010.0,2008,active,7,5,4,7,5,7,6,6
+Health Care,2.0,179300000.0,6,Unknown,USA,917.0,2003,ipo,10,8,5,8,6,10,5,9
+Public Relations,2.0,988957.0,1,Unknown,USA,1090.0,2007,failed,5,4,3,5,4,5,7,5
+Education,2.0,559521.0,1,Unknown,GBR,1305.0,2009,active,7,8,4,6,4,6,6,6
+Analytics,1.0,11500000.0,1,B2B,NLD,476.0,2008,active,7,6,5,9,6,10,3,10
+Curated Web,2.0,25000.0,1,B2C,GBR,9638.0,2009,failed,5,3,3,5,2,4,10,4
+Health Care,2.0,20000000.0,1,Unknown,USA,267.0,2006,acquired,8,8,5,7,6,9,5,9
+Software,1.0,18304477.0,7,Unknown,USA,3132.0,2001,active,8,5,4,9,5,7,6,6
+Web Tools,1.0,11500000.0,3,Unknown,USA,2003.0,2004,acquired,8,5,4,7,4,7,6,6
+Fashion,2.0,1200.0,1,B2C,IDN,1511.0,2013,active,5,4,3,6,2,5,9,4
+Music,2.0,1200000.0,1,B2C,USA,1511.0,2013,active,6,4,3,6,3,6,7,5
+Health Care,2.0,11400000.0,2,Unknown,USA,33.0,1995,active,8,8,9,6,7,9,5,8
+Software,2.0,665000.0,2,Unknown,USA,8440.0,2009,active,6,5,4,8,4,6,6,6
+Reviews And Recommendations,3.0,5560000.0,4,Unknown,BRA,918.0,2010,active,7,5,4,7,4,7,6,6
+Games,2.0,3742500.0,1,B2C,USA,1511.0,2006,active,7,4,4,7,3,6,9,5
+Security,2.0,2020000.0,2,B2B,ISR,1511.0,2012,active,8,8,3,7,4,10,4,10
+Software,1.0,3549916.0,1,Unknown,USA,6544.0,2007,active,7,5,4,8,4,6,6,6
+Software,2.0,10000000.0,1,Unknown,USA,1978.0,1997,acquired,7,5,5,9,4,7,6,6
+Infrastructure,2.0,20750000.0,2,B2B,USA,2003.0,2008,acquired,8,6,4,8,5,9,5,8
+Hospitality,2.0,2950000.0,2,Unknown,USA,261.0,2012,active,7,5,5,6,6,6,5,6
+Health Care,2.0,37673932.0,6,Unknown,USA,267.0,2006,acquired,9,8,5,7,6,10,5,9
+Therapeutics,2.0,85060000.0,5,Unknown,USA,128.0,1991,ipo,9,6,8,8,7,8,4,7
+Mobile,1.0,300000.0,1,Unknown,USA,314.0,2011,active,6,5,5,8,6,6,5,6
+Messaging,2.0,276108581.0,3,Unknown,USA,57.0,2005,ipo,9,6,7,8,7,8,4,7
+Hardware + Software,2.0,20407600.0,5,Unknown,USA,803.0,2012,ipo,9,6,4,10,8,8,5,6
+Biotechnology,2.0,16967648.0,3,Unknown,USA,1511.0,2013,ipo,9,9,6,7,8,10,5,9
+Location Based Services,2.0,50000.0,1,Unknown,USA,1174.0,2010,failed,5,4,3,5,4,4,7,5
+E-Commerce,2.0,1500000.0,1,B2C,ISR,8391.0,2010,active,7,5,4,8,4,6,7,6
+Predictive Analytics,2.0,35600000.0,6,B2B,USA,6544.0,2007,active,8,6,4,10,5,10,4,10
+Software,2.0,20000.0,1,Unknown,USA,5080.0,2013,failed,5,4,2,6,4,4,7,4
+Software,2.0,50000.0,1,Unknown,USA,7534.0,2011,failed,5,4,3,7,4,4,7,5
+Software,2.0,500000.0,1,Unknown,USA,7534.0,2011,acquired,7,5,4,8,4,7,6,6
+Mobile Advertising,2.0,3500000.0,2,Unknown,GBR,3774.0,2011,active,7,5,4,8,4,6,6,6
+Software,1.0,23980000.0,3,Unknown,DEU,3132.0,2001,acquired,8,5,4,9,5,7,6,6
+Cloud Management,2.0,16300000.0,2,B2B,USA,2003.0,2008,acquired,8,6,4,10,5,9,5,8
+Manufacturing,2.0,54600000.0,3,B2B,USA,131.0,2007,active,8,6,6,8,6,8,4,7
+Social Media,2.0,2200000.0,1,B2C,USA,2381.0,2010,failed,5,3,3,7,3,4,10,4
+Social Media,1.0,1000000.0,1,B2C,CAN,2245.0,2010,failed,5,3,3,7,3,4,10,4
+Biotechnology,2.0,29941703.0,6,Unknown,USA,1264.0,2009,ipo,10,9,6,7,8,10,5,9
+Crm,2.0,3500000.0,1,B2B,USA,2245.0,2010,failed,6,5,3,6,4,7,5,6
+Software,2.0,4000000.0,1,Unknown,USA,4037.0,2004,failed,6,4,3,7,4,5,7,5
+Enterprise Software,3.0,3500000.0,2,B2B,USA,2249.0,2009,failed,6,5,3,8,4,9,5,9
+Big Data,2.0,66466131.0,3,Unknown,USA,4669.0,2005,ipo,8,6,5,8,6,8,5,7
+Biotechnology,2.0,122987972.0,5,Unknown,USA,1285.0,2008,ipo,10,9,6,7,8,10,5,9
+Saas,2.0,800000.0,1,B2B,USA,1511.0,2012,acquired,7,6,3,9,4,10,4,10
+Social Media,3.0,6100000.0,2,B2C,USA,669.0,2009,acquired,7,4,5,9,4,7,8,5
+Mobile,2.0,7119238.0,2,Unknown,USA,1511.0,2012,ipo,8,6,4,9,5,8,5,6
+Semiconductors,2.0,239000000.0,1,Unknown,CHN,1511.0,1997,ipo,8,7,8,7,8,8,5,7
+Enterprise Software,2.0,14000000.0,2,B2B,USA,6544.0,2007,active,8,6,4,9,4,10,4,10
+Biotechnology,3.0,2000000.0,1,Unknown,USA,740.0,2012,active,7,9,7,5,8,8,5,8
+Twitter Applications,2.0,250000.0,1,Unknown,USA,4736.0,2009,acquired,7,5,4,6,4,6,6,6
+Doctors,2.0,1000000.0,1,Unknown,TUR,436.0,2013,active,6,5,5,6,6,6,5,6
+Consumer Electronics,3.0,16500000.0,3,B2C,USA,8589.0,2011,acquired,8,5,4,8,5,7,9,6
+E-Commerce,2.0,130552663.0,5,B2C,USA,4669.0,2005,ipo,9,6,5,10,6,8,6,7
+Hardware + Software,2.0,9100000.0,1,Unknown,USA,2602.0,1999,acquired,7,5,5,9,7,7,6,6
+Curated Web,3.0,9000000.0,2,B2C,USA,1438.0,2002,acquired,7,4,4,7,3,7,9,5
+Social Media,2.0,4695100.0,2,B2C,DEU,5396.0,2006,acquired,7,4,4,9,3,7,9,5
+Email,2.0,1500000.0,1,Unknown,USA,4004.0,2005,active,6,5,4,6,4,6,6,6
+Curated Web,2.0,5750000.0,2,B2C,USA,1511.0,2009,failed,6,3,3,6,3,5,10,4
+Market Research,2.0,2600000.0,2,Unknown,USA,91.0,2007,active,7,5,6,6,6,6,5,6
+Sports,2.0,10000000.0,1,B2C,USA,1511.0,2005,acquired,7,4,4,7,3,6,7,5
+Social Media,2.0,24000.0,1,B2C,ARE,810.0,2013,active,6,4,3,8,2,5,9,4
+Hardware + Software,2.0,4500000.0,2,Unknown,USA,127.0,1994,ipo,8,6,8,9,9,8,4,6
+Biotechnology,2.0,19904010.0,6,Unknown,CAN,512.0,1998,ipo,10,9,9,7,10,10,4,9
+Mobile,2.0,3400000.0,1,Unknown,USA,2862.0,2000,acquired,7,5,5,8,4,7,6,6
+Medical Devices,2.0,7000000.0,1,Unknown,ISR,1511.0,2004,ipo,9,9,7,6,8,7,5,6
+Photography,2.0,2300000.0,1,B2C,USA,26.0,2003,active,7,5,8,6,7,6,6,6
+Graphics,2.0,781663.0,1,Unknown,BEL,116.0,2012,active,6,5,6,6,6,6,5,6
+Parking,2.0,5000000.0,1,Unknown,CAN,1511.0,2008,ipo,7,6,4,7,5,7,5,6
+Technology,1.0,143007658.0,7,Unknown,JPN,856.0,2004,active,8,5,4,7,5,7,6,6
+Curated Web,2.0,2000000.0,1,B2C,USA,6870.0,2007,failed,5,3,3,5,3,4,10,4
+Mobile,5.0,400000.0,1,Unknown,ISR,3417.0,2012,active,6,5,3,8,4,6,6,6
+Enterprise Software,2.0,3000000.0,1,B2B,USA,1511.0,2004,failed,6,5,3,8,4,9,5,9
+Saas,2.0,700000.0,1,B2B,USA,3128.0,2011,acquired,7,6,4,9,4,10,4,10
+Software,1.0,250000.0,1,Unknown,NZL,6544.0,2007,failed,5,4,3,7,4,5,7,5
+Internet Marketing,2.0,2000000.0,1,B2B,CAN,1511.0,2008,active,7,6,4,7,4,8,5,7
+Finance,2.0,8350000.0,3,Unknown,CHN,1511.0,2003,active,8,8,4,7,4,9,5,8
+Consumer Electronics,2.0,66300000.0,6,B2C,USA,344.0,1998,acquired,9,5,7,8,6,8,8,6
+Manufacturing,2.0,450000.0,1,B2B,USA,1511.0,2012,active,7,6,3,7,4,8,5,7
+Enterprise Software,2.0,82269487.0,4,B2B,USA,612.0,2002,active,8,6,6,10,6,10,3,10
+Analytics,2.0,13622803.0,6,B2B,USA,805.0,1997,ipo,9,6,6,10,5,10,4,10
+Hardware + Software,2.0,440000.0,1,Unknown,USA,1511.0,2009,active,6,5,4,8,7,6,6,6
+Sales And Marketing,2.0,3100000.0,2,B2B,USA,7220.0,2012,acquired,8,6,3,7,4,8,5,8
+Health Care Information Technology,2.0,7003853.0,1,Unknown,USA,1511.0,2000,active,8,8,5,6,4,8,6,8
+Content Discovery,2.0,3050000.0,2,Unknown,USA,3186.0,2011,acquired,7,5,4,6,4,7,6,6
+Cloud Data Services,2.0,6777331.0,2,B2B,AUS,1511.0,2000,ipo,8,6,6,10,5,9,5,8
+Sustainability,2.0,10000.0,1,Unknown,USA,2249.0,2009,failed,4,4,3,4,4,4,7,4
+Entertainment,2.0,475000.0,4,B2C,USA,3186.0,2011,active,7,4,4,7,3,6,9,5
+Search,3.0,33000000.0,2,Unknown,USA,570.0,2005,failed,6,4,5,5,6,6,6,5
+Mobile,2.0,20535582.0,10,Unknown,USA,3774.0,2011,ipo,9,6,4,10,6,8,5,6
+Software,2.0,75000.0,1,Unknown,USA,1511.0,2010,active,6,5,4,8,4,6,6,5
+Mobile,2.0,300000.0,1,Unknown,GBR,3969.0,2009,failed,5,4,3,7,4,5,7,5
+Health Care,1.0,246700000.0,4,Unknown,USA,1236.0,2007,ipo,10,8,4,8,6,10,5,9
+Biotechnology,2.0,210384730.0,1,Unknown,SWE,275.0,1995,ipo,9,9,9,7,10,10,4,9
+Iphone,2.0,9800000.0,2,Unknown,USA,351.0,2010,acquired,7,5,5,7,6,7,5,6
+Biotechnology,2.0,1200000.0,1,Unknown,USA,660.0,2000,acquired,8,9,9,6,8,9,5,8
+Social Media,4.0,1550000.0,2,B2C,USA,8589.0,2011,failed,6,3,3,7,3,5,10,4
+E-Commerce,2.0,3000000.0,3,B2C,TUR,1511.0,2011,active,7,5,4,9,4,7,7,6
+Curated Web,2.0,4099999.0,1,B2C,SGP,7220.0,2012,ipo,7,4,4,7,4,7,8,5
+Security,2.0,5136706.0,1,B2B,USA,1511.0,2001,acquired,9,8,4,7,4,10,4,10
+Online Shopping,2.0,86547.0,1,Unknown,GBR,4790.0,2010,failed,5,4,3,5,4,5,7,5
+Health Care,2.0,2000000.0,1,Unknown,USA,7220.0,2012,acquired,8,8,3,6,4,9,6,9
+Seo,2.0,3000000.0,1,Unknown,ISR,1511.0,2012,active,7,5,3,6,4,6,6,6
+Biotechnology,2.0,74200000.0,1,Unknown,USA,275.0,1995,ipo,9,9,9,7,10,10,4,9
+Software,2.0,3103918.0,2,Unknown,USA,1511.0,1993,active,7,5,5,8,4,6,6,6
+Biotechnology,1.0,120500000.0,5,Unknown,USA,999.0,2004,failed,8,8,5,5,7,8,7,8
+Advertising,2.0,1000000.0,1,Unknown,ISR,3519.0,2009,acquired,7,5,4,8,4,7,6,6
+Curated Web,2.0,10000.0,1,B2C,CAN,8589.0,2011,failed,4,3,3,5,2,4,10,3
+Search,1.0,2500000.0,1,Unknown,USA,1080.0,2008,acquired,7,5,4,6,4,7,6,6
+Social Media,2.0,20000000.0,2,B2C,IND,4647.0,2012,active,7,4,3,9,3,6,9,5
+Hardware + Software,2.0,25000.0,1,Unknown,EST,912.0,2011,active,6,5,4,7,6,6,6,5
+Curated Web,2.0,425000.0,2,B2C,USA,8589.0,2011,active,6,4,4,6,3,6,9,5
+Mobile Games,1.0,60000.0,2,B2C,AUS,1354.0,2012,active,6,4,3,8,2,5,9,4
+Curated Web,2.0,540000.0,1,B2C,CAN,7220.0,2012,failed,5,3,2,5,3,4,10,4
+Software,2.0,197000.0,1,Unknown,USA,1511.0,2013,active,6,5,3,8,4,6,6,5
+Startups,2.0,1575000.0,3,Unknown,USA,720.0,2009,acquired,7,5,5,7,6,7,5,6
+Clean Technology,1.0,31572684.0,4,Unknown,USA,708.0,2008,active,8,9,7,6,9,7,5,6
+Information Security,2.0,20000000.0,1,B2B,USA,1511.0,2007,ipo,9,9,4,8,6,10,4,10
+Search,1.0,3750000.0,1,Unknown,GBR,644.0,2013,active,7,5,5,6,6,6,5,6
+Curated Web,2.0,4854004.0,3,B2C,USA,9634.0,2010,active,7,4,4,7,3,6,9,5
+Sports,3.0,107632220.0,7,B2C,USA,56.0,2003,active,8,4,7,7,5,7,6,5
+Web Hosting,2.0,50000000.0,1,Unknown,USA,2773.0,2004,acquired,7,5,4,7,5,7,6,6
+Social Media,3.0,1750000.0,3,B2C,USA,6870.0,2007,active,7,4,4,9,3,6,9,5
+Software,2.0,100000.0,1,Unknown,USA,810.0,2013,active,6,5,3,8,4,6,6,5
+News,2.0,180000.0,1,B2C,USA,301.0,2012,active,7,5,5,6,6,6,6,5
+Software,2.0,378000.0,1,Unknown,USA,3702.0,2003,failed,5,4,3,7,4,5,7,5
+Advertising,2.0,12000000.0,2,Unknown,USA,2176.0,2006,acquired,7,5,4,9,4,7,6,6
+Peer-To-Peer,2.0,2000000.0,1,Unknown,RUS,397.0,2011,failed,5,4,4,5,6,5,6,5
+Business Intelligence,2.0,5000000.0,2,Unknown,FRA,607.0,2009,active,7,5,5,6,6,7,5,6
+Art,3.0,500000.0,1,Unknown,USA,4329.0,2011,active,6,5,4,6,4,6,6,6
+Wireless,2.0,33000000.0,1,Unknown,CAN,449.0,2001,ipo,8,6,6,7,7,8,4,7
+Mobile,2.0,16000.0,1,Unknown,ISL,3774.0,2011,failed,5,4,3,6,4,4,7,4
+Television,1.0,5575000.0,2,Unknown,USA,2664.0,2012,active,7,5,3,6,4,7,6,6
+Online Gaming,2.0,1204795.0,3,Unknown,DEU,2723.0,2007,failed,6,4,3,5,4,5,7,5
+Semiconductors,2.0,4880000.0,1,Unknown,CAN,337.0,2000,failed,6,5,8,4,8,5,6,5
+Clean Energy,2.0,4200000.0,1,Unknown,USA,514.0,2011,failed,6,4,4,5,6,5,6,5
+Biotechnology,2.0,31000000.0,2,Unknown,USA,59.0,1992,ipo,9,9,10,7,10,10,4,9
+Biotechnology,2.0,22551008.0,5,Unknown,USA,1150.0,2006,active,9,9,6,6,7,9,6,8
+Software,2.0,16542968.0,4,Unknown,USA,540.0,2001,active,7,5,6,9,6,7,5,6
+Security,2.0,350000.0,1,B2B,BRA,856.0,2004,active,8,8,4,7,4,9,4,10
+Advertising,1.0,300000.0,1,Unknown,CHN,3519.0,2009,failed,5,4,3,7,4,5,7,5
+Health Care,2.0,217200000.0,5,Unknown,USA,821.0,2002,ipo,10,8,5,8,6,10,5,9
+Clean Technology,2.0,8362900.0,1,Unknown,NLD,213.0,2001,active,8,9,8,6,8,6,5,6
+Biotechnology,2.0,240040000.0,3,Unknown,USA,275.0,1995,ipo,10,9,9,7,10,10,4,9
+Fitness,1.0,379892.0,2,B2C,GBR,499.0,2009,failed,6,4,4,5,6,5,7,5
+Social Buying,2.0,30143747.0,3,Unknown,USA,3607.0,2009,active,7,4,4,7,3,6,8,5
+Biotechnology,2.0,24100000.0,1,Unknown,ISR,1511.0,2003,ipo,9,9,7,7,8,10,5,9
+Software,1.0,6797785.0,3,Unknown,USA,8440.0,2009,failed,6,4,3,8,4,5,7,5
+Hardware + Software,1.0,9856183.0,2,Unknown,USA,2245.0,2010,acquired,7,5,4,9,7,7,6,6
+Services,2.0,1356885.0,1,Unknown,IRL,8440.0,2009,active,6,5,4,6,4,6,6,6
+Biotechnology,2.0,2564788.0,1,Unknown,USA,1511.0,2007,active,8,9,6,5,7,8,6,8
+E-Commerce,2.0,30000000.0,1,B2C,USA,2460.0,2006,failed,6,4,3,8,5,5,8,5
+Social Media,2.0,5000000.0,1,B2C,ISR,1301.0,2005,active,7,4,4,9,3,6,9,5
+Advertising,2.0,4100000.0,1,Unknown,USA,4004.0,2005,failed,6,4,3,7,4,5,7,5
+Finance,2.0,100000.0,1,Unknown,USA,1511.0,2014,active,7,8,3,6,4,8,5,8
+Cloud Computing,2.0,31597282.0,5,B2B,SGP,439.0,1999,acquired,9,6,7,10,6,9,4,8
+Advertising,3.0,6000000.0,1,Unknown,USA,841.0,2002,acquired,7,5,4,9,4,7,6,6
+Software,2.0,25000.0,1,Unknown,USA,5080.0,2013,active,6,5,3,7,4,6,6,5
+Public Transportation,3.0,5817312.0,7,Unknown,USA,53.0,2006,active,7,5,6,7,6,7,5,6
+Clean Technology,2.0,54000000.0,3,Unknown,USA,682.0,2007,failed,7,8,6,5,9,6,6,5
+Software,2.0,23999999.0,3,Unknown,USA,1511.0,2006,ipo,8,6,4,10,6,8,5,7
+Collaboration,2.0,369318.0,2,Unknown,BEL,6447.0,2013,active,6,5,3,6,4,6,6,6
+Health Care,2.0,24983103.0,6,Unknown,ISR,1511.0,2005,ipo,10,8,5,8,6,10,5,9
+Internet,2.0,9000000.0,2,Unknown,IND,314.0,2011,active,7,5,5,6,6,7,5,6
+Biotechnology,1.0,253614965.0,5,Unknown,USA,1084.0,2005,ipo,10,9,7,7,8,10,5,9
+Enterprise Software,2.0,33000000.0,4,B2B,USA,1346.0,2006,acquired,8,6,4,10,5,10,4,10
+Clean Technology,2.0,1400000.0,1,Unknown,USA,107.0,1997,active,7,9,10,5,8,6,5,6
+Security,2.0,200000.0,1,B2B,USA,2060.0,2013,active,8,8,3,7,4,9,4,9
+Search,3.0,7000000.0,1,Unknown,USA,570.0,2005,acquired,7,5,6,7,6,7,5,6
+Web Design,3.0,4100000.0,2,Unknown,USA,5396.0,2006,acquired,7,5,4,6,4,7,6,6
+Advertising,2.0,10400000.0,2,Unknown,USA,1511.0,2012,ipo,8,6,4,9,5,8,5,6
+Education,2.0,243000.0,5,Unknown,USA,582.0,2007,active,8,8,5,6,6,7,5,6
+Health Care,2.0,132500.0,1,Unknown,USA,294.0,2009,active,7,8,5,6,6,8,5,8
+Media,2.0,2894276.0,2,B2C,USA,1511.0,2010,active,7,4,4,6,3,6,7,5
+Health Care,2.0,4537001.0,1,Unknown,USA,203.0,2012,active,8,8,5,6,6,8,5,8
+Biotechnology,2.0,1676516.0,4,Unknown,GBR,1511.0,1999,ipo,9,9,8,7,8,10,5,9
+Biotechnology,2.0,28793158.0,3,Unknown,USA,1285.0,2008,active,8,9,6,6,7,9,6,8
+Mobile,2.0,30500000.0,2,Unknown,USA,1737.0,2006,failed,6,4,3,7,5,6,7,5
+Mobile,1.0,3378975.0,1,Unknown,USA,1281.0,2005,active,7,5,4,8,4,6,6,6
+Clean Technology,2.0,71900834.0,6,Unknown,USA,153.0,1999,acquired,9,9,10,7,9,8,5,6
+Curated Web,2.0,467880.0,1,B2C,DEU,4004.0,2005,failed,5,3,3,5,3,4,10,4
+Sports,2.0,270000.0,1,B2C,USA,1511.0,2011,active,6,4,4,6,3,5,7,5
+Education,1.0,700000.0,2,Unknown,USA,9634.0,2010,failed,6,7,3,5,4,5,7,5
+Biotechnology,2.0,98329011.0,3,Unknown,BEL,723.0,2001,ipo,9,9,8,7,10,10,4,9
+Biotechnology,2.0,96700000.0,1,Unknown,USA,1511.0,1990,ipo,9,9,8,7,8,10,5,9
+Startups,1.0,6892400.0,4,Unknown,GBR,305.0,2007,active,7,5,5,7,6,7,5,6
+Biotechnology,1.0,15374996.0,4,Unknown,USA,597.0,1999,ipo,9,9,9,7,10,10,4,9
+Specialty Foods,2.0,1265000.0,3,B2C,USA,1511.0,2013,active,7,4,3,7,3,6,9,5
+Design,2.0,920000.0,2,Unknown,USA,898.0,2011,active,7,5,4,6,4,6,6,6
+Entertainment,2.0,800.0,1,B2C,USA,1511.0,2010,active,5,4,4,6,2,5,9,4
+Mobile,2.0,500000.0,1,Unknown,USA,3233.0,2008,failed,5,4,3,7,4,5,7,5
+Games,1.0,4340000.0,3,B2C,USA,3280.0,2008,acquired,7,4,4,7,3,7,9,5
+Twitter Applications,3.0,3269528.0,3,Unknown,GBR,684.0,2011,active,7,5,5,6,6,7,5,6
+Sales And Marketing,2.0,72360.0,2,B2B,FRA,1511.0,2009,failed,6,5,3,6,4,6,6,6
+Security,2.0,8400000.0,1,B2B,USA,1978.0,1997,acquired,9,8,5,8,4,10,4,10
+Biotechnology,2.0,12631268.0,2,Unknown,CAN,1285.0,2008,ipo,9,9,6,6,8,10,5,9
+Brand Marketing,3.0,110000.0,1,B2B,CAN,2664.0,2012,active,6,6,3,7,4,7,5,7
+Finance,2.0,37100000.0,3,Unknown,USA,1511.0,2012,active,8,8,3,7,5,9,5,8
+Technology,2.0,83649920.0,2,Unknown,USA,1511.0,1994,ipo,8,6,6,7,6,8,5,7
+Privacy,2.0,1836950.0,1,Unknown,USA,803.0,2012,active,6,5,3,6,4,6,6,6
+Retail,2.0,1340000.0,2,Unknown,DNK,1511.0,2012,active,7,5,3,6,4,6,6,6
+Curated Web,1.0,924752.0,1,B2C,USA,5396.0,2006,acquired,7,4,4,7,3,6,9,5
+Social Media Management,3.0,20000.0,1,B2C,USA,7534.0,2012,active,6,4,3,8,2,5,9,4
+Mobile,2.0,10000.0,1,Unknown,USA,3417.0,2012,failed,4,4,2,6,4,4,7,4
+Content Discovery,3.0,3200000.0,1,Unknown,USA,1511.0,2012,active,7,5,3,6,4,6,6,6
+Software,2.0,500000.0,2,Unknown,IND,1511.0,2012,active,6,5,3,8,4,6,6,6
+Recruiting,2.0,18000.0,1,B2B,USA,9638.0,2009,failed,5,5,3,5,4,6,6,6
+Health Care,1.0,16000000.0,4,Unknown,USA,283.0,2007,active,8,8,5,7,6,9,5,8
+Technology,2.0,100000.0,1,Unknown,USA,1511.0,2014,active,6,5,3,6,4,6,6,5
+Technology,2.0,1400000.0,1,Unknown,USA,618.0,2010,acquired,7,5,5,6,6,7,5,6
+Consulting,2.0,20000000.0,1,Unknown,USA,758.0,2000,acquired,7,5,7,7,6,7,5,6
+Vacation Rentals,2.0,900000.0,1,Unknown,DEU,1511.0,2014,active,6,5,3,6,4,6,6,6
+Health Care,2.0,118352074.0,6,Unknown,USA,431.0,1997,ipo,10,8,7,8,7,10,4,9
+Internet,2.0,400000.0,1,Unknown,CHN,1354.0,2012,active,6,5,3,6,4,6,6,6
+Social Media,2.0,4678000.0,4,B2C,USA,3607.0,2009,active,7,4,4,9,3,6,9,5
+Entertainment,2.0,317.0,1,B2C,USA,1511.0,2014,active,5,4,3,6,2,5,9,4
+Home Automation,2.0,25000.0,1,B2C,ARG,3774.0,2011,active,6,5,4,6,4,6,7,5
+Web Hosting,2.0,1300000.0,1,Unknown,USA,1511.0,2014,active,6,5,3,6,4,6,6,6
+Seo,1.0,20000000.0,1,Unknown,USA,699.0,2003,acquired,7,5,6,7,6,7,5,6
+Location Based Services,3.0,900000.0,4,Unknown,USA,898.0,2011,failed,6,4,3,5,4,5,7,5
+Biotechnology,2.0,6500000.0,1,Unknown,USA,1236.0,2007,acquired,8,9,6,6,7,9,6,9
+Software,2.0,50000.0,1,Unknown,USA,6447.0,2012,failed,5,4,2,7,4,4,7,5
+Advertising,1.0,4057165.0,2,Unknown,USA,4037.0,2004,active,7,5,4,8,4,6,6,6
+Biotechnology,2.0,15400000.0,2,Unknown,CAN,660.0,2000,ipo,9,9,9,7,10,10,4,9
+Software,3.0,1379372.0,2,Unknown,USA,8391.0,2010,acquired,7,5,4,8,4,7,6,6
+Financial Services,2.0,183352.0,1,Unknown,GBR,2228.0,2005,failed,5,4,3,5,4,5,7,5
+Software,2.0,21000000.0,2,Unknown,USA,6544.0,2007,acquired,8,5,4,9,5,7,6,6
+Identity Management,2.0,2395501.0,5,Unknown,USA,1424.0,2002,active,7,5,4,6,4,7,6,6
+Public Transportation,2.0,150000.0,1,Unknown,USA,123.0,2010,failed,5,4,5,5,6,5,6,5
+Software,1.0,25000000.0,1,Unknown,USA,3702.0,2003,acquired,7,5,4,9,5,7,6,6
+Social Media,1.0,8371002.0,2,B2C,DNK,116.0,2006,acquired,7,4,6,9,4,7,8,5
+Biotechnology,2.0,149000000.0,1,Unknown,FRA,1511.0,1996,ipo,9,9,8,7,8,10,5,9
+Android,2.0,1000000.0,2,Unknown,USA,2888.0,2013,active,7,5,3,6,4,6,6,6
+Biotechnology,2.0,36611963.0,6,Unknown,GBR,1511.0,2002,active,9,9,6,6,7,9,6,8
+Manufacturing,2.0,19400000.0,2,B2B,USA,178.0,2000,acquired,8,6,8,8,6,9,4,8
+Mobile,2.0,6000000.0,1,Unknown,USA,390.0,1999,acquired,7,5,7,9,6,7,5,6
+Security,2.0,1400000.0,1,B2B,GBR,73.0,1995,active,8,8,8,7,6,10,3,10
+Finance,2.0,25250000.0,4,Unknown,USA,525.0,2012,ipo,9,8,5,8,7,10,3,9
+Software,3.0,355000.0,1,Unknown,USA,6447.0,2012,acquired,7,5,3,8,4,7,6,6
+Software,2.0,10384999.0,3,Unknown,USA,5609.0,2006,active,7,5,4,9,4,7,6,6
+Games,1.0,3471222.0,6,B2C,USA,2723.0,2007,acquired,8,4,4,7,3,7,9,5
+Software,7.0,206121421.0,7,Unknown,USA,36.0,2003,ipo,9,6,8,10,8,9,4,7
+Government Innovation,2.0,1650000.0,4,Unknown,USA,1511.0,2011,active,7,5,4,6,4,7,6,6
+Biotechnology,2.0,25910257.0,2,Unknown,CHE,999.0,2004,ipo,9,9,7,7,8,10,5,9
+Clean Technology,2.0,211403000.0,8,Unknown,USA,531.0,2005,failed,8,8,7,5,9,6,6,5
+Software,2.0,700000.0,1,Unknown,USA,8391.0,2010,acquired,7,5,4,8,4,7,6,6
+Manufacturing,1.0,36617912.0,3,B2B,USA,75.0,2001,ipo,9,6,7,9,7,9,4,8
+Games,3.0,11500000.0,2,B2C,USA,1631.0,2005,acquired,7,4,4,7,3,7,9,5
+Payments,2.0,10000000.0,1,Unknown,CHN,1511.0,2014,active,7,5,3,6,4,6,6,6
+Biotechnology,2.0,2555672.0,1,Unknown,GBR,723.0,2001,active,8,9,8,5,8,8,5,8
+Blogging Platforms,1.0,712000.0,1,Unknown,GBR,6870.0,2007,failed,5,4,3,5,4,5,7,5
+Employment,3.0,1600000.0,2,Unknown,USA,8589.0,2011,active,7,5,4,6,4,6,6,6
+Social Media,3.0,6400000.0,4,B2C,SGP,9634.0,2010,active,7,4,4,9,3,6,9,5
+Advertising,2.0,17000000.0,1,Unknown,USA,3166.0,2008,active,7,5,4,8,5,7,6,6
+Identity Management,2.0,45000000.0,3,Unknown,CHE,164.0,1999,ipo,8,6,8,8,7,8,4,7
+Mobile,1.0,3750000.0,4,Unknown,ISR,1737.0,2006,failed,6,4,3,7,4,5,7,5
+Freelancers,2.0,33011.0,1,Unknown,BEL,1511.0,2010,active,6,5,4,6,4,6,6,5
+Biotechnology,2.0,37400000.0,2,Unknown,USA,660.0,2000,acquired,9,9,9,6,9,9,5,9
+Small And Medium Businesses,1.0,600000.0,1,Unknown,USA,8391.0,2010,active,6,5,4,6,4,6,6,6
+Biotechnology,2.0,25930577.0,5,Unknown,USA,927.0,2011,active,9,9,6,6,7,9,6,8
+Real Estate,2.0,2500000.0,2,Unknown,USA,1511.0,1997,acquired,7,5,5,6,4,7,6,6
+Health Care,2.0,16980998.0,1,Unknown,USA,660.0,2000,acquired,8,8,7,7,6,9,5,9
+Photo Sharing,2.0,1584187.0,3,B2C,USA,7220.0,2012,active,7,5,3,7,4,7,7,6
+Trading,2.0,775000.0,1,Unknown,SGP,1511.0,2013,active,6,5,3,6,4,6,6,6
+Advertising,2.0,15564591.0,3,Unknown,USA,1654.0,2005,failed,6,4,3,8,5,6,7,5
+Enterprise Software,1.0,26000000.0,4,B2B,USA,2862.0,2000,acquired,8,6,5,10,5,10,4,10
+Biotechnology,2.0,60330000.0,6,Unknown,USA,147.0,1992,ipo,10,9,10,7,10,10,4,9
+Education,2.0,120000.0,1,Unknown,USA,1511.0,2011,acquired,7,8,4,6,4,6,6,6
+Local Businesses,2.0,4899605.0,3,Unknown,USA,160.0,2010,acquired,7,5,6,7,6,7,5,6
+Mobile,2.0,1526426.0,1,Unknown,USA,1511.0,2001,active,6,5,4,8,4,6,6,6
+Microblogging,2.0,200000.0,1,Unknown,DEU,1511.0,2010,active,6,5,4,6,4,6,6,5
+Manufacturing,2.0,4900.0,1,B2B,USA,1511.0,2014,active,6,6,3,6,4,7,5,7
+Manufacturing,2.0,3000000.0,1,B2B,USA,99.0,2004,active,7,6,7,7,6,8,4,7
+Communications Hardware,2.0,120607339.0,2,Unknown,USA,99.0,1996,ipo,8,6,8,7,10,8,4,7
+Software,2.0,100000000.0,2,Unknown,CHN,1511.0,2009,ipo,8,6,4,9,6,8,5,7
+Hardware + Software,1.0,1905935.0,5,Unknown,USA,569.0,2004,active,7,5,6,8,8,7,5,6
+Biotechnology,2.0,54751700.0,4,Unknown,USA,1511.0,1996,ipo,9,9,8,7,8,10,5,9
+Software,2.0,65000.0,1,Unknown,USA,1511.0,2009,active,6,5,4,8,4,6,6,5
+Biotechnology,2.0,1431003.0,1,Unknown,USA,1236.0,2007,active,7,9,6,5,7,8,6,8
+Clean Technology,2.0,192249815.0,9,Unknown,USA,720.0,2009,ipo,10,9,8,7,10,8,4,7
+Hardware + Software,2.0,27000.0,1,Unknown,NLD,668.0,2014,active,6,5,5,7,8,6,5,5
+Health Care,2.0,10300000.0,2,Unknown,USA,1511.0,2007,active,8,8,4,6,4,9,6,8
+Enterprise Software,2.0,11700.0,1,B2B,SGP,1364.0,2013,active,6,6,3,8,4,9,4,9
+Advertising,2.0,9060000.0,1,Unknown,AUS,3702.0,2003,active,7,5,4,8,4,6,6,6
+Health And Wellness,1.0,4500000.0,1,B2C,USA,498.0,2012,active,8,8,5,7,6,8,6,8
+Semiconductors,2.0,5500000.0,1,Unknown,USA,1511.0,2008,active,7,6,6,6,7,6,6,6
+Advertising,2.0,28932322.0,4,Unknown,USA,1654.0,2005,acquired,8,5,4,9,5,7,6,6
+Digital Media,2.0,56546875.0,4,B2C,USA,1015.0,2003,active,7,4,4,7,3,7,7,5
+E-Commerce,1.0,1000000.0,1,B2C,USA,5586.0,2010,active,7,5,4,8,4,6,7,6
+Software,2.0,33300000.0,3,Unknown,USA,8391.0,2010,active,7,5,4,9,5,7,6,6
+Software,2.0,59700.0,4,Unknown,USA,8391.0,2010,acquired,7,5,4,9,4,7,6,6
+Software,2.0,57884800.0,3,Unknown,USA,3132.0,2001,active,7,5,4,9,5,7,6,6
+Price Comparison,1.0,13100000.0,3,Unknown,USA,4037.0,2004,acquired,8,5,4,7,4,7,6,6
+Biotechnology,2.0,19400000.0,2,Unknown,USA,821.0,2002,failed,7,8,5,5,7,7,7,7
+Software,2.0,1286600.0,1,Unknown,IRL,1511.0,2011,active,6,5,4,8,4,6,6,6
+Semiconductors,2.0,37891054.0,3,Unknown,USA,259.0,2003,acquired,8,6,8,7,9,7,5,6
+Finance,1.0,21000000.0,3,Unknown,USA,3413.0,2004,active,8,8,4,7,5,9,5,8
+Manufacturing,2.0,275000.0,1,B2B,IND,1511.0,2011,active,7,6,4,7,4,7,5,7
+Software,2.0,65000.0,1,Unknown,USA,1511.0,2007,active,6,5,4,8,4,6,6,5
+Mmo Games,1.0,1854110.0,2,B2C,ESP,3280.0,2008,failed,6,3,3,5,3,5,10,4
+Lead Management,2.0,40000000.0,2,Unknown,USA,512.0,1999,acquired,8,5,7,7,6,7,5,6
+Local Businesses,2.0,750000.0,1,Unknown,USA,160.0,2010,active,6,5,6,6,6,6,5,6
+Software,1.0,160000.0,1,Unknown,AUT,3702.0,2003,failed,5,4,3,7,4,5,7,5
+Advertising,2.0,50000.0,1,Unknown,USA,3166.0,2008,active,6,5,4,8,4,6,6,5
+Search,2.0,161200000.0,4,Unknown,CHN,132.0,1999,active,8,5,8,7,6,7,5,6
+Health And Wellness,2.0,100000.0,2,B2C,USA,536.0,2011,active,8,8,5,6,5,8,6,8
+Messaging,2.0,200000.0,1,Unknown,GBR,2381.0,2007,failed,5,4,3,5,4,5,7,5
+Curated Web,2.0,2000000.0,2,B2C,USA,5396.0,2006,active,7,4,4,6,3,6,9,5
+Machine Learning,2.0,4500000.0,1,Unknown,USA,476.0,2008,active,7,5,5,6,6,6,5,6
+Mobile,2.0,5568600.0,1,Unknown,GBR,4079.0,2009,acquired,7,5,4,8,4,7,6,6
+Software,2.0,5000000.0,1,Unknown,USA,3413.0,2002,acquired,7,5,4,8,4,7,6,6
+Consumer Goods,2.0,25000.0,1,B2C,USA,1511.0,2014,active,6,5,3,6,4,6,9,5
+Mobile,1.0,232329416.0,4,Unknown,GBR,1737.0,2003,ipo,9,6,5,10,6,8,5,7
+Biotechnology,2.0,10150000.0,2,Unknown,USA,1511.0,1995,ipo,9,9,8,6,8,10,5,9
+Software,2.0,3000.0,1,Unknown,USA,1511.0,2013,active,5,5,3,7,4,5,6,5
+Mobile,2.0,550000.0,2,Unknown,USA,3417.0,2012,active,6,5,3,8,4,6,6,6
+Security,1.0,8198838.0,4,B2B,USA,228.0,2002,acquired,9,8,6,8,6,10,3,10
+Blogging Platforms,2.0,50000.0,1,Unknown,CAN,7534.0,2011,active,6,5,4,6,4,6,6,5
+Semiconductors,2.0,12000000.0,1,Unknown,USA,197.0,2000,acquired,7,6,10,6,8,7,5,6
+Clean Technology,2.0,85325657.0,8,Unknown,USA,213.0,2001,active,9,9,8,6,9,7,5,6
+Software,2.0,2500000.0,1,Unknown,USA,3132.0,2001,active,7,5,4,8,4,6,6,6
+Enterprise Software,2.0,2180175.0,1,B2B,GBR,439.0,1999,acquired,7,6,7,9,6,10,3,10
+Communities,1.0,19023247.0,4,Unknown,USA,1346.0,2006,acquired,8,5,4,7,5,7,6,6
+Education,2.0,1750000.0,2,Unknown,CHN,3511.0,2010,active,8,8,4,6,4,6,6,6
+Wireless,1.0,31000000.0,2,Unknown,ESP,220.0,2005,acquired,8,5,6,7,6,7,5,6
+Opinions,1.0,125250000.0,6,Unknown,USA,6870.0,2007,acquired,8,5,4,7,5,8,6,6
+Web Hosting,2.0,10000000.0,1,Unknown,ISR,427.0,2000,acquired,7,5,7,7,6,7,5,6
+Beauty,2.0,25000.0,2,Unknown,USA,133.0,2007,active,6,5,6,5,5,6,5,5
+Software,2.0,15612936.0,1,Unknown,USA,1511.0,2010,active,7,5,4,8,5,7,6,6
+Games,1.0,8000000.0,1,B2C,USA,970.0,2000,acquired,7,4,5,7,3,6,9,5
+Advertising,2.0,22000000.0,3,Unknown,USA,1511.0,2006,ipo,8,6,4,10,6,8,5,6
+E-Commerce,1.0,800000.0,1,B2C,USA,3265.0,2007,failed,6,4,3,7,4,5,8,5
+Photography,5.0,6800000.0,2,B2C,USA,246.0,1994,active,7,5,7,7,6,7,6,6
+Curated Web,2.0,15000.0,1,B2C,USA,3280.0,2008,failed,5,3,3,5,2,4,10,3
+Gambling,1.0,3762066.0,3,Unknown,USA,6870.0,2007,failed,6,4,3,5,4,5,7,5
+Search,1.0,110000000.0,1,Unknown,CAN,761.0,2006,acquired,8,5,5,7,6,7,5,6
+Software,2.0,2290000.0,1,Unknown,FRA,5609.0,2006,failed,5,4,3,7,4,5,7,5
+Sales And Marketing,3.0,800000.0,1,B2B,USA,6447.0,2012,active,7,6,3,7,4,8,5,7
+Software,2.0,148600.0,1,Unknown,ESP,7534.0,2011,failed,5,4,3,7,4,5,7,5
+Health And Wellness,2.0,11800000.0,1,B2C,ISR,1511.0,2003,ipo,9,8,5,7,5,10,6,9
+Archiving,2.0,20000.0,1,Unknown,USA,847.0,2006,failed,5,4,3,4,4,4,7,4
+Clean Technology,2.0,1000000.0,1,Unknown,USA,1511.0,2006,active,7,9,6,5,7,6,6,6
+Supply Chain Management,2.0,56049556.0,5,B2B,USA,1424.0,2002,active,8,6,4,8,5,9,5,7
+Education,2.0,693874.0,1,Unknown,GBR,6870.0,2007,active,7,8,4,6,4,6,6,6
+Curated Web,3.0,10400000.0,5,B2C,USA,5396.0,2006,failed,7,3,3,6,3,5,10,4
+Games,3.0,30000.0,2,B2C,USA,3774.0,2011,active,6,4,4,6,2,5,9,4
+Health Care,2.0,2000000.0,1,Unknown,USA,47.0,1996,active,7,8,9,6,7,8,5,8
+User Experience Design,2.0,862000.0,1,Unknown,USA,6544.0,2007,active,6,5,4,6,4,6,6,6
+Clean Technology,2.0,1674057.0,2,Unknown,USA,720.0,2009,active,8,9,7,5,8,6,5,6
+Curated Web,2.0,646740.0,2,B2C,ITA,8445.0,2008,acquired,7,4,4,7,3,6,9,5
+Biotechnology,2.0,659000.0,2,Unknown,USA,1511.0,2009,active,7,9,6,5,7,8,6,8
+Linux,2.0,100000.0,1,Unknown,GBR,6544.0,2007,active,6,5,4,6,4,6,6,5
+Manufacturing,2.0,650000.0,1,B2B,USA,1511.0,2010,active,7,6,4,7,4,8,5,7
+Manufacturing,2.0,846668.0,1,B2B,USA,1511.0,2001,active,7,6,4,7,4,8,5,7
+Enterprise Software,2.0,6000000.0,1,B2B,USA,1511.0,2002,acquired,8,6,4,10,4,10,4,10
+Games,2.0,549970.0,1,B2C,USA,3186.0,2011,failed,5,3,3,5,3,4,10,4
+Biotechnology,2.0,94900000.0,7,Unknown,USA,1285.0,2008,active,9,9,6,6,7,9,6,8
+Health Care,2.0,27700000.0,2,Unknown,USA,192.0,2003,acquired,9,8,7,7,6,9,5,9
+Advertising,2.0,65000.0,1,Unknown,USA,3166.0,2008,failed,5,4,3,7,4,5,7,5
+Health Care,2.0,30200000.0,1,Unknown,USA,1511.0,1999,ipo,9,8,6,7,6,10,5,9
+Travel,1.0,291754092.0,2,B2C,USA,789.0,1993,acquired,8,4,7,7,5,7,8,5
+Business Intelligence,4.0,500000.0,2,Unknown,USA,729.0,2010,acquired,7,5,5,6,6,7,5,6
+Biotechnology,2.0,73000000.0,2,Unknown,USA,1150.0,2006,acquired,9,9,6,6,7,9,6,9
+E-Commerce,2.0,2000000.0,2,B2C,IDN,209.0,2011,active,7,5,5,8,6,6,6,6
+Peer-To-Peer,2.0,301104.0,2,Unknown,GBR,8445.0,2008,failed,5,4,3,5,4,5,7,5
+Games,2.0,1410000.0,1,B2C,ESP,231.0,1996,failed,5,3,6,5,4,4,9,4
+Advertising,1.0,6000000.0,1,Unknown,USA,3166.0,2008,acquired,7,5,4,9,4,7,6,6
+Software,2.0,217500000.0,3,Unknown,USA,2602.0,1999,ipo,9,6,6,10,6,8,5,7
+Web Hosting,2.0,5280000.0,1,Unknown,TUR,1511.0,1997,active,7,5,5,6,4,6,6,6
+Services,1.0,85500000.0,5,Unknown,USA,4669.0,2005,active,8,5,4,7,5,7,6,6
+Media,2.0,500000.0,1,B2C,IDN,918.0,2010,failed,5,3,3,5,3,4,8,4
+Banking,2.0,35000000.0,1,Unknown,USA,1511.0,2007,ipo,8,6,4,7,6,8,5,7
+Web Hosting,1.0,54000000.0,4,Unknown,USA,796.0,2011,active,7,5,5,7,6,7,5,6
+Social Media,1.0,124000000.0,3,B2C,CHN,1010.0,2008,active,8,4,4,9,3,7,9,5
+Biotechnology,2.0,806733.0,2,Unknown,USA,1126.0,2010,active,8,9,6,5,7,8,6,8
+Search,2.0,32500000.0,5,Unknown,USA,2176.0,2006,acquired,8,5,4,7,5,8,6,6
+Semiconductors,2.0,18905096.0,2,Unknown,USA,1511.0,2011,acquired,8,6,6,6,7,7,6,6
+Health And Wellness,2.0,4300000.0,1,B2C,USA,231.0,2006,active,8,8,5,7,6,8,6,8
+News,1.0,40000.0,1,B2C,USA,328.0,2011,active,6,5,5,6,5,6,6,5
+Curated Web,1.0,8832393.0,3,B2C,USA,8445.0,2008,active,7,4,4,7,3,6,9,5
+Health Care,2.0,32676154.0,4,Unknown,USA,282.0,2008,failed,7,7,4,6,6,8,6,8
+Software,2.0,28999999.0,3,Unknown,USA,3702.0,2003,acquired,8,5,4,9,5,7,6,6
+Messaging,4.0,50000.0,3,Unknown,USA,194.0,2010,active,6,5,6,6,5,6,5,5
+Analytics,1.0,84491709.0,6,B2B,USA,346.0,2007,acquired,9,6,5,10,6,10,3,10
+Biotechnology,1.0,474000.0,1,Unknown,CAN,1511.0,2010,active,7,9,6,5,7,8,6,8
+Intellectual Asset Management,2.0,262634.0,1,Unknown,BEL,5080.0,2013,active,6,5,3,6,4,6,6,6
+Communications Hardware,5.0,328600000.0,5,Unknown,USA,298.0,2005,ipo,9,6,6,8,10,9,4,7
+Health Care,2.0,73892358.0,3,Unknown,USA,162.0,1993,ipo,9,8,8,8,7,10,4,9
+Technology,1.0,87000000.0,6,Unknown,CHN,337.0,1998,ipo,9,6,7,8,7,8,4,7
+Biotechnology,2.0,1200000.0,1,Unknown,USA,597.0,1999,failed,6,8,8,4,8,7,6,7
+Curated Web,2.0,15000.0,1,B2C,USA,9634.0,2010,failed,5,3,3,5,2,4,10,3
+Hardware + Software,2.0,4940000.0,2,Unknown,USA,630.0,2005,acquired,7,5,6,8,8,7,5,6
+Biotechnology,2.0,46077411.0,3,Unknown,USA,1511.0,1992,active,8,9,7,6,7,9,6,8
+Mobile,2.0,855000.0,2,Unknown,USA,3774.0,2011,active,7,5,4,8,4,6,6,6
+Consulting,2.0,375000.0,1,Unknown,USA,1511.0,2009,active,6,5,4,6,4,6,6,6
+Wireless,2.0,43400000.0,3,Unknown,CAN,672.0,2002,acquired,8,5,6,7,6,8,5,6
+Health And Wellness,2.0,1514985.0,2,B2C,USA,2980.0,2013,active,8,8,3,6,4,8,7,8
+Mobile,2.0,1276000.0,2,Unknown,USA,3774.0,2011,active,7,5,4,8,4,6,6,6
+Clean Technology,2.0,5000000.0,1,Unknown,ISR,1511.0,2005,active,8,9,6,6,7,6,6,6
+Hardware + Software,2.0,1811941.0,1,Unknown,USA,912.0,2011,active,6,5,4,8,7,6,6,6
+Apps,2.0,8000000.0,2,Unknown,USA,4790.0,2010,acquired,7,5,4,7,4,7,6,6
+Brand Marketing,2.0,8375000.0,8,B2B,USA,3128.0,2011,ipo,9,6,4,8,5,10,5,8
+E-Commerce,2.0,18000000.0,2,B2C,ISR,510.0,1997,acquired,8,5,7,9,6,7,6,6
+Software,2.0,600000.0,1,Unknown,USA,7617.0,2008,failed,5,4,3,7,4,5,7,5
+Consumer Electronics,2.0,100000.0,1,B2C,USA,1511.0,2013,active,6,5,3,6,4,6,9,5
+Mobile,1.0,1800000.0,1,Unknown,CAN,3774.0,2011,acquired,7,5,4,8,4,7,6,6
+Video,1.0,134191580.0,5,B2C,USA,2710.0,2007,active,9,5,4,7,5,7,7,6
+E-Commerce,2.0,6386422.0,3,B2C,USA,99.0,2004,acquired,8,5,7,10,6,7,6,6
+Mobile,1.0,600000.0,1,Unknown,USA,3774.0,2011,failed,5,4,3,7,4,5,7,5
+Health Care,1.0,145540487.0,6,Unknown,USA,821.0,2002,ipo,10,8,5,8,6,10,5,9
+Social Commerce,2.0,1000000.0,1,Unknown,USA,669.0,2009,failed,5,3,4,5,4,4,8,4
+Biotechnology,2.0,1613014.0,1,Unknown,USA,431.0,1997,active,7,9,9,5,8,8,5,8
+Internet Marketing,2.0,300000.0,1,B2B,USA,3166.0,2008,active,7,6,4,7,4,7,5,7
+Events,2.0,115000.0,1,Unknown,USA,3969.0,2009,failed,5,4,3,5,4,5,7,5
+Social Network Media,2.0,50000.0,1,B2C,ARG,7220.0,2012,failed,5,3,2,5,2,4,10,4
+Games,2.0,197597.0,1,B2C,DEU,3597.0,2010,failed,5,3,3,5,3,4,10,4
+Advertising,2.0,5000000.0,1,Unknown,USA,761.0,2006,active,7,5,5,8,6,6,5,6
+Biotechnology,2.0,34296337.0,4,Unknown,USA,1150.0,2006,active,8,9,6,6,7,9,6,8
+Software,2.0,789000.0,1,Unknown,GBR,560.0,2003,failed,5,4,5,7,6,5,6,5
+E-Commerce,1.0,775000.0,1,B2C,USA,5210.0,2011,active,7,5,4,8,4,6,7,6
+Software,2.0,4200000.0,1,Unknown,FRA,2862.0,2000,acquired,7,5,5,8,4,7,6,6
+E-Commerce,2.0,9600000.0,2,B2C,CHN,1511.0,2005,active,7,5,4,9,4,7,7,6
+Games,2.0,2000000.0,1,B2C,USA,1554.0,1996,active,6,4,5,6,3,6,9,5
+Multi-Level Marketing,2.0,35000000.0,1,B2B,USA,1511.0,2011,ipo,8,6,4,8,6,9,5,8
+Software,2.0,1230000.0,1,Unknown,FRA,2318.0,1998,active,6,5,5,8,4,6,6,6
+Music,1.0,4500000.0,1,B2C,USA,1039.0,1999,acquired,7,4,5,7,3,6,7,5
+Business Intelligence,2.0,9100000.0,3,Unknown,USA,3702.0,2003,failed,6,4,3,6,4,5,7,5
+Health Care,2.0,31163000.0,4,Unknown,USA,247.0,2011,ipo,9,8,6,8,7,10,4,9
+Health Care,1.0,80971347.0,4,Unknown,USA,1511.0,2002,ipo,9,8,5,8,6,10,5,9
+Internet,2.0,4100000.0,3,Unknown,BRA,1511.0,2012,active,7,5,3,7,4,7,6,6
+Recruiting,2.0,12500.0,1,B2B,PER,1511.0,2013,active,6,6,3,6,4,7,5,7
+Software,2.0,271472.0,1,Unknown,ITA,3702.0,2003,active,6,5,4,8,4,6,6,6
+Curated Web,2.0,9294801.0,2,B2C,USA,6870.0,2007,active,7,4,4,7,3,6,9,5
+Enterprise Software,2.0,1434300.0,1,B2B,GBR,1661.0,2007,failed,6,5,3,8,4,8,5,9
+Software,2.0,19299.0,1,Unknown,DEU,5080.0,2013,active,6,5,3,7,4,6,6,5
+Curated Web,1.0,287032.0,1,B2C,NLD,5396.0,2006,failed,5,3,3,5,3,4,10,4
+Software,2.0,666154.0,1,Unknown,USA,1511.0,2010,active,6,5,4,8,4,6,6,6
+Consumer Electronics,2.0,150000.0,1,B2C,USA,1511.0,2010,active,7,5,4,6,4,6,9,5
+Medical,2.0,12900000.0,1,Unknown,USA,308.0,2007,active,8,9,7,6,8,6,5,6
+Audio,2.0,4950000.0,2,Unknown,USA,1511.0,2012,active,7,5,3,6,4,7,6,6
+Fashion,2.0,1370146.0,1,B2C,USA,1511.0,2000,active,6,4,5,6,3,6,9,5
+Cloud Data Services,2.0,70000000.0,5,B2B,USA,1661.0,2007,failed,7,5,3,9,5,8,6,7
+Therapeutics,2.0,164000000.0,2,Unknown,USA,1511.0,1998,ipo,8,6,6,7,6,8,5,7
+Mobile,2.0,4000000.0,3,Unknown,USA,1511.0,1997,ipo,8,6,6,9,5,8,5,6
+Software,2.0,10000000.0,1,Unknown,CAN,1511.0,1997,ipo,8,6,6,9,5,7,5,6
+Hardware + Software,2.0,4091585.0,3,Unknown,USA,901.0,2008,active,7,5,4,9,7,7,6,6
+Auctions,2.0,30000000.0,3,Unknown,USA,2710.0,2007,acquired,8,5,4,7,5,7,6,6
+Sports,2.0,10158510.0,4,B2C,USA,972.0,2009,acquired,8,4,4,8,3,7,7,5
+Software,2.0,25000.0,1,Unknown,USA,7534.0,2011,failed,5,4,3,6,4,4,7,5
+Shoes,1.0,50000.0,1,Unknown,USA,4252.0,2008,failed,5,4,3,5,4,4,7,5
+Curated Web,2.0,650000.0,2,B2C,USA,1511.0,2004,active,6,4,4,6,3,6,9,5
+Biotechnology,2.0,2517000.0,2,Unknown,USA,1264.0,2009,failed,7,8,5,4,7,7,7,7
+Software,2.0,40000000.0,3,Unknown,USA,3413.0,2002,acquired,8,5,4,9,5,7,6,6
+Adventure Travel,2.0,275000.0,2,B2C,USA,2654.0,2012,active,6,4,3,6,3,6,9,5
+Education,2.0,308887.0,4,Unknown,GBR,1511.0,2011,active,8,8,4,6,4,6,6,6
+Biotechnology,2.0,5400000.0,1,Unknown,USA,1150.0,2006,acquired,8,9,6,6,7,9,6,9
+Biotechnology,2.0,25100000.0,2,Unknown,CAN,147.0,1992,ipo,9,9,10,7,10,10,4,9
+Hardware,2.0,162000000.0,2,Unknown,USA,379.0,2001,acquired,8,5,6,7,9,8,5,6
+Social Media,3.0,250000.0,3,B2C,USA,898.0,2011,failed,5,3,3,8,3,4,10,4
+Manufacturing,2.0,145000.0,1,B2B,USA,1511.0,2006,active,7,6,4,7,4,7,5,7
+Pharmaceuticals,2.0,1470003.0,2,Unknown,ISR,917.0,2003,active,8,9,6,5,7,6,6,6
+Biotechnology,2.0,4513712.0,3,Unknown,USA,1126.0,2010,failed,7,8,5,5,7,7,7,7
+Biotechnology,2.0,400000.0,1,Unknown,USA,1285.0,2008,failed,6,8,5,4,7,7,7,7
+Chat,2.0,392000.0,3,Unknown,SGP,4252.0,2008,acquired,7,5,4,7,4,7,6,6
+Games,2.0,80000000.0,1,B2C,KOR,446.0,2000,ipo,8,4,7,8,6,7,7,6
+Big Data Analytics,2.0,22200000.0,3,B2B,USA,634.0,2012,active,8,6,5,10,6,10,3,10
+Software,2.0,8450000.0,1,Unknown,USA,1978.0,1997,active,7,5,5,8,4,6,6,6
+Web Hosting,2.0,3500000.0,1,Unknown,USA,427.0,2000,acquired,7,5,7,6,6,7,5,6
+Dod/Military,2.0,2020593.0,2,Unknown,USA,1289.0,2009,failed,6,4,3,5,4,5,7,5
+Saas,2.0,39722024.0,1,B2B,GBR,2460.0,2006,acquired,8,6,4,10,5,10,4,10
+Big Data,2.0,6600000.0,5,Unknown,GBR,684.0,2011,active,7,5,5,7,6,7,5,6
+Mobile,2.0,239981.0,1,Unknown,USA,1511.0,2005,active,6,5,4,8,4,6,6,6
+Curated Web,2.0,422500.0,3,B2C,USA,4004.0,2005,acquired,7,4,4,7,3,6,9,5
+Social Media,2.0,3050000.0,1,B2C,USA,1884.0,2003,acquired,7,4,4,9,3,6,9,5
+Software,2.0,4000000.0,1,Unknown,USA,8440.0,2009,acquired,7,5,4,8,4,7,6,6
+Kids,2.0,261560.0,1,Unknown,ESP,1832.0,2005,active,6,5,4,6,4,6,6,6
+Social Media,1.0,500000.0,1,B2C,USA,2664.0,2012,active,6,4,3,8,3,6,9,5
+Discounts,2.0,1350000.0,1,Unknown,ESP,220.0,2005,active,6,5,6,6,6,6,5,6
+Business Intelligence,3.0,1350000.0,4,Unknown,USA,6447.0,2012,acquired,7,5,3,7,4,7,6,6
+Recruiting,2.0,2600000.0,1,B2B,USA,1354.0,2012,active,7,6,3,7,4,8,5,7
+Clean Technology,2.0,17000000.0,1,Unknown,USA,1511.0,2011,ipo,9,9,6,7,8,8,5,6
+Advertising,2.0,6000000.0,1,Unknown,USA,841.0,2002,acquired,7,5,4,9,4,7,6,6
+Enterprise Software,2.0,855000.0,1,B2B,USA,2008.0,2011,acquired,7,6,4,9,4,10,4,10
+Databases,2.0,2500000.0,1,Unknown,FRA,390.0,1999,failed,5,4,6,5,6,5,6,5
+E-Commerce,2.0,35000.0,1,B2C,USA,1511.0,2013,active,6,5,3,8,4,6,7,5
+Messaging,1.0,1681000.0,2,Unknown,NLD,161.0,2012,active,7,5,6,6,6,6,5,6
+Enterprises,1.0,2000000.0,2,B2B,FRA,1511.0,2011,acquired,8,6,4,7,4,10,4,10
+Fashion,2.0,25000.0,1,B2C,USA,5210.0,2011,failed,5,3,3,5,2,4,10,4
+Networking,1.0,7242588.0,3,Unknown,USA,699.0,2003,active,7,5,6,7,6,7,5,6
+Curated Web,1.0,2000000.0,1,B2C,USA,6870.0,2007,failed,5,3,3,5,3,4,10,4
+Telecommunications,1.0,115000000.0,2,Unknown,USA,539.0,2001,ipo,8,6,6,7,7,8,4,7
+Social Search,2.0,550000.0,1,Unknown,ISR,644.0,2013,active,6,4,5,6,4,6,7,5
+Security,2.0,13200000.0,2,B2B,USA,1511.0,2013,active,8,8,3,7,4,10,4,10
+Analytics,3.0,24300000.0,2,B2B,USA,1511.0,2012,active,8,6,3,9,5,10,4,10
+Semiconductors,2.0,20063363.0,2,Unknown,USA,259.0,2003,active,7,6,8,6,9,7,5,6
+Enterprise Software,1.0,705000.0,6,B2B,USA,439.0,1999,active,8,6,7,9,6,10,3,10
+Internet,1.0,28305854.0,3,Unknown,USA,626.0,1998,ipo,8,6,7,8,7,8,4,7
+Mobile,3.0,12500000.0,2,Unknown,CAN,1737.0,2006,failed,6,4,3,7,4,5,7,5
+Biotechnology,2.0,27900000.0,1,Unknown,CAN,1511.0,2013,ipo,9,9,6,7,8,10,5,9
+Financial Exchanges,2.0,1350000.0,1,Unknown,USA,1511.0,2013,active,6,5,3,6,4,6,6,6
+Software,2.0,3000000.0,1,Unknown,CAN,2862.0,2000,acquired,7,5,5,8,4,7,6,6
+Web Hosting,1.0,15000000.0,1,Unknown,USA,771.0,2005,failed,6,4,5,5,6,5,6,5
+Social Media,2.0,685000.0,2,B2C,USA,898.0,2011,active,6,4,4,8,3,6,9,5
+E-Commerce,1.0,798000.0,1,B2C,DEU,1832.0,2005,active,7,5,4,8,4,6,7,6
+Health Care,2.0,252000000.0,3,Unknown,USA,1126.0,2010,ipo,10,8,4,8,6,10,5,9
+Maps,2.0,5000000.0,3,Unknown,USA,123.0,2010,active,7,5,6,7,6,7,5,6
+Enterprise Software,1.0,13000000.0,1,B2B,USA,477.0,2000,active,7,6,7,9,6,10,3,10
+Clean Technology,2.0,2300000.0,1,Unknown,USA,682.0,2007,failed,6,8,6,4,8,5,6,5
+Hardware + Software,1.0,2076178.0,2,Unknown,USA,972.0,2009,active,7,5,4,8,7,6,6,6
+Advertising Platforms,2.0,740000.0,2,Unknown,USA,1511.0,2013,active,6,5,3,8,4,6,6,6
+Health And Wellness,2.0,61500000.0,5,B2C,USA,1236.0,2007,ipo,10,8,4,8,6,10,6,9
+News,2.0,4575000.0,3,B2C,USA,163.0,2007,active,8,5,6,7,6,7,6,6
+Training,2.0,260000.0,1,Unknown,USA,124.0,1999,acquired,7,5,8,6,6,6,5,6
+Interest Graph,2.0,825000.0,1,Unknown,USA,3186.0,2011,active,6,5,4,6,4,6,6,6
+Enterprise Software,3.0,4415653.0,2,B2B,USA,2008.0,2011,acquired,8,6,4,9,4,10,4,10
+Software,2.0,20118.0,1,Unknown,IRL,1703.0,2012,active,6,5,3,7,4,6,6,5
+Advertising Platforms,2.0,2200000.0,2,Unknown,FRA,2664.0,2012,active,7,5,3,8,4,6,6,6
+Internet,1.0,3800000.0,2,Unknown,CAN,2710.0,2007,failed,6,4,3,5,4,5,7,5
+Twitter Applications,2.0,255000.0,1,Unknown,USA,9634.0,2010,failed,5,4,3,5,4,5,7,5
+Banking,2.0,52800000.0,1,Unknown,USA,1511.0,1997,ipo,8,6,6,7,6,8,5,7
+Biotechnology,2.0,9250150.0,1,Unknown,USA,1264.0,2009,acquired,8,9,6,6,7,9,6,9
+Security,1.0,9500000.0,1,B2B,USA,329.0,2012,acquired,9,8,5,8,6,10,3,10
+Health Care,2.0,35771750.0,6,Unknown,USA,283.0,2007,acquired,9,8,5,7,6,10,5,9
+Biotechnology,2.0,5337000.0,3,Unknown,USA,1150.0,2006,active,8,9,6,6,7,9,6,8
+Biotechnology,2.0,35300000.0,3,Unknown,USA,1236.0,2007,active,8,9,6,6,7,9,6,8
+Enterprise Search,1.0,37500.0,1,B2B,USA,4669.0,2005,active,6,6,4,7,4,9,4,9
+Enterprise Software,2.0,650000.0,1,B2B,USA,1511.0,2000,failed,6,5,4,8,4,8,5,9
+Software,2.0,16000000.0,1,Unknown,USA,8391.0,2010,failed,6,4,3,7,5,5,7,5
+Web Hosting,2.0,9664366.0,2,Unknown,AUT,771.0,2005,failed,6,4,5,5,6,5,6,5
+Health Care,1.0,15599800.0,4,Unknown,USA,1285.0,2008,ipo,9,8,4,8,6,10,5,9
+Biotechnology,2.0,58489918.0,5,Unknown,USA,1511.0,2008,active,9,9,6,6,7,9,6,8
+Software,2.0,796000.0,1,Unknown,NOR,5609.0,2006,active,6,5,4,8,4,6,6,6
+Social Media,2.0,25000.0,1,B2C,USA,810.0,2013,failed,5,3,2,7,2,4,10,4
+Clean Technology,2.0,27680000.0,2,Unknown,USA,178.0,2000,acquired,9,9,10,6,9,7,5,6
+Curated Web,2.0,300000.0,1,B2C,ISR,8445.0,2008,failed,5,3,3,5,3,4,10,4
+Mobile,2.0,4588599.0,7,Unknown,USA,539.0,2001,active,7,5,6,9,6,7,5,6
+Search,2.0,641000.0,1,Unknown,FRA,570.0,2005,active,6,5,6,6,6,6,5,6
+E-Commerce,2.0,6169665.0,1,B2C,CHN,1511.0,1990,active,7,5,5,9,4,6,7,6
+Cloud Management,2.0,40000.0,1,B2B,RUS,1511.0,2012,active,6,6,3,9,4,7,5,7
+Semiconductors,2.0,7000000.0,1,Unknown,USA,259.0,2003,failed,6,5,7,5,8,5,6,5
+Health And Wellness,2.0,17847734.0,4,B2C,USA,516.0,2003,ipo,10,8,6,8,7,10,5,9
+Group Buying,2.0,200000.0,1,Unknown,PHL,5586.0,2010,active,6,5,4,6,4,6,6,5
+Utilities,2.0,15130688.0,3,Unknown,USA,1511.0,2011,active,7,5,4,7,5,7,6,6
+Public Transportation,2.0,14000000.0,2,Unknown,USA,516.0,2003,acquired,7,5,6,7,6,7,5,6
+Software,2.0,3073977.0,2,Unknown,USA,2318.0,1998,active,7,5,5,8,4,6,6,6
+News,2.0,700000.0,1,B2C,USA,1511.0,2011,active,7,5,4,6,4,6,7,6
+Public Relations,2.0,38000000.0,2,Unknown,USA,387.0,1999,failed,6,4,6,5,6,6,6,5
+Social Media,2.0,7000000.0,2,B2C,USA,12.0,2000,failed,6,3,8,8,5,5,9,4
+Clean Technology,2.0,930000.0,1,Unknown,GBR,250.0,2002,failed,6,8,7,4,8,5,6,5
+Semiconductors,2.0,55833663.0,5,Unknown,ISR,226.0,2001,failed,7,5,7,5,9,6,6,5
+Consumer Electronics,2.0,10000000.0,1,B2C,USA,494.0,2002,failed,6,4,5,6,6,5,9,5
+Marketplaces,2.0,25765820.0,2,Unknown,USA,93.0,1990,acquired,8,5,8,9,6,7,5,6
+Technology,2.0,6100000.0,2,Unknown,USA,3233.0,2008,ipo,8,6,4,7,5,8,5,6
+Event Management,1.0,136911999.0,3,Unknown,USA,2602.0,1999,active,8,5,5,7,5,7,6,6
+E-Commerce,1.0,17620401.0,7,B2C,USA,3265.0,2007,ipo,9,6,4,10,6,8,6,6
+Education,2.0,340000.0,1,Unknown,USA,1511.0,2013,active,7,8,3,6,4,6,6,6
+Games,1.0,120000.0,1,B2C,USA,3280.0,2008,failed,5,3,3,5,2,4,10,4
+Health And Wellness,2.0,343000.0,1,B2C,SGP,1511.0,2009,active,8,8,4,6,4,8,7,8
+Mobile,2.0,2925000.0,3,Unknown,USA,4079.0,2010,active,7,5,4,8,4,7,6,6
+Curated Web,3.0,250000.0,2,B2C,CAN,9634.0,2010,acquired,7,4,4,7,3,6,9,5
+Mobile,2.0,343500.0,2,Unknown,USA,1511.0,2013,active,6,5,3,8,4,6,6,6
+Biotechnology,2.0,93600000.0,5,Unknown,USA,1150.0,2006,ipo,10,9,6,7,8,10,5,9
+Health Care,1.0,101500000.0,5,Unknown,USA,927.0,2011,ipo,10,8,4,8,6,10,5,9
+Web Hosting,1.0,42500000.0,4,Unknown,USA,1281.0,2005,acquired,8,5,4,7,5,8,6,6
+Software,1.0,5800000.0,1,Unknown,USA,6870.0,2007,failed,6,4,3,7,4,5,7,5
+Real Estate,3.0,4500000.0,3,Unknown,USA,209.0,2011,acquired,7,5,5,7,6,7,5,6
+Enterprises,1.0,3000000.0,1,B2B,USA,2249.0,2009,active,7,6,4,7,4,10,4,10
+Employment,2.0,200000.0,1,Unknown,USA,8445.0,2008,failed,5,4,3,5,4,5,7,5
+Finance,2.0,795854.0,1,Unknown,SWE,5609.0,2006,active,7,8,4,6,4,8,5,8
+Enterprise Software,1.0,34965544.0,4,B2B,USA,320.0,1997,active,8,6,7,10,6,10,3,10
+Biotechnology,2.0,3254737.0,1,Unknown,USA,1285.0,2008,failed,7,8,5,4,7,7,7,7
+Enterprise Software,2.0,8630000.0,1,B2B,USA,2602.0,1999,acquired,8,6,5,10,4,10,4,10
+Biotechnology,2.0,34300806.0,1,Unknown,GBR,1511.0,2002,ipo,9,9,7,7,8,10,5,9
+Photography,2.0,1265000.0,1,B2C,USA,5609.0,2006,active,7,5,4,6,4,6,7,6
+Analytics,2.0,42786202.0,5,B2B,USA,93.0,2003,active,8,6,7,10,6,10,3,10
+Legal,2.0,250000.0,3,Unknown,USA,248.0,2011,active,8,8,5,6,6,8,4,8
+Video,2.0,4113526.0,1,B2C,USA,1511.0,2003,ipo,8,6,5,7,5,7,6,6
+Health And Wellness,1.0,16750000.0,7,B2C,USA,536.0,2011,active,9,8,5,7,6,9,6,8
+Software,2.0,7000000.0,1,Unknown,USA,1978.0,1997,acquired,7,5,5,9,4,7,6,6
+Technology,1.0,58121250.0,3,Unknown,USA,539.0,2001,ipo,8,6,6,8,7,8,4,7
+Minerals,2.0,1100000.0,1,Unknown,CAN,1511.0,2008,ipo,7,6,4,7,5,7,5,6
+Advertising,3.0,20000.0,1,Unknown,USA,3511.0,2010,failed,5,4,3,6,4,4,7,4
+Travel,2.0,1000000.0,1,B2C,USA,836.0,1999,active,6,4,5,6,3,6,9,5
+Social Media,2.0,6000000.0,1,B2C,CAN,1053.0,2008,ipo,8,4,4,9,4,7,8,5
+Health Care,2.0,107000000.0,3,Unknown,USA,1236.0,2007,ipo,9,8,4,8,6,10,5,9
+Curated Web,3.0,675000.0,2,B2C,USA,9634.0,2010,acquired,7,4,4,7,3,6,9,5
+Clean Technology,2.0,277116726.0,7,Unknown,USA,426.0,2004,ipo,10,9,8,7,10,9,4,7
+E-Commerce,3.0,126080.0,1,B2C,FRA,4252.0,2008,failed,5,4,3,7,4,5,8,5
+Security,1.0,5000000.0,1,B2B,USA,319.0,2006,acquired,9,8,5,7,6,10,3,10
+Services,2.0,6819266.0,2,Unknown,FRA,1511.0,2007,ipo,8,6,4,7,5,8,5,6
+Biotechnology,2.0,2720000.0,1,Unknown,USA,1511.0,2010,active,8,9,6,5,7,8,6,8
+Mobile,2.0,5000000.0,2,Unknown,USA,3233.0,2008,failed,6,4,3,7,4,5,7,5
+Online Travel,2.0,1500000.0,1,B2C,USA,5396.0,2006,active,6,4,4,6,3,6,9,5
+Enterprise Software,2.0,3000000.0,1,B2B,USA,1661.0,2007,failed,6,5,3,8,4,9,5,9
+Mobile,1.0,445000.0,1,Unknown,USA,3774.0,2011,failed,5,4,3,7,4,5,7,5
+Social Media Marketing,1.0,16447317.0,11,B2B2C,CAN,1511.0,2009,ipo,8,4,4,10,4,8,7,6
+Biotechnology,1.0,250000.0,2,Unknown,USA,1236.0,2007,active,7,9,6,5,7,8,6,8
+Health Care,2.0,29942849.0,4,Unknown,USA,75.0,1998,active,8,8,8,7,6,9,5,8
+Networking,1.0,325000.0,2,Unknown,USA,669.0,2009,failed,5,4,4,5,6,5,6,5
+Shipping,2.0,20000.0,1,Unknown,USA,1511.0,2014,active,6,5,3,5,4,6,6,5
+Mobile,2.0,1201000.0,2,Unknown,USA,4079.0,2010,acquired,7,5,4,8,4,7,6,6
+Mobile,2.0,25131611.0,3,Unknown,USA,539.0,2001,acquired,8,5,6,9,6,7,5,6
+Software,2.0,1000000.0,1,Unknown,USA,2862.0,2000,failed,5,4,4,7,4,5,7,5
+Software,3.0,4200000.0,4,Unknown,USA,7534.0,2011,acquired,7,5,4,9,4,7,6,6
+Software,2.0,2000000.0,1,Unknown,USA,8440.0,2009,failed,5,4,3,7,4,5,7,5
+Startups,1.0,2000000.0,1,Unknown,USA,1354.0,2012,active,6,5,3,6,4,6,6,6
+Apps,1.0,20000.0,1,Unknown,USA,194.0,2010,active,6,5,6,5,5,6,5,5
+Social Media Marketing,2.0,37000000.0,4,B2B2C,USA,2003.0,2008,active,7,4,4,9,3,7,8,5
+Advertising,2.0,4000000.0,1,Unknown,USA,5609.0,2006,acquired,7,5,4,8,4,7,6,6
+Social Media,2.0,3292000.0,2,B2C,NZL,4079.0,2010,ipo,8,4,4,9,4,7,8,5
+Energy,2.0,600000.0,1,Unknown,USA,1511.0,2011,active,6,5,4,6,4,6,6,6
+Health Care,2.0,23700000.0,3,Unknown,ISR,115.0,2000,ipo,9,8,8,8,7,10,4,9
+Curated Web,2.0,17000000.0,2,B2C,CAN,2773.0,2004,ipo,8,4,5,8,4,7,8,5
+Advertising,2.0,1800000.0,1,Unknown,SGP,3511.0,2010,active,6,5,4,8,4,6,6,6
+Enterprise Software,2.0,500000.0,1,B2B,USA,1364.0,2013,failed,6,5,2,8,4,8,5,9
+Craigslist Killers,2.0,15000000.0,1,Unknown,USA,3774.0,2011,active,7,5,4,6,5,7,6,6
+Semiconductors,2.0,7484035.0,3,Unknown,BEL,173.0,2007,acquired,8,6,8,7,8,7,5,6
+Finance,2.0,7228704.0,5,Unknown,USA,514.0,2009,failed,7,7,4,6,6,8,5,7
+Public Transportation,2.0,27804097.0,3,Unknown,CHN,1511.0,2007,active,7,5,4,7,5,7,6,6
+Brand Marketing,2.0,60000.0,2,B2B,USA,1511.0,2013,active,7,6,3,7,4,7,5,7
+Education,1.0,100000.0,1,Unknown,USA,1354.0,2012,failed,6,7,2,5,4,5,7,5
+Web Hosting,2.0,36000000.0,2,Unknown,IND,377.0,1999,acquired,8,5,7,7,6,7,5,6
+E-Commerce,2.0,500000.0,1,B2C,IDN,4647.0,2012,failed,6,4,2,7,4,5,8,5
+Local,2.0,100000.0,1,Unknown,NGA,1174.0,2010,failed,5,4,3,5,4,5,7,5
+Medical,2.0,10000000.0,1,Unknown,USA,1511.0,2002,ipo,9,9,7,6,8,7,5,6
+Teachers,2.0,1000000.0,2,Unknown,USA,1227.0,2013,active,7,5,3,6,4,6,6,6
+Gift Card,1.0,25000.0,1,Unknown,USA,1090.0,2007,failed,5,4,3,4,4,4,7,5
+Consulting,1.0,30000000.0,1,Unknown,USA,758.0,2000,active,7,5,7,6,6,7,5,6
+Enterprise Software,2.0,2200000.0,1,B2B,FRA,1661.0,2007,acquired,7,6,4,9,4,10,4,10
+Health And Wellness,2.0,6171709.0,1,B2C,CAN,1511.0,2003,active,8,8,4,7,4,8,7,8
+Software,2.0,15574.0,1,Unknown,DEU,7617.0,2008,failed,5,4,3,6,4,4,7,4
+Mobile,2.0,99670000.0,8,Unknown,USA,539.0,2001,failed,7,4,5,8,6,6,6,5
+Oil & Gas,2.0,1500000.0,1,Unknown,USA,1511.0,2004,ipo,7,6,5,7,5,7,5,6
+Software,2.0,1500000.0,1,Unknown,USA,3702.0,2003,acquired,7,5,4,8,4,7,6,6
+Networking,2.0,15107000.0,2,Unknown,SGP,9634.0,2010,failed,6,4,3,5,5,5,7,5
+Biotechnology,2.0,11187700.0,3,Unknown,FRA,999.0,2004,acquired,9,9,6,7,7,9,6,9
+Analytics,2.0,5250000.0,2,B2B,USA,684.0,2011,active,7,6,5,9,6,10,3,10
+Nanotechnology,1.0,25633837.0,8,Unknown,USA,17.0,2002,active,8,6,10,6,10,7,5,6
+Biotechnology,2.0,16192468.0,3,Unknown,GBR,660.0,2000,failed,7,8,8,5,9,8,6,7
+Ad Targeting,2.0,89000000.0,2,Unknown,GBR,841.0,2002,ipo,8,6,5,7,6,8,5,7
+Games,2.0,12000000.0,2,B2C,USA,2169.0,2006,failed,6,3,3,6,3,5,10,4
+Social Media,2.0,225000.0,2,B2C,USA,265.0,2007,failed,5,3,4,7,4,4,9,4
+Events,3.0,1000000.0,1,Unknown,PRT,274.0,2011,active,6,5,5,6,6,6,5,6
+Health Care,2.0,15000000.0,1,Unknown,USA,94.0,1999,acquired,8,8,8,7,6,9,5,9
+Education,2.0,2800000.0,1,Unknown,GBR,1511.0,2006,active,8,8,4,6,4,6,6,6
+Software,2.0,199000.0,1,Unknown,GBR,761.0,1998,active,6,5,7,8,6,6,5,5
+E-Commerce,2.0,100000.0,1,B2C,GBR,5210.0,2011,active,6,5,4,8,4,6,7,5
+Health Care,2.0,75328948.0,3,Unknown,USA,1511.0,2002,ipo,9,8,5,8,6,10,5,9
+Education,2.0,100000.0,1,Unknown,USA,9638.0,2009,failed,6,7,3,5,4,5,7,5
+Hardware + Software,2.0,15000000.0,1,Unknown,USA,1511.0,1998,active,7,5,5,8,7,7,6,6
+Digital Signage,2.0,60700000.0,2,Unknown,USA,1021.0,2010,ipo,8,6,4,7,6,8,5,7
+Social Media,2.0,40000.0,1,B2C,MYS,1511.0,2012,active,6,4,3,8,2,5,9,4
+Consulting,2.0,15000.0,1,Unknown,USA,1485.0,2012,failed,5,4,2,4,4,4,7,4
+Biotechnology,2.0,23300002.0,7,Unknown,USA,1285.0,2008,active,9,9,6,6,7,9,6,8
+Software,2.0,25260000.0,2,Unknown,IND,109.0,1992,active,7,5,8,8,6,7,5,6
+Mobile Payments,2.0,34100000.0,3,Unknown,USA,137.0,2004,acquired,8,5,7,9,6,7,5,6
+Manufacturing,2.0,3636603.0,1,B2B,GBR,116.0,2006,active,7,6,6,7,6,8,4,7
+Content,2.0,500000.0,1,Unknown,CAN,972.0,2009,active,6,5,4,6,4,6,6,6
+Nonprofits,1.0,1000000.0,1,Unknown,USA,88.0,2011,active,6,5,6,6,6,6,5,6
+Semantic Web,2.0,11900000.0,3,Unknown,USA,5396.0,2006,acquired,8,5,4,7,4,7,6,6
+Biotechnology,2.0,1000000.0,1,Unknown,USA,1264.0,2009,active,7,9,6,5,7,8,6,8
+Semiconductors,2.0,64000000.0,3,Unknown,USA,259.0,2003,acquired,8,6,8,7,9,8,5,6
+Software,2.0,4346500.0,3,Unknown,USA,3702.0,2003,ipo,8,6,5,9,5,8,5,6
+Sensors,1.0,734790.0,2,Unknown,BEL,3774.0,2011,failed,5,4,3,5,4,5,7,5
+Health Care,1.0,30000000.0,1,Unknown,USA,1511.0,2003,ipo,9,8,5,7,6,10,5,9
+Event Management,2.0,9542943.0,1,Unknown,GBR,1511.0,2004,active,7,5,4,6,4,6,6,6
+Lead Generation,1.0,300000.0,1,Unknown,USA,3166.0,2008,failed,5,4,3,5,4,5,7,5
+Mobile,3.0,16600000.0,5,Unknown,USA,1737.0,2006,acquired,8,5,4,9,5,8,6,6
+App Marketing,2.0,1000000.0,1,B2B,USA,1511.0,2012,ipo,8,6,4,8,5,9,5,8
+Automotive,2.0,10850000.0,4,Unknown,USA,71.0,2008,failed,6,4,5,6,6,6,6,5
+Biotechnology,1.0,15000000.0,1,Unknown,USA,1511.0,1992,ipo,9,9,8,7,8,10,5,9
+Freelancers,2.0,150000.0,1,Unknown,CAN,9638.0,2009,active,6,5,4,6,4,6,6,5
+Cloud Data Services,1.0,21000000.0,1,B2B,IND,856.0,2004,failed,6,5,3,8,5,7,6,6
+Biotechnology,2.0,72800000.0,1,Unknown,CHN,1511.0,2011,ipo,9,9,6,7,8,10,5,9
+Games,1.0,25000.0,2,B2C,USA,2723.0,2007,failed,5,3,3,5,2,4,10,4
+Security,1.0,1250000.0,1,B2B,CAN,3132.0,2001,failed,7,7,3,6,4,8,5,9
+Media,1.0,1500000.0,1,B2C,CAN,5609.0,2006,ipo,7,4,4,7,4,7,6,5
+Health Care,2.0,4500000.0,1,Unknown,CHE,214.0,2004,failed,7,7,5,5,6,7,6,7
+Mobile,2.0,5576096.0,3,Unknown,USA,1511.0,2007,failed,6,4,3,7,4,5,7,5
+Mobile,2.0,10200000.0,1,Unknown,GBR,390.0,1999,ipo,8,6,7,9,7,7,4,6
+Entertainment,2.0,7700000.0,2,B2C,USA,3774.0,2011,active,7,4,4,7,3,6,9,5
+Mobile Payments,2.0,127700000.0,9,Unknown,USA,1511.0,2004,ipo,9,6,5,10,6,8,5,7
+Services,2.0,30000000.0,2,Unknown,USA,1511.0,2000,acquired,8,5,5,7,5,7,6,6
+Clean Technology,2.0,52893000.0,4,Unknown,USA,531.0,2005,active,8,9,8,6,9,7,5,6
+Mobile,2.0,1000000.0,1,Unknown,USA,3969.0,2009,failed,5,4,3,7,4,5,7,5
+Diabetes,2.0,2250000.0,1,Unknown,USA,585.0,2010,acquired,7,5,5,6,6,7,5,6
+Web Development,1.0,16000000.0,2,Unknown,FRA,4004.0,2005,acquired,7,5,4,7,5,7,6,6
+Design,1.0,600000.0,1,Unknown,USA,133.0,2011,active,6,5,6,6,6,6,5,6
+Software,2.0,1347498.0,2,Unknown,USA,5609.0,2006,failed,6,4,3,7,4,5,7,5
+Curated Web,4.0,120000.0,1,B2C,USA,8589.0,2011,active,6,4,4,6,2,5,9,4
+Software,2.0,21678600.0,3,Unknown,USA,1511.0,1998,ipo,8,6,6,10,6,8,5,6
+Security,2.0,25000.0,1,B2B,USA,436.0,2009,failed,6,7,4,5,5,8,4,9
+Education,2.0,964000.0,1,Unknown,IND,1303.0,2001,failed,6,7,3,5,4,5,7,5
+Ipad,2.0,100000.0,1,Unknown,USA,668.0,2013,active,6,5,5,6,5,6,5,5
+Biotechnology,1.0,99051350.0,5,Unknown,USA,1236.0,2007,ipo,10,9,6,7,8,10,5,9
+Crm,2.0,100000000.0,1,B2B,CAN,548.0,1991,ipo,8,6,7,8,7,9,3,8
+Comparison Shopping,2.0,3345.0,1,Unknown,GBR,1511.0,2014,active,5,5,3,5,4,5,6,5
+Clean Technology,2.0,2806096.0,5,Unknown,USA,720.0,2009,failed,7,8,6,5,8,6,6,5
+Advertising,1.0,28176.0,1,Unknown,GBR,3128.0,2011,failed,5,4,3,6,4,4,7,5
+Fashion,2.0,40000.0,1,B2C,CHL,1511.0,2012,active,6,4,3,6,2,5,9,4
+Health And Wellness,2.0,200000.0,1,B2C,USA,63.0,1996,failed,7,7,7,5,6,7,7,7
+Biotechnology,2.0,89400001.0,4,Unknown,USA,1236.0,2007,acquired,9,9,6,7,7,10,6,9
+Software,2.0,300000.0,1,Unknown,CAN,1511.0,2008,ipo,7,6,4,9,5,7,5,6
+Reviews And Recommendations,2.0,100000.0,1,Unknown,ARG,9638.0,2009,failed,5,4,3,5,4,5,7,5
+Hardware + Software,2.0,5000000.0,1,Unknown,USA,1511.0,1996,active,7,5,5,8,7,6,6,6
+Software,2.0,200000.0,1,Unknown,USA,1511.0,1990,active,6,5,5,8,4,6,6,5
+Enterprise Software,2.0,60000.0,1,B2B,USA,2008.0,2011,failed,5,5,3,8,4,8,5,9
+News,1.0,18000000.0,2,B2C,NZL,351.0,2010,failed,7,4,4,6,6,5,7,5
+Sports,1.0,1250000.0,1,B2C,USA,199.0,2011,active,6,4,6,6,4,6,6,5
+Enterprise Software,2.0,13000000.0,1,B2B,USA,1978.0,1997,active,7,6,5,9,4,10,4,10
+Enterprise Software,2.0,15000000.0,1,B2B,USA,254.0,1996,active,7,6,7,9,6,10,3,10
+Mobile,2.0,100000.0,1,Unknown,USA,792.0,2003,active,6,5,6,8,5,6,5,5
+Biotechnology,2.0,1300000.0,1,Unknown,AUS,1511.0,1990,ipo,8,9,8,6,8,9,5,9
+Business Services,1.0,96627980.0,5,Unknown,USA,59.0,2005,ipo,9,6,7,8,7,8,4,7
+Software,2.0,11866483.0,3,Unknown,USA,4669.0,2005,acquired,8,5,4,9,4,7,6,6
+Classifieds,2.0,1230000.0,3,Unknown,CHL,192.0,2012,active,7,5,6,6,6,6,5,6
+Web Hosting,2.0,10000000.0,1,Unknown,USA,2602.0,1999,acquired,7,5,5,7,4,7,6,6
+Clean Technology,2.0,13000000.0,1,Unknown,USA,720.0,2009,failed,7,8,6,5,8,5,6,5
+Biotechnology,2.0,99000000.0,2,Unknown,USA,431.0,1997,ipo,9,9,9,7,10,10,4,9
+Biotechnology,2.0,57777000.0,3,Unknown,USA,1236.0,2007,ipo,9,9,6,7,8,10,5,9
+Biotechnology,2.0,73895000.0,4,Unknown,USA,1511.0,1998,ipo,9,9,8,7,8,10,5,9
+Web Development,2.0,329250.0,1,Unknown,IRL,927.0,2007,failed,5,4,3,5,4,5,7,5
+Health Care,2.0,121847684.0,5,Unknown,USA,1511.0,2006,ipo,10,8,4,8,6,10,5,9
+Social Media,2.0,600000.0,1,B2C,USA,866.0,2012,failed,5,3,2,7,3,4,10,4
+Enterprise Software,2.0,56309183.0,4,B2B,USA,1511.0,1996,ipo,9,6,6,10,6,10,4,10
+Semiconductors,2.0,58000000.0,7,Unknown,USA,248.0,2002,acquired,8,6,8,7,9,8,5,6
+Advertising,2.0,13096022.0,6,Unknown,USA,672.0,2002,ipo,8,6,6,9,7,8,4,6
+Legal,2.0,8500000.0,2,Unknown,USA,4004.0,2005,acquired,8,8,4,7,4,9,5,9
+E-Commerce,2.0,45000000.0,1,B2C,USA,101.0,1991,active,8,5,8,9,6,7,6,6
+Biotechnology,2.0,19000000.0,2,Unknown,USA,1511.0,2004,active,8,9,6,6,7,9,6,8
+Analytics,2.0,125000.0,2,B2B,USA,634.0,2012,failed,6,5,4,8,6,8,4,9
+Fashion,2.0,1975000.0,2,B2C,USA,314.0,2011,active,7,4,5,6,4,6,8,5
+Location Based Services,2.0,2940000.0,1,Unknown,CAN,2710.0,2007,acquired,7,5,4,6,4,7,6,6
+Collaboration,2.0,125000.0,2,Unknown,USA,1511.0,2007,active,6,5,4,6,4,6,6,5
+Cloud Computing,2.0,650000.0,1,B2B,USA,2003.0,2008,acquired,7,6,4,9,4,8,5,7
+Big Data,1.0,13000000.0,1,Unknown,USA,1511.0,2012,active,7,5,3,6,4,6,6,6
+Sms,2.0,1000000.0,1,Unknown,USA,1737.0,2006,failed,5,4,3,5,4,5,7,5
+Biotechnology,2.0,4000000.0,2,Unknown,SGP,1511.0,2010,ipo,9,9,6,6,8,10,5,9
+Health Care,1.0,177000000.0,5,Unknown,USA,723.0,2001,ipo,10,8,6,8,7,10,4,9
+Data Centers,1.0,300000000.0,1,Unknown,CHE,181.0,1995,ipo,8,6,8,7,7,8,4,7
+Biotechnology,2.0,42820000.0,5,Unknown,USA,558.0,2013,ipo,10,9,7,7,10,10,4,9
+Curated Web,1.0,3600000.0,2,B2C,USA,4004.0,2005,failed,6,3,3,5,3,5,10,4
+Hardware + Software,2.0,255000.0,1,Unknown,USA,105.0,1993,active,6,5,8,8,8,6,5,6
+Search,2.0,300000.0,1,Unknown,USA,403.0,2004,acquired,7,5,6,6,6,7,5,6
+Games,2.0,100000.0,1,B2C,USA,1511.0,2010,active,6,4,4,6,2,5,9,4
+Mobile,2.0,1892250.0,1,Unknown,FRA,3233.0,2008,failed,5,4,3,7,4,5,7,5
+Mobile,2.0,800000.0,1,Unknown,USA,3969.0,2009,acquired,7,5,4,8,4,7,6,6
+3D,1.0,390000.0,1,Unknown,CHN,5586.0,2010,failed,5,4,3,5,4,5,7,5
+Recruiting,2.0,3200000.0,2,B2B,USA,8589.0,2011,acquired,8,6,4,7,4,8,5,8
+Biotechnology,2.0,25000000.0,1,Unknown,USA,512.0,1998,acquired,8,9,9,6,9,9,5,9
+Oil,2.0,297920000.0,4,Unknown,USA,682.0,2007,ipo,9,6,6,8,7,8,4,7
+Mobile,2.0,1600000.0,1,Unknown,ARE,2888.0,2013,active,6,5,3,8,4,6,6,6
+Design,2.0,250000.0,1,Unknown,GBR,1511.0,2014,active,6,5,3,6,4,6,6,6
+Ios,2.0,30991.0,1,Unknown,SWE,1511.0,2013,active,6,5,3,6,4,6,6,5
+Software,2.0,199000.0,1,Unknown,GBR,6544.0,2007,failed,5,4,3,7,4,5,7,5
+Biotechnology,2.0,65982896.0,3,Unknown,USA,1511.0,2004,ipo,9,9,7,7,8,10,5,9
+Renewable Energies,2.0,15000003.0,1,Unknown,USA,1511.0,2006,active,7,5,4,6,5,7,6,6
+World Domination,1.0,33350.0,1,Unknown,PRT,3749.0,2012,active,6,5,3,6,4,6,6,5
+Software,2.0,19000000.0,2,Unknown,USA,3702.0,2003,failed,6,4,3,7,5,5,7,5
+Mobile,2.0,2100000.0,2,Unknown,USA,1737.0,2006,failed,6,4,3,7,4,5,7,5
+Biotechnology,2.0,26107993.0,9,Unknown,USA,1511.0,2001,ipo,10,9,7,7,8,10,5,9
+Forums,1.0,1500000.0,1,Unknown,USA,5396.0,2006,failed,5,4,3,5,4,5,7,5
+Music,2.0,2251000.0,2,B2C,USA,8445.0,2008,failed,6,3,3,5,3,5,8,4
+Hardware + Software,1.0,12209831.0,2,Unknown,USA,516.0,2003,acquired,7,5,6,9,8,7,5,6
+Software,2.0,900000.0,1,Unknown,USA,5609.0,2006,failed,5,4,3,7,4,5,7,5
+Storage,2.0,13000000.0,1,Unknown,USA,1703.0,2012,failed,6,4,2,5,4,5,7,5
+E-Commerce,2.0,735000.0,5,B2C,USA,1511.0,2008,active,8,5,4,9,4,7,7,6
+Clean Technology,2.0,96800000.0,5,Unknown,USA,531.0,2005,failed,8,8,7,5,9,6,6,5
+Hardware + Software,2.0,3000000.0,1,Unknown,USA,337.0,2000,acquired,7,5,7,8,8,7,5,6
+Payments,2.0,100000000.0,3,Unknown,USA,970.0,2000,acquired,8,5,5,7,5,8,6,6
+Curated Web,2.0,55237600.0,5,B2C,USA,4004.0,2005,acquired,8,4,4,8,3,7,9,5
+Subscription Businesses,2.0,37600000.0,5,Unknown,USA,93.0,2003,active,8,5,7,7,6,7,5,6
+Semiconductors,2.0,33331814.0,3,Unknown,USA,1511.0,1994,active,7,6,7,6,7,7,6,6
+Shopping,2.0,28000000.0,4,Unknown,USA,1146.0,2003,failed,6,4,3,6,5,6,7,5
+Information Technology,2.0,45000000.0,3,Unknown,RUS,1511.0,2008,active,7,5,4,7,5,7,6,6
+Finance,2.0,125000.0,1,Unknown,USA,525.0,2012,active,7,8,5,6,6,8,4,8
+Health And Wellness,2.0,29800000.0,4,B2C,USA,231.0,2006,active,9,8,5,7,6,9,6,8
+Travel,2.0,195000000.0,5,B2C,CHN,2460.0,2006,ipo,9,4,4,8,4,8,8,6
+Security,2.0,450000.0,2,B2B,POL,436.0,2009,active,8,8,5,7,6,10,3,10
+Biotechnology,3.0,75000000.0,4,Unknown,USA,1084.0,2005,acquired,9,9,6,7,7,10,6,9
+Social Media,3.0,975000.0,2,B2C,USA,898.0,2011,failed,5,3,3,7,3,5,10,4
+Health And Wellness,2.0,11900000.0,2,B2C,USA,58.0,1997,active,8,8,8,7,6,9,6,8
+Hardware + Software,4.0,1158000.0,2,Unknown,USA,901.0,2008,active,7,5,4,8,7,6,6,6
+Fashion,2.0,22000000.0,1,B2C,USA,191.0,2008,acquired,7,4,6,7,5,7,8,5
+Search,2.0,681350.0,1,Unknown,DEU,1195.0,2009,failed,5,4,3,5,4,5,7,5
+Manufacturing,2.0,700000.0,1,B2B,USA,1511.0,1990,active,7,6,5,7,4,8,5,7
+Social Media,1.0,5250000.0,1,B2C,ARE,970.0,2000,acquired,7,4,5,9,3,6,9,5
+Software,2.0,11000000.0,3,Unknown,USA,3702.0,2003,acquired,8,5,4,9,4,7,6,6
+Curated Web,2.0,1800000.0,1,B2C,USA,8589.0,2011,active,6,4,4,6,3,6,9,5
+Semiconductors,2.0,72002285.0,5,Unknown,USA,116.0,2009,active,8,6,8,6,9,7,5,6
+Software,2.0,5300000.0,2,Unknown,USA,1661.0,2007,acquired,7,5,4,8,4,7,6,6
+Proximity Internet,2.0,41000000.0,2,Unknown,USA,4790.0,2010,failed,6,4,3,5,5,6,7,5
+Video Games,2.0,25000.0,1,B2C,COL,1511.0,2011,active,6,4,4,6,2,5,9,4
+Biotechnology,2.0,2005038.0,3,Unknown,USA,340.0,1996,ipo,9,9,9,7,9,10,4,9
+Mobile,1.0,212000000.0,7,Unknown,GBR,672.0,2002,acquired,9,5,6,9,6,8,5,6
+Finance,1.0,100000.0,2,Unknown,ZAF,582.0,2011,active,7,8,5,6,5,8,4,8
+Virtual Workforces,2.0,2500000.0,1,Unknown,USA,1346.0,2006,ipo,7,6,4,7,5,7,5,6
+Medical,2.0,5055753.0,1,Unknown,GBR,1511.0,2009,active,8,9,6,6,7,6,6,6
+Software,2.0,16500000.0,2,Unknown,USA,3132.0,2001,active,7,5,4,8,5,7,6,6
+K-12 Education,2.0,3217147.0,2,Unknown,USA,1511.0,2007,active,8,8,4,6,4,6,6,6
+Networking,1.0,48500000.0,5,Unknown,MYS,1170.0,2001,acquired,8,5,4,7,5,8,6,6
+Finance Technology,2.0,2531304.0,1,Unknown,GBR,618.0,2011,active,8,8,5,6,6,8,4,8
+Software,2.0,2200000.0,1,Unknown,USA,1511.0,2003,active,6,5,4,8,4,6,6,6
+Public Relations,1.0,50000.0,1,Unknown,AUS,1218.0,2008,failed,5,4,3,5,4,4,7,5
+Broadcasting,2.0,15400000.0,1,Unknown,USA,238.0,2004,active,7,5,6,6,6,7,5,6
+Enterprise Software,2.0,750000.0,1,B2B,USA,3233.0,2008,failed,6,5,3,8,4,8,5,9
+Biotechnology,2.0,51885190.0,8,Unknown,USA,1285.0,2008,active,9,9,6,6,7,9,6,8
+Networking,2.0,42300000.0,3,Unknown,USA,847.0,2006,active,7,5,4,7,5,7,6,6
+Travel,1.0,40000.0,1,B2C,SGP,123.0,2010,failed,5,3,5,5,4,4,9,4
+Finance,1.0,200000.0,1,Unknown,CHN,6870.0,2007,failed,6,7,3,5,4,7,6,7
+Finance,1.0,370000.0,2,Unknown,SGP,5396.0,2006,failed,6,7,3,5,4,7,6,7
+E-Commerce,1.0,1456338.0,1,B2C,USA,5586.0,2010,active,7,5,4,8,4,6,7,6
+Sales And Marketing,2.0,200000.0,1,B2B,BRA,8391.0,2010,failed,6,5,3,6,4,6,6,6
+Enterprise Software,1.0,38000000.0,2,B2B,NLD,1082.0,2005,active,8,6,4,9,5,10,4,10
+Clean Technology,2.0,158700000.0,2,Unknown,DEU,250.0,2002,failed,7,8,7,5,9,6,6,5
+Big Data Analytics,3.0,13000000.0,1,B2B,USA,1511.0,2007,acquired,8,6,4,10,4,10,4,10
+Software,2.0,6500000.0,1,Unknown,USA,4037.0,2004,acquired,7,5,4,9,4,7,6,6
+Technology,2.0,288565568.0,2,Unknown,USA,23.0,1990,ipo,8,6,9,7,8,8,4,7
+Health Care,2.0,58950000.0,2,Unknown,USA,15.0,1990,ipo,9,8,9,7,8,10,4,9
+Online Shopping,2.0,100000000.0,4,Unknown,ZAF,1511.0,2010,active,8,5,4,7,5,7,6,6
+Legal,2.0,10000000.0,1,Unknown,USA,198.0,2008,active,8,8,6,6,6,8,4,8
+Messaging,2.0,40000.0,1,Unknown,URY,1511.0,2012,active,6,5,3,6,4,6,6,5
+Graphics,2.0,11000000.0,2,Unknown,GBR,516.0,2001,acquired,7,5,6,7,6,7,5,6
+Enterprise Software,2.0,97500.0,1,B2B,USA,2249.0,2009,failed,5,5,3,8,4,8,5,9
+Creative Industries,3.0,19044025.0,4,Unknown,USA,2381.0,2007,acquired,8,5,4,7,5,7,6,6
+E-Commerce,2.0,22500.0,2,B2C,RUS,5210.0,2011,failed,5,4,3,7,4,5,8,4
+Advertising,2.0,1400000.0,1,Unknown,USA,1661.0,2007,acquired,7,5,4,8,4,7,6,6
+Telecommunications,2.0,17000000.0,1,Unknown,ISR,229.0,1996,ipo,8,6,7,7,7,8,4,6
+Social Media,2.0,242880.0,1,B2C,DEU,5396.0,2006,failed,5,3,3,7,3,4,10,4
+Nanotechnology,2.0,9084161.0,1,Unknown,USA,1511.0,2010,active,7,6,6,6,7,6,6,6
+Health Care,2.0,3473820.0,1,Unknown,FRA,1511.0,2011,acquired,8,8,4,6,4,9,6,9
+Registrars,2.0,250000.0,1,Unknown,LUX,1041.0,2011,active,6,5,4,6,4,6,6,6
+E-Commerce,2.0,550000.0,1,B2C,USA,1511.0,2012,active,7,5,3,8,4,6,7,6
+Biotechnology,2.0,20000000.0,1,Unknown,USA,1511.0,1992,ipo,9,9,8,7,8,10,5,9
+Telecommunications,2.0,50360919.0,1,Unknown,GBR,1511.0,2011,ipo,8,6,4,7,6,8,5,7
+Analytics,2.0,103100000.0,7,B2B,USA,163.0,2005,acquired,9,6,7,10,6,10,3,10
+Health Care,2.0,550000.0,2,Unknown,USA,1511.0,2009,active,7,8,4,6,4,8,6,8
+Hardware + Software,1.0,2535800.0,2,Unknown,USA,569.0,2004,active,7,5,6,8,8,6,5,6
+Consulting,2.0,8000000.0,1,Unknown,USA,3702.0,2003,active,7,5,4,6,4,6,6,6
+Social Media,1.0,435000.0,4,B2C,USA,866.0,2012,failed,6,3,2,8,3,5,10,4
+Advertising,1.0,7300000.0,2,Unknown,USA,607.0,2009,acquired,7,5,5,9,6,7,5,6
+Public Relations,1.0,13000000.0,1,Unknown,USA,225.0,1996,acquired,7,5,7,7,6,7,5,6
+Social Network Media,2.0,2649997.0,4,B2C,USA,8589.0,2011,acquired,7,4,4,7,3,7,9,5
+Messaging,2.0,1900000.0,1,Unknown,USA,1511.0,2013,active,6,5,3,6,4,6,6,6
+Internet,2.0,1000000.0,1,Unknown,ISR,1511.0,2013,active,6,5,3,6,4,6,6,6
+News,2.0,310000.0,2,B2C,USA,212.0,2008,active,7,5,5,6,6,6,6,6
+Curated Web,3.0,2100000.0,2,B2C,USA,9634.0,2010,acquired,7,4,4,7,3,6,9,5
+Cloud Data Services,1.0,135000000.0,1,B2B,USA,4669.0,2006,active,8,6,4,9,5,8,5,7
+Advertising,1.0,24997.0,1,Unknown,GBR,3128.0,2011,failed,5,4,3,6,4,4,7,5
+Education,2.0,2395319.0,3,Unknown,USA,1447.0,2011,active,8,8,4,6,4,7,6,6
+Subscription Businesses,1.0,200000.0,2,Unknown,USA,1218.0,2008,active,6,5,4,6,4,6,6,5
+Social Media Marketing,2.0,1000000.0,2,B2B2C,ARG,1511.0,2010,active,6,4,4,8,3,6,8,5
+Advertising,2.0,125000.0,2,Unknown,USA,3519.0,2009,failed,5,4,3,7,4,5,7,5
+Finance,3.0,140000.0,3,Unknown,USA,7220.0,2012,active,7,8,3,6,4,8,5,8
+Curated Web,1.0,2000000.0,1,B2C,SWE,8589.0,2011,active,6,4,4,6,3,6,9,5
+Enterprise Security,2.0,2000000.0,1,B2B,USA,1511.0,2012,active,8,8,3,7,4,10,4,10
+Finance,1.0,244195300.0,6,Unknown,NZL,5609.0,2006,ipo,10,8,4,8,6,10,4,9
+Mobile,1.0,33250000.0,2,Unknown,CAN,3417.0,2012,ipo,8,6,4,9,6,8,5,7
+Software,2.0,7000000.0,2,Unknown,USA,5609.0,2006,failed,6,4,3,7,4,5,7,5
+Medical,2.0,1475000.0,2,Unknown,USA,1511.0,2010,ipo,8,9,6,6,8,7,5,6
+Web Hosting,1.0,17650000.0,2,Unknown,ISR,2602.0,1999,acquired,7,5,5,7,5,7,6,6
+Software,2.0,1665000.0,2,Unknown,USA,2862.0,2000,ipo,7,6,6,9,5,7,5,6
+Networking,2.0,7500000.0,2,Unknown,USA,4669.0,2005,acquired,7,5,4,7,4,7,6,6
+Information Technology,2.0,20000000.0,1,Unknown,CHN,1511.0,2000,ipo,8,6,6,7,6,8,5,6
+Cloud Security,2.0,20000000.0,1,B2B,USA,319.0,2013,active,8,8,5,9,6,10,3,10
+Web Hosting,1.0,54000000.0,1,Unknown,CAN,416.0,2000,acquired,7,5,7,7,6,7,5,6
+Manufacturing,2.0,10000000.0,1,B2B,USA,1511.0,1995,ipo,8,6,6,8,5,9,5,8
+Advertising,1.0,26000000.0,4,Unknown,USA,2176.0,2006,acquired,8,5,4,9,5,7,6,6
+Classifieds,2.0,15000.0,1,Unknown,USA,5193.0,2009,failed,5,4,3,4,4,4,7,4
+Saas,2.0,1107000.0,1,B2B,CAN,856.0,2004,active,7,6,4,9,4,10,4,10
+Mobile,2.0,4000000.0,1,Unknown,USA,3233.0,2008,failed,6,4,3,7,4,5,7,5
+Curated Web,1.0,1200000.0,1,B2C,USA,5396.0,2006,failed,5,3,3,5,3,4,10,4
+Public Transportation,2.0,60704370.0,4,Unknown,USA,30.0,2000,acquired,8,5,9,7,7,8,5,6
+Auctions,2.0,50000.0,1,Unknown,USA,3456.0,2007,failed,5,4,3,5,4,4,7,5
+E-Commerce,2.0,9500000.0,2,B2C,USA,2460.0,2006,acquired,8,5,4,9,4,7,7,6
+E-Books,2.0,17000000.0,2,Unknown,USA,1511.0,2012,active,7,5,3,6,5,7,6,6
+Games,2.0,1200000.0,2,B2C,USA,3597.0,2010,acquired,7,4,4,7,3,6,9,5
+Mobile,5.0,11000000.0,2,Unknown,USA,1281.0,2005,acquired,7,5,4,9,4,7,6,6
+Biotechnology,2.0,18139599.0,5,Unknown,USA,999.0,2004,ipo,10,9,7,7,8,10,5,9
+Advertising,1.0,7575000.0,3,Unknown,USA,3166.0,2008,failed,6,4,3,8,4,5,7,5
+Software,2.0,765000.0,2,Unknown,CAN,1511.0,2013,active,7,5,3,8,4,6,6,6
+Finance,2.0,4650000.0,3,Unknown,USA,525.0,2012,active,8,8,5,7,6,9,4,8
+Clean Technology,2.0,5653260.0,1,Unknown,USA,682.0,2007,active,8,9,7,6,8,6,5,6
+Software,1.0,5300000.0,1,Unknown,USA,8440.0,2009,acquired,7,5,4,8,4,7,6,6
+Biotechnology,1.0,2670394.0,2,Unknown,USA,740.0,2012,active,8,9,7,5,8,8,5,8
+Games,2.0,4500000.0,3,B2C,GBR,2723.0,2007,active,7,4,4,7,3,6,9,5
+Internet Of Things,2.0,1200000.0,2,Unknown,HKG,3417.0,2012,active,7,5,3,6,4,6,6,6
+Media,3.0,1500000.0,1,B2C,USA,3417.0,2012,active,6,4,3,6,3,6,7,5
+Mobile,2.0,48700000.0,1,Unknown,AUS,1511.0,2008,ipo,8,6,4,9,6,8,5,7
+Biotechnology,2.0,533000.0,2,Unknown,USA,999.0,2004,acquired,8,9,6,6,7,9,6,8
+Security,1.0,8600000.0,2,B2B,USA,449.0,2001,acquired,9,8,6,8,6,10,3,10
+Clean Technology,2.0,7494980.0,2,Unknown,SWE,682.0,2007,active,8,9,7,6,8,7,5,6
+Mobile,2.0,1322411.0,2,Unknown,USA,3233.0,2008,failed,6,4,3,7,4,5,7,5
+Advertising,2.0,8228681.0,1,Unknown,FRA,9634.0,2010,active,7,5,4,8,4,6,6,6
+Online Reservations,2.0,50000.0,1,Unknown,USA,180.0,2009,failed,5,4,5,5,5,4,6,5
+Nanotechnology,1.0,21507228.0,5,Unknown,USA,25.0,2008,active,8,6,9,6,10,7,5,6
+E-Commerce,1.0,25000.0,1,B2C,USA,5586.0,2010,failed,5,4,3,7,4,4,8,5
+Health Care,4.0,75000000.0,3,Unknown,USA,1126.0,2010,ipo,9,8,4,8,6,10,5,9
+Software,2.0,2000000.0,2,Unknown,USA,1511.0,2012,active,7,5,3,8,4,6,6,6
+Design,2.0,437500.0,1,Unknown,USA,1511.0,2008,active,6,5,4,6,4,6,6,6
+Curated Web,2.0,500000.0,1,B2C,USA,7220.0,2012,active,6,4,3,6,3,6,9,5
+Hardware + Software,2.0,6480000.0,1,Unknown,USA,449.0,2001,acquired,7,5,6,9,8,7,5,6
+Online Dating,1.0,30564744.0,1,B2C,GBR,65.0,2006,active,7,4,6,7,5,6,8,5
+Curated Web,2.0,3000000.0,2,B2C,USA,8589.0,2012,active,7,4,3,6,3,6,9,5
+Cloud Computing,1.0,10000000.0,2,B2B,USA,4079.0,2010,acquired,8,6,4,10,4,9,5,8
+Software,2.0,6040161.0,2,Unknown,USA,3702.0,2003,active,7,5,4,8,4,7,6,6
+Video,2.0,345000.0,1,B2C,USA,162.0,2008,failed,6,4,5,5,6,5,7,5
+Startups,2.0,615000.0,1,Unknown,SGP,130.0,2006,active,6,5,6,6,6,6,5,6
+Software,1.0,15600000.0,1,Unknown,USA,1082.0,2005,failed,6,4,3,7,5,5,7,5
+Hospitality,2.0,62814000.0,1,Unknown,USA,129.0,2007,active,7,5,6,6,6,7,5,6
+Analytics,2.0,2254193.0,1,B2B,CHE,476.0,2008,active,7,6,5,9,6,10,3,10
+Enterprise Software,2.0,155000000.0,7,B2B,USA,2003.0,2008,active,9,6,4,10,5,10,4,10
+Banking,2.0,16000000.0,1,Unknown,USA,1511.0,2007,ipo,8,6,4,7,6,8,5,6
+Mobile,1.0,18000000.0,3,Unknown,CAN,2381.0,2007,acquired,8,5,4,9,5,7,6,6
+Advertising,2.0,19000000.0,2,Unknown,USA,3519.0,2009,active,7,5,4,8,5,7,6,6

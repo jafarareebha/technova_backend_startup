@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Analysis - Startup Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-user {
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: #666;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover {
+            background: #f0f0f0;
+            color: #333;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        /* Form Header */
+        .form-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .form-header h1 {
+            color: #333;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-header p {
+            color: #666;
+            font-size: 1rem;
+        }
+        
+        /* Form Sections */
+        .form-section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .section-title {
+            color: #333;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        .section-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        
+        /* Form Elements */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .form-help {
+            display: block;
+            margin-top: 0.25rem;
+            font-size: 0.8rem;
+            color: #999;
+        }
+        
+        /* Scores Grid */
+        .scores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .score-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .score-item label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .score-slider {
+            width: 100%;
+            margin: 0.5rem 0;
+            -webkit-appearance: none;
+            height: 5px;
+            border-radius: 5px;
+            background: linear-gradient(90deg, #ff4444 0%, #ffc107 50%, #00df81 100%);
+            outline: none;
+        }
+        
+        .score-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid #667eea;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .score-value {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+        
+        /* Form Actions */
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+        
+        .btn-secondary:hover {
+            background: #cbd5e0;
+        }
+        
+        .btn-large {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Tooltips */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            margin-left: 0.25rem;
+            color: #999;
+            cursor: help;
+        }
+        
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .tooltip-text {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 10;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            .nav-menu {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .scores-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">🚀 Startup Analyzer</div>
+        <div class="nav-menu">
+            <span class="nav-user">👤 {{ current_user.username }}</span>
+            <a href="{{ url_for('dashboard') }}" class="nav-link">Dashboard</a>
+            <a href="{{ url_for('logout') }}" class="nav-link">Logout</a>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="form-header">
+            <h1>📝 Analyze Your Startup Idea</h1>
+            <p>Fill in the details below to get a comprehensive analysis</p>
+        </div>
+        
+
+        <form method="POST" action="{{ url_for('analyze') }}" class="analysis-form" id="analysisForm" enctype="multipart/form-data">
+
+            <!-- Basic Information -->
+            <div class="form-section">
+                <h2 class="section-title">📋 Basic Information</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="startup_name">Startup Name *</label>
+                        <input type="text" id="startup_name" name="startup_name" required 
+                               placeholder="e.g., TechInnovate" class="form-input">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="industry_sector">Industry Sector * <span class="tooltip">ℹ️<span class="tooltip-text">The primary industry your startup operates in.</span></span></label>
+                        <select id="industry_sector" name="industry_sector" required class="form-select">
+                            <option value="">Select industry</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Healthcare">Healthcare</option>
+                            <option value="Finance">Finance</option>
+                            <option value="Education">Education</option>
+                            <option value="E-commerce">E-commerce</option>
+                            <option value="Biotechnology">Biotechnology</option>
+                            <option value="Software">Software</option>
+                            <option value="Hardware">Hardware</option>
+                            <option value="Mobile">Mobile</option>
+                            <option value="Internet">Internet</option>
+                            <option value="SaaS">SaaS</option>
+                            <option value="Artificial Intelligence">Artificial Intelligence</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="market_type">Market Type * <span class="tooltip">ℹ️<span class="tooltip-text">B2B (selling to businesses) or B2C (selling to consumers).</span></span></label>
+                        <select id="market_type" name="market_type" required class="form-select">
+                            <option value="">Select market type</option>
+                            <option value="B2B">B2B (Business to Business)</option>
+                            <option value="B2C">B2C (Business to Consumer)</option>
+                            <option value="B2B2C">B2B2C (Business to Business to Consumer)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="country_region">Country/Region *</label>
+                        <select id="country_region" name="country_region" required class="form-select">
+                            <option value="">Select country</option>
+                            <option value="USA">United States</option>
+                            <option value="GBR">United Kingdom</option>
+                            <option value="CAN">Canada</option>
+                            <option value="AUS">Australia</option>
+                            <option value="DEU">Germany</option>
+                            <option value="FRA">France</option>
+                            <option value="IND">India</option>
+                            <option value="CHN">China</option>
+                            <option value="SGP">Singapore</option>
+			    <option value="JAP">Japan</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Financial & Team Information -->
+            <div class="form-section">
+                <h2 class="section-title">💰 Financial & Team Details</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="initial_funding">Initial Funding ($) *</label>
+                        <input type="number" id="initial_funding" name="initial_funding" required 
+                               min="0" step="1000" value="50000" class="form-input">
+                        <small class="form-help">Total seed/initial capital raised</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="team_size">Team Size *</label>
+                        <input type="number" id="team_size" name="team_size" required 
+                               min="1" max="100" value="5" class="form-input">
+                        <small class="form-help">Number of founding team members</small>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="funding_rounds">Number of Funding Rounds *</label>
+                        <input type="number" id="funding_rounds" name="funding_rounds" required 
+                               min="0" max="10" value="1" class="form-input">
+                        <small class="form-help">How many funding rounds completed</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="competitors">Number of Competitors *</label>
+                        <input type="number" id="competitors" name="competitors" required 
+                               min="0" max="500" value="50" class="form-input">
+                        <small class="form-help">Direct competitors in your market</small>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="year_founded">Year Founded *</label>
+                    <input type="number" id="year_founded" name="year_founded" required 
+                           min="2000" max="2026" value="2024" class="form-input">
+                </div>
+            </div>
+            
+            <!-- Startup Idea Description (Text + PDF) -->
+            <div class="form-section">
+                <h2 class="section-title">💡 Startup Idea Description</h2>
+                <div class="form-group">
+                    <label for="idea_description">Describe your startup idea (Optional if uploading PDF)</label>
+                    <textarea id="idea_description" name="idea_description" rows="6"
+                              placeholder="What problem does it solve? Who are your target customers? What makes your solution unique?" 
+                              class="form-textarea"></textarea>
+                </div>
+                
+                <div class="form-group" style="margin-top: 1.5rem;">
+                    <label for="idea_pdf" style="display: flex; align-items: center; font-weight: 500;">
+                        Upload Business Plan / Pitch Deck (PDF) &nbsp; <span class="tooltip">ℹ️<span class="tooltip-text" style="width: 250px; text-align: left;">Our AI (Gemini) will read your PDF to evaluate your market demand, novelty, scalability, and other soft metrics to feed into the ML model.</span></span>
+                    </label>
+                    <input type="file" id="idea_pdf" name="idea_pdf" accept="application/pdf" class="form-input" style="padding: 0.5rem; background: #fff;">
+                    <small class="form-help">Max file size 5MB. Providing a detailed text description or PDF is highly recommended for accurate AI assessment.</small>
+                </div>
+            </div>
+            
+            <!-- Form Actions -->
+            <div class="form-actions">
+                <a href="{{ url_for('dashboard') }}" class="btn btn-secondary">Cancel</a>
+                <button type="submit" class="btn btn-primary btn-large">
+                    <span style="margin-right: 0.5rem;">🚀</span> Analyze Startup
+                </button>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        // Update slider values in real-time
+        function updateScore(slider, outputId) {
+            document.getElementById(outputId).textContent = slider.value;
+        }
+        
+        // Form validation
+        document.getElementById('analysisForm').addEventListener('submit', function(e) {
+            const startupName = document.getElementById('startup_name').value.trim();
+            const description = document.getElementById('idea_description').value.trim();
+            const pdfFile = document.getElementById('idea_pdf').files.length;
+            
+            if (startupName.length < 2) {
+                e.preventDefault();
+                alert('Please enter a valid startup name');
+                return;
+            }
+            
+            if (description.length < 10 && pdfFile === 0) {
+                e.preventDefault();
+                alert('Please provide a short description or upload a business plan PDF for the AI to analyze.');
+                return;
+            }
+            
+            // Show loading overlay or button change
+            const btn = document.querySelector('button[type="submit"]');
+            btn.innerHTML = '⚙️ Analyzing with AI... Please wait';
+            btn.disabled = true;
+        });
+        
+        // Initialize all sliders
+        window.onload = function() {
+            const sliders = document.querySelectorAll('.score-slider');
+            sliders.forEach(slider => {
+                const outputId = slider.id + '_val';
+                document.getElementById(outputId).textContent = slider.value;
+            });
+        };
+    </script>
+</body>
+</html>
