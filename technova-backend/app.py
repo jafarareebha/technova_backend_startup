@@ -638,9 +638,27 @@ def simulate():
         # Run true ML Prediction
         score, category, factors = predict_startup(base_inputs)
         
+        # Determine the initial baseline factors to ensure smooth relative changes instead of capping
+        orig_factors = json.loads(analysis.factors)
+        
+        # Dynamic ML Physics Modifier: Decision Trees usually flatline on minor perturbations.
+        # We apply this ON TOP of the newly predicted ML score so it responds fluidly.
+        modifier = (funding_pct / 100.0) * 12.0
+        modifier -= (mkt_pct / 100.0) * 3.0
+        modifier += team_delta * 1.5
+        modifier -= (comp_val - 5) * 2.0
+        
+        sim_score = min(99.0, max(1.0, score + modifier))
+        
+        factors['Financials'] = min(99.0, max(1.0, orig_factors.get('Financials', 50) + (funding_pct / 10.0)))
+        factors['Team'] = min(99.0, max(1.0, orig_factors.get('Team', 50) + team_delta * 4.0))
+        factors['Market'] = min(99.0, max(1.0, orig_factors.get('Market', 50) + (mkt_pct / 15.0) - (comp_val - 5) * 2.5))
+        factors['Competition'] = min(99.0, max(1.0, orig_factors.get('Competition', 50) - (comp_val - 5) * 5.0))
+        factors['Product'] = min(99.0, max(1.0, orig_factors.get('Product', 50) + (funding_pct / 20.0)))
+        
         return jsonify({
-            'score': score,
-            'category': category,
+            'score': sim_score,
+            'category': score_to_category(sim_score),
             'factors': factors
         })
     except Exception as e:
