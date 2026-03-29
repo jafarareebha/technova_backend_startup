@@ -670,3 +670,24 @@ p {
         padding: 1.5rem;
     }
 }
+
+/* Print-specific classes */
+.print-section { display: block; }
+.no-print { display: none !important; }
+/* Print styling */
+@media print {
+.no-print {
+display: none !important;
+}
+.print-section {
+display: block !important;
+}
+body {
+background: white;
+}
+.card { box-shadow: none !important; border: 1px solid #d1d5db; }
+.header-card { box-shadow: none !important; border: 1px solid #d1d5db; }
+.rec-list, .ai-grid, .factors-wrapper { page-break-inside: avoid; }
+.card, .tab-content { page-break-inside: avoid; }
+.tab-content > * { margin-bottom: 1rem; }
+}

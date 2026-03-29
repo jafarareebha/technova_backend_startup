@@ -580,7 +580,7 @@
 
 <body>
 
-    <nav>
+    <nav class="no-print">
         <a href="/" class="logo">TechNova</a>
         <div class="nav-links">
             <a href="/analyze" class="btn btn-primary" style="padding: 8px 16px; border-radius: 6px;">New Analysis</a>
@@ -605,13 +605,14 @@
                         }}</span>
                 </div>
             </div>
-            <div>
+            <div style="display: flex; gap:10px">
                 <a href="/dashboard" class="btn btn-secondary">My Dashboard</a>
+                <button class="btn btn-primary" onclick="primaryReport()">Print Report</button>
             </div>
         </div>
 
         <!-- Tab Navigation -->
-        <div class="tabs-nav">
+        <div class="tabs-nav no-print">
             <button class="tab-btn active" onclick="switchTab('tab-initial', this)">Initial Results</button>
             <button class="tab-btn" onclick="switchTab('tab-scenario', this)">Simulated Scenario</button>
             <button class="tab-btn" onclick="switchTab('tab-strategy', this)">Strategy & Suggestions</button>
@@ -959,7 +960,7 @@
         </div>
 
         <!-- Global Action Buttons -->
-        <div class="action-btns">
+        <div class="action-btns no-print">
             <a href="/analyze" class="btn btn-secondary">Run Another Analysis</a>
             <a href="/dashboard" class="btn btn-primary">Go to Dashboard</a>
         </div>
