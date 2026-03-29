@@ -7,7 +7,7 @@ import pandas as pd
 import numpy as np
 import json
 import os
-import google.generativeai as genai
+from google import genai
 import PyPDF2
 from werkzeug.utils import secure_filename
 from dotenv import load_dotenv
