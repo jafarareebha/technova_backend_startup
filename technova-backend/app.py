@@ -268,6 +268,167 @@ def extract_startup_parameters(description):
     
     return {}
 
+def fallback_risks_resources(form_data, factors, score, category):
+    """Rule-based risks & resource areas when Gemini is unavailable."""
+    funding = float(form_data.get('initial_funding', 0) or 0)
+    team = int(form_data.get('team_size', 1) or 1)
+    comp_n = int(form_data.get('competitors', 0) or 0)
+    risks = []
+    if factors.get('Competition', 50) < 55:
+        risks.append({
+            'title': 'Intense Market Competition',
+            'description': 'You have many competitors. You must clearly highlight what makes your product unique, find better ways to reach customers, or reward user loyalty to stand out.',
+            'severity': 'high' if factors.get('Competition', 50) < 40 else 'medium',
+        })
+    if factors.get('Financials', 50) < 55 or funding < 75000:
+        risks.append({
+            'title': 'Limited Funding and Cash Runway',
+            'description': 'Your current budget might run out quickly relative to your team size. You may not have enough time to perfect the product before you need to secure more money or find paying users.',
+            'severity': 'medium',
+        })
+    if int(form_data.get('acquisition_difficulty', 5) or 5) >= 7:
+        risks.append({
+            'title': 'High Cost to Find Customers',
+            'description': 'It will be difficult and expensive to convince people to try your product. You should carefully plan your marketing channels and partner with others to reduce costs.',
+            'severity': 'high',
+        })
+    if int(form_data.get('market_demand', 5) or 5) <= 4:
+        risks.append({
+            'title': 'Uncertain Customer Demand',
+            'description': 'It is not completely clear if enough users truly want this solution. You should definitely talk to potential users and run small tests before building the full product.',
+            'severity': 'medium',
+        })
+    if category in ('Weak', 'Poor'):
+        risks.append({
+            'title': 'Overall Business Feasibility',
+            'description': 'Our model gave this idea a lower score overall. We highly recommend rethinking your core target audience or your pricing strategy before spending significant money.',
+            'severity': 'high',
+        })
+    if not risks:
+        risks.append({
+            'title': 'Execution and Scaling',
+            'description': 'There are no major flashing warnings right now. Focus entirely on disciplined execution, tracking your metrics, and hitting your initial milestones.',
+            'severity': 'low',
+        })
+
+    runway_months = max(1, int(funding / max(1, team * 8000)))
+    resource_areas = [
+        {
+            'title': 'Capital & Budget Tracker',
+            'items': [
+                f"Estimated Timeline: You have roughly ~{runway_months} months of operations before running out of money (this varies based on real salaries).",
+                'Action: Plot out exactly what you absolutely must pay for right away versus what can wait, keeping 3–6 months of emergency cash.',
+            ],
+        },
+        {
+            'title': 'People & Team Skills',
+            'items': [
+                f"Team Size Planned: {team}. Make sure your next hire directly helps you hit your immediate milestone (like a salesperson if you need revenue, or a developer for the product).",
+                'Action: Find part-time advisors or freelancers for specific complex tasks you lack (like legal compliance or deep financial planning).',
+            ],
+        },
+        {
+            'title': 'Operations & Software Tools',
+            'items': [
+                'Action: Keep the first version of the product as simple as possible. Decide exactly which affordable software tools you will use for basic hosting and tracking users.',
+                'Action: Write down how you will handle basic daily tasks early on, so the business runs smoothly as you slowly add new users.',
+            ],
+        },
+    ]
+    if comp_n > 60:
+        resource_areas[0]['items'].append('Budget for competitive intelligence and positioning work (not only ads).')
+    return {'risks': risks, 'resource_areas': resource_areas, 'source': 'fallback'}
+
+
+def generate_risks_resources(form_data, factors, score, category):
+    """
+    Input-grounded risk register and resource checklist via Gemini, with fallback.
+    """
+    description = (form_data.get('idea_description') or '')[:12000]
+    if not description.strip():
+        return fallback_risks_resources(form_data, factors, score, category)
+
+    summary = json.dumps({
+        'overall_score': score,
+        'category': category,
+        'factors': factors,
+        'initial_funding': form_data.get('initial_funding'),
+        'team_size': form_data.get('team_size'),
+        'competitors': form_data.get('competitors'),
+        'industry_sector': form_data.get('industry_sector'),
+        'market_type': form_data.get('market_type'),
+        'country_region': form_data.get('country_region'),
+        'market_demand': form_data.get('market_demand'),
+        'acquisition_difficulty': form_data.get('acquisition_difficulty'),
+        'barriers': form_data.get('barriers'),
+    }, indent=0)
+
+    prompt = f"""You are advising a new entrepreneur. Based ONLY on the startup description and the model summary below, provide a highly readable, jargon-free risk register and a practical resource checklist.
+Use proper business concepts, but explain them in simple, easy-to-understand language. Avoid complex buzzwords. Ensure any beginner founder could immediately understand what to do next.
+
+Startup description:
+{description}
+
+Model summary (use as context, do not invent external market data):
+{summary}
+
+Return ONLY valid JSON with this exact structure (no markdown):
+{{
+  "risks": [
+    {{"title": "Simple short title", "description": "1-3 easy-to-understand sentences explaining what could go wrong and how to avoid it.", "severity": "high" or "medium" or "low"}}
+  ],
+  "resource_areas": [
+    {{"title": "e.g. Budget & Cash Flow", "items": ["Clear, actionable checklist item", "..."]}},
+    {{"title": "e.g. Team Hiring Needs", "items": ["...", "..."]}},
+    {{"title": "e.g. Tools & Setup", "items": ["...", "..."]}}
+  ]
+}}
+
+Rules:
+- 4-6 distinct risks directly related to the idea. Explain the risk clearly without overcomplicating it.
+- 3-5 resource_areas with 2-4 items each. Items must be immediately actionable (e.g., "Set aside 3 months of emergency cash" rather than "Optimize runway capitalization").
+- severity must be exactly lowercase: high, medium, or low.
+"""
+
+    try:
+        model = genai.GenerativeModel('gemini-2.5-flash')
+        response = model.generate_content(prompt)
+        text = (response.text or '').strip()
+        json_match = re.search(r'\{.*\}', text, re.DOTALL)
+        if json_match:
+            data = json.loads(json_match.group())
+            risks = data.get('risks') or []
+            areas = data.get('resource_areas') or []
+            if isinstance(risks, list) and isinstance(areas, list) and risks and areas:
+                out = {'risks': [], 'resource_areas': [], 'source': 'gemini'}
+                for r in risks[:8]:
+                    if not isinstance(r, dict):
+                        continue
+                    sev = (r.get('severity') or 'medium').lower()
+                    if sev not in ('high', 'medium', 'low'):
+                        sev = 'medium'
+                    out['risks'].append({
+                        'title': str(r.get('title', 'Risk'))[:200],
+                        'description': str(r.get('description', ''))[:1200],
+                        'severity': sev,
+                    })
+                for a in areas[:6]:
+                    if not isinstance(a, dict):
+                        continue
+                    items = a.get('items') or []
+                    if not isinstance(items, list):
+                        items = []
+                    out['resource_areas'].append({
+                        'title': str(a.get('title', 'Resources'))[:120],
+                        'items': [str(x)[:500] for x in items[:8]],
+                    })
+                if out['risks'] and out['resource_areas']:
+                    return out
+    except Exception as e:
+        print(f"❌ Risks/resources generation failed: {e}")
+
+    return fallback_risks_resources(form_data, factors, score, category)
+
 # ===== ROUTES =====
 @app.route('/')
 def index():
@@ -385,6 +546,7 @@ def analyze():
     
     # Generate recommendations
     recommendations = generate_recommendations(score, factors, category, form_data)
+    form_data['risks_resources'] = generate_risks_resources(form_data, factors, score, category)
     
     # Save to database
     import json
@@ -424,6 +586,11 @@ def results(analysis_id):
     
     # Generate recommendations
     recommendations = generate_recommendations(analysis.score, factors, analysis.category, inputs)
+
+    if not inputs.get('risks_resources'):
+        inputs['risks_resources'] = generate_risks_resources(inputs, factors, analysis.score, analysis.category)
+        analysis.inputs = json.dumps(inputs)
+        db.session.commit()
     
     analysis_data = {
         'id': analysis.id,
@@ -432,7 +599,8 @@ def results(analysis_id):
         'category': analysis.category,
         'factors': factors,
         'recommendations': recommendations,
-        'inputs': inputs
+        'inputs': inputs,
+        'risks_resources': inputs.get('risks_resources') or {},
     }
     
     return render_template('results.html', analysis=analysis_data)
@@ -470,9 +638,27 @@ def simulate():
         # Run true ML Prediction
         score, category, factors = predict_startup(base_inputs)
         
+        # Determine the initial baseline factors to ensure smooth relative changes instead of capping
+        orig_factors = json.loads(analysis.factors)
+        
+        # Dynamic ML Physics Modifier: Decision Trees usually flatline on minor perturbations.
+        # We apply this ON TOP of the newly predicted ML score so it responds fluidly.
+        modifier = (funding_pct / 100.0) * 12.0
+        modifier -= (mkt_pct / 100.0) * 3.0
+        modifier += team_delta * 1.5
+        modifier -= (comp_val - 5) * 2.0
+        
+        sim_score = min(99.0, max(1.0, score + modifier))
+        
+        factors['Financials'] = min(99.0, max(1.0, orig_factors.get('Financials', 50) + (funding_pct / 10.0)))
+        factors['Team'] = min(99.0, max(1.0, orig_factors.get('Team', 50) + team_delta * 4.0))
+        factors['Market'] = min(99.0, max(1.0, orig_factors.get('Market', 50) + (mkt_pct / 15.0) - (comp_val - 5) * 2.5))
+        factors['Competition'] = min(99.0, max(1.0, orig_factors.get('Competition', 50) - (comp_val - 5) * 5.0))
+        factors['Product'] = min(99.0, max(1.0, orig_factors.get('Product', 50) + (funding_pct / 20.0)))
+        
         return jsonify({
-            'score': score,
-            'category': category,
+            'score': sim_score,
+            'category': score_to_category(sim_score),
             'factors': factors
         })
     except Exception as e:
@@ -533,4 +719,4 @@ if __name__ == '__main__':
         print("⚠️ Running in fallback mode (model not loaded)")
     print("📝 Demo login: demo / demo123")
     print("="*50 + "\n")
-        app.run(host="0.0.0.0",port=int(os.environ.get("PORT",10000)))
+    app.run(host="0.0.0.0",port=10000)

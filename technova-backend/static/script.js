@@ -528,24 +528,3 @@ window.utils = {
     showToast,
     apiRequest
 };
-// PRINT FUNCTIONALITY  
-
-
-function printReport() {
-// Store active tab
-const activeTab = document.querySelector('.tab-content.active');
-if (activeTab) {
-activeTab.classList.remove('active');
-}
-// Show only printable sections
-document.querySelectorAll('.tab-content').forEach(el => {
-if (!el.classList.contains('no-print')) {
-el.classList.add('print-section');
-}
-});
-window.print();
-// Restore active tab
-if (activeTab) {
-activeTab.classList.add('active');
-}
-}
