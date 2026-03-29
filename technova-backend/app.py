@@ -7,16 +7,14 @@ import pandas as pd
 import numpy as np
 import json
 import os
-import google.generativeai as genai
+import google.genai as genai
 import PyPDF2
 from werkzeug.utils import secure_filename
 from dotenv import load_dotenv
 
 load_dotenv()
-try:
-    genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-except Exception as e:
-    print(f"Warning: Gemini API Key not configured properly: {e}")
+print(f"DEBUG: API Key loaded: {os.getenv('GEMINI_API_KEY') is not None}")
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 app = Flask(__name__)
 model = pickle.load(open("startup_model.pkl","rb"))
@@ -185,46 +183,120 @@ def predict_startup(form_data):
         }
         return score, category, factors
 
-def generate_recommendations(score, factors, category, inputs):
-    """Generate strategy recommendations based on scores"""
+def fallback_recommendations(score, factors, category):
+    """Fallback strategy if Gemini generation fails"""
     recommendations = []
     
     if factors.get('Market', 50) < 50:
-        recommendations.append("📊 **Market Strategy**: Consider pivoting to a larger or faster-growing market segment. Your market score suggests limited opportunities.")
+        recommendations.append({"icon": "📊", "title": "Market Pivot Required", "description": "Consider pivoting to a larger or faster-growing market segment. Your market score suggests limited opportunities."})
     else:
-        recommendations.append("📊 **Market Strategy**: Your market selection shows promise. Focus on capturing market share through targeted marketing.")
+        recommendations.append({"icon": "📊", "title": "Aggressive Market Capture", "description": "Your market selection shows promise. Focus on capturing market share through targeted marketing."})
     
     if factors.get('Team', 50) < 50:
-        recommendations.append("👥 **Team Building**: Strengthen your team with experienced advisors or key hires in business development and technology.")
+        recommendations.append({"icon": "👥", "title": "Strategic Hiring Needed", "description": "Strengthen your team with experienced advisors or key hires in business development and technology."})
     else:
-        recommendations.append("👥 **Team Building**: Your team composition is solid. Consider adding complementary skills for scaling.")
+        recommendations.append({"icon": "👥", "title": "Scale Your Solid Team", "description": "Your team composition is solid. Consider adding complementary skills for scaling."})
     
     if factors.get('Product', 50) < 50:
-        recommendations.append("💡 **Product Development**: Focus on product-market fit through customer discovery and iterative development.")
+        recommendations.append({"icon": "💡", "title": "Iterate Product-Market Fit", "description": "Focus on product-market fit through customer discovery and iterative development."})
     else:
-        recommendations.append("💡 **Product Development**: Your product concept is strong. Accelerate development and gather user feedback.")
+        recommendations.append({"icon": "💡", "title": "Accelerate Development", "description": "Your product concept is strong. Accelerate development and gather user feedback."})
     
     if factors.get('Financials', 50) < 50:
-        recommendations.append("💰 **Financial Strategy**: Explore alternative funding sources or adjust burn rate to extend runway.")
+        recommendations.append({"icon": "💰", "title": "Extend Financial Runway", "description": "Explore alternative funding sources or adjust burn rate to extend runway."})
     else:
-        recommendations.append("💰 **Financial Strategy**: Your financial foundation looks solid. Consider growth-stage funding options.")
+        recommendations.append({"icon": "💰", "title": "Pursue Growth Funding", "description": "Your financial foundation looks solid. Consider growth-stage funding options."})
     
     if factors.get('Competition', 50) < 50:
-        recommendations.append("⚔️ **Competitive Strategy**: Develop stronger differentiation from competitors. Identify unique value propositions.")
+        recommendations.append({"icon": "⚔️", "title": "Establish Differentiation", "description": "Develop stronger differentiation from competitors. Identify unique value propositions."})
     else:
-        recommendations.append("⚔️ **Competitive Strategy**: You have competitive advantages. Defend them with IP and strategic partnerships.")
+        recommendations.append({"icon": "⚔️", "title": "Defend Market Position", "description": "You have competitive advantages. Defend them with IP and strategic partnerships."})
     
-    # Category-specific advice
-    if category == "Strong":
-        recommendations.append("🚀 **Growth Stage**: You're well-positioned for rapid growth. Focus on scaling operations and building brand.")
-    elif category == "Moderate":
-        recommendations.append("📈 **Development Stage**: Good foundation. Address key weaknesses before major scaling.")
-    elif category == "Weak":
-        recommendations.append("⚠️ **Improvement Needed**: Significant gaps to address. Consider refining your business model.")
-    else:
-        recommendations.append("🔴 **Critical Attention Required**: Major challenges exist. Reassess core assumptions.")
+    return {
+        "tags": [
+            {"text": "Growth priority", "color": "blue"},
+            {"text": "Market expansion", "color": "blue"},
+            {"text": "Partnership strategy", "color": "blue"}
+        ],
+        "recommendations": recommendations[:5]
+    }
+
+def generate_dynamic_strategy(form_data, factors, score, category):
+    """Dynamic strategy generation using Gemini based on idea description and analysis."""
+    print("DEBUG: generate_dynamic_strategy called with updated code")
+    description = (form_data.get('idea_description') or '')[:12000].strip()
+    if not description:
+        description = "No specific description provided. Provide strategic advice based exclusively on the provided industry, metrics, and numerical scores."
+        
+    summary = json.dumps({
+        'overall_score': score,
+        'category': category,
+        'factors': factors,
+        'startup_name': form_data.get('startup_name', 'Unknown'),
+        'industry_sector': form_data.get('industry_sector', 'Unknown'),
+        'market_type': form_data.get('market_type', 'Unknown')
+    }, indent=0)
+
+    prompt = f"""You are an expert startup advisor. Based ONLY on the startup description and the model summary below, provide a practical, tailored strategy and suggestions.
     
-    return recommendations[:5]  # Return top 5 recommendations
+Startup description:
+{description}
+
+Model summary:
+{summary}
+
+Return ONLY valid JSON with this exact structure (no markdown wrapper, no extra text, just the valid JSON object):
+{{
+    "tags": [
+        {{"text": "e.g., Growth risk", "color": "red"}},
+        {{"text": "e.g., Market expansion", "color": "blue"}}
+    ],
+    "recommendations": [
+        {{
+            "icon": "📊",
+            "title": "A highly specific, custom sub-heading based on their unique market (e.g., 'Hyper-Niche SaaS Targeting')",
+            "description": "Specific paragraph of advice..."
+        }},
+        {{
+            "icon": "👥",
+            "title": "...",
+            "description": "..."
+        }}
+    ]
+}}
+
+Rules:
+- Give exactly 3 tags relevant to their strategy. Use color 'red' for risk/warning and 'blue' for positive/opportunity/neutral.
+- Give exactly 5 recommendations. Ensure the 'icon' is an appropriate emoji (e.g. 📊, 👥, 💡, 💰, ⚔️).
+- The 'title' attribute MUST be heavily customized and highly specific to their exact idea, not just 'Market Strategy'.
+- The advice MUST be highly specific to their exact startup idea description and scores provided, NOT generic boilerplate. Even if no description is provided, use the industry, market type, and specific scores to give distinct analysis.
+"""
+    try:
+        response = client.models.generate_content(model='gemini-2.5-flash', contents=prompt)
+        text = (response.text or '').strip()
+        import re
+        json_match = re.search(r'\{.*\}', text, re.DOTALL)
+        if json_match:
+            data = json.loads(json_match.group())
+            if "tags" in data and "recommendations" in data:
+                print("✅ Successfully generated dynamic strategy!")
+                return data
+            else:
+                print("❌ Generated strategy missing required keys.")
+        else:
+            print("❌ Strategy generation returned malformed JSON text.")
+    except Exception as e:
+        print(f"❌ Strategy generation failed: {e}")
+        error_dict = fallback_recommendations(score, factors, category)
+        error_dict['recommendations'].insert(0, {
+            "icon": "⚠️",
+            "title": "API Error Detected",
+            "description": f"Gemini API generation failed with error: {str(e)}. Please restart your server if you just updated your .env file."
+        })
+        return error_dict
+        
+    return fallback_recommendations(score, factors, category)
+
 
 
 # ===== NLP GEMINI EXTRACTOR =====
@@ -253,8 +325,7 @@ def extract_startup_parameters(description):
     """
     
     try:
-        model = genai.GenerativeModel('gemini-2.5-flash')
-        response = model.generate_content(prompt)
+        response = client.models.generate_content(model='gemini-2.5-flash', contents=prompt)
         
         # Parse JSON from response
         import re
@@ -344,9 +415,9 @@ def generate_risks_resources(form_data, factors, score, category):
     """
     Input-grounded risk register and resource checklist via Gemini, with fallback.
     """
-    description = (form_data.get('idea_description') or '')[:12000]
-    if not description.strip():
-        return fallback_risks_resources(form_data, factors, score, category)
+    description = (form_data.get('idea_description') or '')[:12000].strip()
+    if not description:
+        description = "No specific description provided. Assess potential risks and required resources based exclusively on the provided industry, metrics, team size, and initial funding."
 
     summary = json.dumps({
         'overall_score': score,
@@ -391,8 +462,7 @@ Rules:
 """
 
     try:
-        model = genai.GenerativeModel('gemini-2.5-flash')
-        response = model.generate_content(prompt)
+        response = client.models.generate_content(model='gemini-2.5-flash', contents=prompt)
         text = (response.text or '').strip()
         json_match = re.search(r'\{.*\}', text, re.DOTALL)
         if json_match:
@@ -426,6 +496,13 @@ Rules:
                     return out
     except Exception as e:
         print(f"❌ Risks/resources generation failed: {e}")
+        error_dict = fallback_risks_resources(form_data, factors, score, category)
+        error_dict['risks'].insert(0, {
+            'title': 'API Error Detected',
+            'description': f"Gemini API generation failed with error: {str(e)}. Please restart your server if you just updated your .env file.",
+            'severity': 'high'
+        })
+        return error_dict
 
     return fallback_risks_resources(form_data, factors, score, category)
 
@@ -544,8 +621,8 @@ def analyze():
     # Get prediction
     score, category, factors = predict_startup(form_data)
     
-    # Generate recommendations
-    recommendations = generate_recommendations(score, factors, category, form_data)
+    # Generate and store dynamic strategy and risk recommendations
+    form_data['strategy_suggestions'] = generate_dynamic_strategy(form_data, factors, score, category)
     form_data['risks_resources'] = generate_risks_resources(form_data, factors, score, category)
     
     # Save to database
@@ -584,11 +661,28 @@ def results(analysis_id):
     inputs = json.loads(analysis.inputs)
     factors = json.loads(analysis.factors)
     
-    # Generate recommendations
-    recommendations = generate_recommendations(analysis.score, factors, analysis.category, inputs)
+    # Check if loaded strategy is the fallback version
+    strategy = inputs.get('strategy_suggestions')
+    is_strategy_fallback = False
+    if strategy and isinstance(strategy, dict) and strategy.get('tags') and len(strategy['tags']) > 0:
+        if strategy['tags'][0].get('text') == 'Growth priority':
+            is_strategy_fallback = True
 
-    if not inputs.get('risks_resources'):
+    if not strategy or is_strategy_fallback:
+        inputs['strategy_suggestions'] = generate_dynamic_strategy(inputs, factors, analysis.score, analysis.category)
+        needs_commit = True
+        
+    # Check if loaded risks is the fallback version
+    risks = inputs.get('risks_resources')
+    is_risks_fallback = False
+    if risks and isinstance(risks, dict) and risks.get('source') == 'fallback':
+        is_risks_fallback = True
+        
+    if not risks or is_risks_fallback:
         inputs['risks_resources'] = generate_risks_resources(inputs, factors, analysis.score, analysis.category)
+        needs_commit = True
+        
+    if needs_commit:
         analysis.inputs = json.dumps(inputs)
         db.session.commit()
     
@@ -598,9 +692,9 @@ def results(analysis_id):
         'score': analysis.score,
         'category': analysis.category,
         'factors': factors,
-        'recommendations': recommendations,
         'inputs': inputs,
         'risks_resources': inputs.get('risks_resources') or {},
+        'strategy_suggestions': inputs.get('strategy_suggestions') or fallback_recommendations(analysis.score, factors, analysis.category),
     }
     
     return render_template('results.html', analysis=analysis_data)
@@ -681,8 +775,8 @@ def load_analysis(analysis_id):
     inputs = json.loads(analysis.inputs)
     factors = json.loads(analysis.factors)
     
-    # Generate recommendations
-    recommendations = generate_recommendations(analysis.score, factors, analysis.category, inputs)
+    # Generate strategy using the dynamic function
+    strategy_suggestions = inputs.get('strategy_suggestions') or generate_dynamic_strategy(inputs, factors, analysis.score, analysis.category)
     
     # Store in session
     session['current_analysis'] = {
@@ -691,11 +785,11 @@ def load_analysis(analysis_id):
         'score': analysis.score,
         'category': analysis.category,
         'factors': factors,
-        'recommendations': recommendations,
+        'strategy_suggestions': strategy_suggestions,
         'inputs': inputs
     }
     
-    return redirect(url_for('results'))
+    return redirect(url_for('results', analysis_id=analysis.id))
 
 # ===== CREATE DATABASE =====
 with app.app_context():
@@ -719,4 +813,4 @@ if __name__ == '__main__':
         print("⚠️ Running in fallback mode (model not loaded)")
     print("📝 Demo login: demo / demo123")
     print("="*50 + "\n")
-    app.run(host="0.0.0.0",port=10000)
+    app.run(host="0.0.0.0",port=10000, debug=True)
