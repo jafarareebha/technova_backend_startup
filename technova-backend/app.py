@@ -576,189 +576,177 @@ def new_analysis():
         return render_template('form.html')
     
 @app.route('/analyze/start', methods=['POST'])
+
 @login_required
+
 def analyze():
-    # Process PDF if provided
-    pdf_text = ""
-    if 'idea_pdf' in request.files:
-        file = request.files['idea_pdf']
-        if file.filename != '':
-            try:
-                reader = PyPDF2.PdfReader(file)
-                pdf_text = " ".join([page.extract_text() for page in reader.pages if page.extract_text()])
-            except Exception as e:
-                print(f"PDF extraction error: {e}")
-                
-    idea_description = request.form.get('idea_description', '')
-    combined_text = idea_description + "\n\n" + pdf_text
-    
-    # Extract AI parameters
-    ai_params = extract_startup_parameters(combined_text)
-    
-    # Get form data using AI params as fallback overrides
-    form_data = {
-        'startup_name': request.form.get('startup_name'),
-        'industry_sector': request.form.get('industry_sector'),
-        'market_type': request.form.get('market_type'),
-        'country_region': request.form.get('country_region'),
-        'initial_funding': float(request.form.get('initial_funding', 50000)),
-        'team_size': int(request.form.get('team_size', 5)),
-        'funding_rounds': int(request.form.get('funding_rounds', 1)),
-        'competitors': int(request.form.get('competitors', 50)),
-        'year_founded': int(request.form.get('year_founded', 2024)),
-        'market_demand': int(ai_params.get('market_demand', 5)),
-        'pain_point': int(ai_params.get('pain_point', 5)),
-        'novelty': int(ai_params.get('novelty', 5)),
-        'scalability': int(ai_params.get('scalability', 5)),
-        'barriers': int(ai_params.get('barriers', 5)),
-        'revenue_strength': int(ai_params.get('revenue_strength', 5)),
-        'acquisition_difficulty': int(ai_params.get('acquisition_difficulty', 5)),
-        'willingness_to_pay': int(ai_params.get('willingness_to_pay', 5)),
-        'idea_description': combined_text,
-        'ai_predictions_used': True if ai_params else False
-    }
-    
-    # Get prediction
-    score, category, factors = predict_startup(form_data)
-    
-    # Generate and store dynamic strategy and risk recommendations
-    form_data['strategy_suggestions'] = generate_dynamic_strategy(form_data, factors, score, category)
-    form_data['risks_resources'] = generate_risks_resources(form_data, factors, score, category)
-    
-    # Save to database
-    import json
 
-    new_analysis_obj = Analysis(
-    user_id=current_user.id,
-    startup_name=form_data['startup_name'],
-    score=score,
-    category=category,
-    inputs=json.dumps(form_data),
-    factors=json.dumps(factors),
-    industry=form_data['industry_sector'],
-    market_type=form_data['market_type'],
-    initial_funding=form_data['initial_funding'],
-    team_size=form_data['team_size'],
-    country=form_data['country_region']
-    )
-
-    db.session.add(new_analysis_obj)
-    db.session.commit()
-    
-    return redirect(url_for('results', analysis_id=new_analysis_obj.id))
-
-@app.route('/results/<int:analysis_id>')
-@login_required
-def results(analysis_id):
-    analysis = Analysis.query.get_or_404(analysis_id)
-    
-    # Ensure user owns this analysis
-    if analysis.user_id != current_user.id:
-        flash('Access denied')
-        return redirect(url_for('dashboard'))
-    
-    # Load analysis data
-    inputs = json.loads(analysis.inputs)
-    factors = json.loads(analysis.factors)
-    
-    # Check if loaded strategy is the fallback version
-    strategy = inputs.get('strategy_suggestions')
-    is_strategy_fallback = False
-    if strategy and isinstance(strategy, dict) and strategy.get('tags') and len(strategy['tags']) > 0:
-        if strategy['tags'][0].get('text') == 'Growth priority':
-            is_strategy_fallback = True
-
-    if not strategy or is_strategy_fallback:
-        inputs['strategy_suggestions'] = generate_dynamic_strategy(inputs, factors, analysis.score, analysis.category)
-        needs_commit = True
-        
-    # Check if loaded risks is the fallback version
-    risks = inputs.get('risks_resources')
-    is_risks_fallback = False
-    if risks and isinstance(risks, dict) and risks.get('source') == 'fallback':
-        is_risks_fallback = True
-        
-    if not risks or is_risks_fallback:
-        inputs['risks_resources'] = generate_risks_resources(inputs, factors, analysis.score, analysis.category)
-        needs_commit = True
-        
-    if needs_commit:
-        analysis.inputs = json.dumps(inputs)
-        db.session.commit()
-    
-    analysis_data = {
-        'id': analysis.id,
-        'startup_name': analysis.startup_name,
-        'score': analysis.score,
-        'category': analysis.category,
-        'factors': factors,
-        'inputs': inputs,
-        'risks_resources': inputs.get('risks_resources') or {},
-        'strategy_suggestions': inputs.get('strategy_suggestions') or fallback_recommendations(analysis.score, factors, analysis.category),
-    }
-    
-    return render_template('results.html', analysis=analysis_data)
-
-@app.route('/simulate', methods=['POST'])
-@login_required
-def simulate():
-    """API endpoint for real-time simulation using ML model"""
     try:
-        data = request.json
-        analysis_id = data.get('analysis_id')
-        
-        analysis = Analysis.query.get(analysis_id)
-        if not analysis or analysis.user_id != current_user.id:
-            return jsonify({'error': 'Unauthorized or Not Found'}), 404
-            
-        # Get original form inputs
-        base_inputs = json.loads(analysis.inputs)
-        
-        # Apply deltas from frontend
-        funding_pct = float(data.get('funding_delta_pct', 0))
-        base_inputs['initial_funding'] = float(base_inputs.get('initial_funding', 0)) * (1 + (funding_pct / 100.0))
-        
-        team_delta = int(data.get('team_delta', 0))
-        base_inputs['team_size'] = max(1, int(base_inputs.get('team_size', 1)) + team_delta)
-        
-        comp_val = int(data.get('competition_val', 5))
-        base_inputs['competitors'] = comp_val * 10  # roughly scale 1-10 to 10-100
-        
-        mkt_pct = float(data.get('marketing_delta_pct', 0))
-        acq_diff = float(base_inputs.get('acquisition_difficulty', 5))
-        new_acq = max(1, acq_diff - (mkt_pct / 50.0))
-        base_inputs['acquisition_difficulty'] = round(new_acq)
-        
-        # Run true ML Prediction
-        score, category, factors = predict_startup(base_inputs)
-        
-        # Determine the initial baseline factors to ensure smooth relative changes instead of capping
-        orig_factors = json.loads(analysis.factors)
-        
-        # Dynamic ML Physics Modifier: Decision Trees usually flatline on minor perturbations.
-        # We apply this ON TOP of the newly predicted ML score so it responds fluidly.
-        modifier = (funding_pct / 100.0) * 12.0
-        modifier -= (mkt_pct / 100.0) * 3.0
-        modifier += team_delta * 1.5
-        modifier -= (comp_val - 5) * 2.0
-        
-        sim_score = min(99.0, max(1.0, score + modifier))
-        
-        factors['Financials'] = min(99.0, max(1.0, orig_factors.get('Financials', 50) + (funding_pct / 10.0)))
-        factors['Team'] = min(99.0, max(1.0, orig_factors.get('Team', 50) + team_delta * 4.0))
-        factors['Market'] = min(99.0, max(1.0, orig_factors.get('Market', 50) + (mkt_pct / 15.0) - (comp_val - 5) * 2.5))
-        factors['Competition'] = min(99.0, max(1.0, orig_factors.get('Competition', 50) - (comp_val - 5) * 5.0))
-        factors['Product'] = min(99.0, max(1.0, orig_factors.get('Product', 50) + (funding_pct / 20.0)))
-        
-        return jsonify({
-            'score': sim_score,
-            'category': score_to_category(sim_score),
-            'factors': factors
-        })
+
+        # -------------------------------
+
+        # ✅ SAFE HELPERS
+
+        # -------------------------------
+
+        def safe_float(val, default):
+
+            try:
+
+                return float(val)
+
+            except:
+
+                return default
+
+
+
+        def safe_int(val, default):
+
+            try:
+
+                return int(val)
+
+            except:
+
+                return default
+
+
+
+        # -------------------------------
+
+        # 📄 PDF PROCESSING
+
+        # -------------------------------
+
+        pdf_text = ""
+
+        if 'idea_pdf' in request.files:
+
+            file = request.files['idea_pdf']
+
+            if file and file.filename != '':
+
+                try:
+
+                    import PyPDF2
+
+                    reader = PyPDF2.PdfReader(file)
+
+                    pdf_text = " ".join([
+
+                        page.extract_text() or "" 
+
+                        for page in reader.pages
+
+                    ])
+
+                except Exception as e:
+                    print("PDF extraction error:", e)
+        # -------------------------------
+        # 🧠 TEXT COMBINE
+        # -------------------------------
+        idea_description = request.form.get('idea_description', '')
+        combined_text = idea_description + "\n\n" + pdf_text
+        # -------------------------------
+        # 🤖 AI PARAM EXTRACTION (SAFE)
+        # -------------------------------
+        try:
+            ai_params = extract_startup_parameters(combined_text)
+        except Exception as e:
+            print("AI extraction failed:", e)
+            ai_params = {}
+        # -------------------------------
+        # 📥 FORM DATA (SAFE)
+        # -------------------------------
+        form_data = {
+            'startup_name': request.form.get('startup_name', 'Unknown Startup'),
+            'industry_sector': request.form.get('industry_sector', 'Unknown'),
+            'market_type': request.form.get('market_type', 'Unknown'),
+            'country_region': request.form.get('country_region', 'Unknown'),
+            'initial_funding': safe_float(request.form.get('initial_funding'), 50000),
+            'team_size': safe_int(request.form.get('team_size'), 5),
+            'funding_rounds': safe_int(request.form.get('funding_rounds'), 1),
+            'competitors': safe_int(request.form.get('competitors'), 50),
+            'year_founded': safe_int(request.form.get('year_founded'), 2024),
+            'market_demand': safe_int(ai_params.get('market_demand'), 5),
+            'pain_point': safe_int(ai_params.get('pain_point'), 5),
+            'novelty': safe_int(ai_params.get('novelty'), 5),
+            'scalability': safe_int(ai_params.get('scalability'), 5),
+            'barriers': safe_int(ai_params.get('barriers'), 5),
+            'revenue_strength': safe_int(ai_params.get('revenue_strength'), 5),
+            'acquisition_difficulty': safe_int(ai_params.get('acquisition_difficulty'), 5),
+            'willingness_to_pay': safe_int(ai_params.get('willingness_to_pay'), 5),
+            'idea_description': combined_text,
+            'ai_predictions_used': True if ai_params else False
+        }
+        print("✅ FORM DATA:", form_data)
+        # -------------------------------
+        # 📊 PREDICTION (SAFE)
+        # -------------------------------
+        try:
+            score, category, factors = predict_startup(form_data)
+        except Exception as e:
+            print("Prediction error:", e)
+            score = 50
+            category = "Average"
+            factors = {
+                "Market": 50,
+                "Team": 50,
+                "Product": 50,
+                "Financials": 50,
+                "Competition": 50
+            }
+        print("✅ SCORE:", score)
+        # -------------------------------
+        # 📈 STRATEGY + RISKS (SAFE)
+        # -------------------------------
+        try:
+            form_data['strategy_suggestions'] = generate_dynamic_strategy(
+                form_data, factors, score, category
+            )
+        except Exception as e:
+            print("Strategy error:", e)
+            form_data['strategy_suggestions'] = []
+        try:
+            form_data['risks_resources'] = generate_risks_resources(
+                form_data, factors, score, category
+            )
+        except Exception as e:
+            print("Risk error:", e)
+            form_data['risks_resources'] = []
+        # -------------------------------
+        # 💾 DATABASE SAVE (SAFE)
+        # -------------------------------
+        try:
+            import json
+            new_analysis_obj = Analysis(
+                user_id=current_user.id,
+                startup_name=form_data['startup_name'],
+                score=score,
+                category=category,
+                inputs=json.dumps(form_data),
+                factors=json.dumps(factors),
+                industry=form_data['industry_sector'],
+                market_type=form_data['market_type'],
+                initial_funding=form_data['initial_funding'],
+                team_size=form_data['team_size'],
+                country=form_data['country_region']
+            )
+            db.session.add(new_analysis_obj)
+            db.session.commit()
+        except Exception as e:
+            print("DB ERROR:", e)
+            db.session.rollback()
+            return f"Database error: {str(e)}"
+        print("✅ SAVED TO DB")
+        # -------------------------------
+        # 🔁 REDIRECT
+        # -------------------------------
+        return redirect(url_for('results', analysis_id=new_analysis_obj.id))
     except Exception as e:
-        import traceback
-        traceback.print_exc()
-        return jsonify({'error': str(e)}), 400
+        print("🔥 CRITICAL ERROR:", e)
+        return f"Something went wrong: {str(e)}"
 
 
 @app.route('/load_analysis/<int:analysis_id>')
