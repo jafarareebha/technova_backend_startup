@@ -7,14 +7,16 @@ import pandas as pd
 import numpy as np
 import json
 import os
-import google.genai as genai
+import google.generativeai as genai
 import PyPDF2
 from werkzeug.utils import secure_filename
 from dotenv import load_dotenv
 
 load_dotenv()
-print(f"DEBUG: API Key loaded: {os.getenv('GEMINI_API_KEY') is not None}")
-client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+try:
+    genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+except Exception as e:
+    print(f"Warning: Gemini API Key not configured properly: {e}")
 
 app = Flask(__name__)
 model = pickle.load(open("startup_model.pkl","rb"))
@@ -183,120 +185,46 @@ def predict_startup(form_data):
         }
         return score, category, factors
 
-def fallback_recommendations(score, factors, category):
-    """Fallback strategy if Gemini generation fails"""
+def generate_recommendations(score, factors, category, inputs):
+    """Generate strategy recommendations based on scores"""
     recommendations = []
     
     if factors.get('Market', 50) < 50:
-        recommendations.append({"icon": "📊", "title": "Market Pivot Required", "description": "Consider pivoting to a larger or faster-growing market segment. Your market score suggests limited opportunities."})
+        recommendations.append("📊 **Market Strategy**: Consider pivoting to a larger or faster-growing market segment. Your market score suggests limited opportunities.")
     else:
-        recommendations.append({"icon": "📊", "title": "Aggressive Market Capture", "description": "Your market selection shows promise. Focus on capturing market share through targeted marketing."})
+        recommendations.append("📊 **Market Strategy**: Your market selection shows promise. Focus on capturing market share through targeted marketing.")
     
     if factors.get('Team', 50) < 50:
-        recommendations.append({"icon": "👥", "title": "Strategic Hiring Needed", "description": "Strengthen your team with experienced advisors or key hires in business development and technology."})
+        recommendations.append("👥 **Team Building**: Strengthen your team with experienced advisors or key hires in business development and technology.")
     else:
-        recommendations.append({"icon": "👥", "title": "Scale Your Solid Team", "description": "Your team composition is solid. Consider adding complementary skills for scaling."})
+        recommendations.append("👥 **Team Building**: Your team composition is solid. Consider adding complementary skills for scaling.")
     
     if factors.get('Product', 50) < 50:
-        recommendations.append({"icon": "💡", "title": "Iterate Product-Market Fit", "description": "Focus on product-market fit through customer discovery and iterative development."})
+        recommendations.append("💡 **Product Development**: Focus on product-market fit through customer discovery and iterative development.")
     else:
-        recommendations.append({"icon": "💡", "title": "Accelerate Development", "description": "Your product concept is strong. Accelerate development and gather user feedback."})
+        recommendations.append("💡 **Product Development**: Your product concept is strong. Accelerate development and gather user feedback.")
     
     if factors.get('Financials', 50) < 50:
-        recommendations.append({"icon": "💰", "title": "Extend Financial Runway", "description": "Explore alternative funding sources or adjust burn rate to extend runway."})
+        recommendations.append("💰 **Financial Strategy**: Explore alternative funding sources or adjust burn rate to extend runway.")
     else:
-        recommendations.append({"icon": "💰", "title": "Pursue Growth Funding", "description": "Your financial foundation looks solid. Consider growth-stage funding options."})
+        recommendations.append("💰 **Financial Strategy**: Your financial foundation looks solid. Consider growth-stage funding options.")
     
     if factors.get('Competition', 50) < 50:
-        recommendations.append({"icon": "⚔️", "title": "Establish Differentiation", "description": "Develop stronger differentiation from competitors. Identify unique value propositions."})
+        recommendations.append("⚔️ **Competitive Strategy**: Develop stronger differentiation from competitors. Identify unique value propositions.")
     else:
-        recommendations.append({"icon": "⚔️", "title": "Defend Market Position", "description": "You have competitive advantages. Defend them with IP and strategic partnerships."})
+        recommendations.append("⚔️ **Competitive Strategy**: You have competitive advantages. Defend them with IP and strategic partnerships.")
     
-    return {
-        "tags": [
-            {"text": "Growth priority", "color": "blue"},
-            {"text": "Market expansion", "color": "blue"},
-            {"text": "Partnership strategy", "color": "blue"}
-        ],
-        "recommendations": recommendations[:5]
-    }
-
-def generate_dynamic_strategy(form_data, factors, score, category):
-    """Dynamic strategy generation using Gemini based on idea description and analysis."""
-    print("DEBUG: generate_dynamic_strategy called with updated code")
-    description = (form_data.get('idea_description') or '')[:12000].strip()
-    if not description:
-        description = "No specific description provided. Provide strategic advice based exclusively on the provided industry, metrics, and numerical scores."
-        
-    summary = json.dumps({
-        'overall_score': score,
-        'category': category,
-        'factors': factors,
-        'startup_name': form_data.get('startup_name', 'Unknown'),
-        'industry_sector': form_data.get('industry_sector', 'Unknown'),
-        'market_type': form_data.get('market_type', 'Unknown')
-    }, indent=0)
-
-    prompt = f"""You are an expert startup advisor. Based ONLY on the startup description and the model summary below, provide a practical, tailored strategy and suggestions.
+    # Category-specific advice
+    if category == "Strong":
+        recommendations.append("🚀 **Growth Stage**: You're well-positioned for rapid growth. Focus on scaling operations and building brand.")
+    elif category == "Moderate":
+        recommendations.append("📈 **Development Stage**: Good foundation. Address key weaknesses before major scaling.")
+    elif category == "Weak":
+        recommendations.append("⚠️ **Improvement Needed**: Significant gaps to address. Consider refining your business model.")
+    else:
+        recommendations.append("🔴 **Critical Attention Required**: Major challenges exist. Reassess core assumptions.")
     
-Startup description:
-{description}
-
-Model summary:
-{summary}
-
-Return ONLY valid JSON with this exact structure (no markdown wrapper, no extra text, just the valid JSON object):
-{{
-    "tags": [
-        {{"text": "e.g., Growth risk", "color": "red"}},
-        {{"text": "e.g., Market expansion", "color": "blue"}}
-    ],
-    "recommendations": [
-        {{
-            "icon": "📊",
-            "title": "A highly specific, custom sub-heading based on their unique market (e.g., 'Hyper-Niche SaaS Targeting')",
-            "description": "Specific paragraph of advice..."
-        }},
-        {{
-            "icon": "👥",
-            "title": "...",
-            "description": "..."
-        }}
-    ]
-}}
-
-Rules:
-- Give exactly 3 tags relevant to their strategy. Use color 'red' for risk/warning and 'blue' for positive/opportunity/neutral.
-- Give exactly 5 recommendations. Ensure the 'icon' is an appropriate emoji (e.g. 📊, 👥, 💡, 💰, ⚔️).
-- The 'title' attribute MUST be heavily customized and highly specific to their exact idea, not just 'Market Strategy'.
-- The advice MUST be highly specific to their exact startup idea description and scores provided, NOT generic boilerplate. Even if no description is provided, use the industry, market type, and specific scores to give distinct analysis.
-"""
-    try:
-        response = client.models.generate_content(model='gemini-2.5-flash', contents=prompt)
-        text = (response.text or '').strip()
-        import re
-        json_match = re.search(r'\{.*\}', text, re.DOTALL)
-        if json_match:
-            data = json.loads(json_match.group())
-            if "tags" in data and "recommendations" in data:
-                print("✅ Successfully generated dynamic strategy!")
-                return data
-            else:
-                print("❌ Generated strategy missing required keys.")
-        else:
-            print("❌ Strategy generation returned malformed JSON text.")
-    except Exception as e:
-        print(f"❌ Strategy generation failed: {e}")
-        error_dict = fallback_recommendations(score, factors, category)
-        error_dict['recommendations'].insert(0, {
-            "icon": "⚠️",
-            "title": "API Error Detected",
-            "description": f"Gemini API generation failed with error: {str(e)}. Please restart your server if you just updated your .env file."
-        })
-        return error_dict
-        
-    return fallback_recommendations(score, factors, category)
-
+    return recommendations[:5]  # Return top 5 recommendations
 
 
 # ===== NLP GEMINI EXTRACTOR =====
@@ -325,7 +253,8 @@ def extract_startup_parameters(description):
     """
     
     try:
-        response = client.models.generate_content(model='gemini-2.5-flash', contents=prompt)
+        model = genai.GenerativeModel('gemini-2.5-flash')
+        response = model.generate_content(prompt)
         
         # Parse JSON from response
         import re
@@ -338,173 +267,6 @@ def extract_startup_parameters(description):
         print(f"❌ Gemini evaluation failed: {e}")
     
     return {}
-
-def fallback_risks_resources(form_data, factors, score, category):
-    """Rule-based risks & resource areas when Gemini is unavailable."""
-    funding = float(form_data.get('initial_funding', 0) or 0)
-    team = int(form_data.get('team_size', 1) or 1)
-    comp_n = int(form_data.get('competitors', 0) or 0)
-    risks = []
-    if factors.get('Competition', 50) < 55:
-        risks.append({
-            'title': 'Intense Market Competition',
-            'description': 'You have many competitors. You must clearly highlight what makes your product unique, find better ways to reach customers, or reward user loyalty to stand out.',
-            'severity': 'high' if factors.get('Competition', 50) < 40 else 'medium',
-        })
-    if factors.get('Financials', 50) < 55 or funding < 75000:
-        risks.append({
-            'title': 'Limited Funding and Cash Runway',
-            'description': 'Your current budget might run out quickly relative to your team size. You may not have enough time to perfect the product before you need to secure more money or find paying users.',
-            'severity': 'medium',
-        })
-    if int(form_data.get('acquisition_difficulty', 5) or 5) >= 7:
-        risks.append({
-            'title': 'High Cost to Find Customers',
-            'description': 'It will be difficult and expensive to convince people to try your product. You should carefully plan your marketing channels and partner with others to reduce costs.',
-            'severity': 'high',
-        })
-    if int(form_data.get('market_demand', 5) or 5) <= 4:
-        risks.append({
-            'title': 'Uncertain Customer Demand',
-            'description': 'It is not completely clear if enough users truly want this solution. You should definitely talk to potential users and run small tests before building the full product.',
-            'severity': 'medium',
-        })
-    if category in ('Weak', 'Poor'):
-        risks.append({
-            'title': 'Overall Business Feasibility',
-            'description': 'Our model gave this idea a lower score overall. We highly recommend rethinking your core target audience or your pricing strategy before spending significant money.',
-            'severity': 'high',
-        })
-    if not risks:
-        risks.append({
-            'title': 'Execution and Scaling',
-            'description': 'There are no major flashing warnings right now. Focus entirely on disciplined execution, tracking your metrics, and hitting your initial milestones.',
-            'severity': 'low',
-        })
-
-    runway_months = max(1, int(funding / max(1, team * 8000)))
-    resource_areas = [
-        {
-            'title': 'Capital & Budget Tracker',
-            'items': [
-                f"Estimated Timeline: You have roughly ~{runway_months} months of operations before running out of money (this varies based on real salaries).",
-                'Action: Plot out exactly what you absolutely must pay for right away versus what can wait, keeping 3–6 months of emergency cash.',
-            ],
-        },
-        {
-            'title': 'People & Team Skills',
-            'items': [
-                f"Team Size Planned: {team}. Make sure your next hire directly helps you hit your immediate milestone (like a salesperson if you need revenue, or a developer for the product).",
-                'Action: Find part-time advisors or freelancers for specific complex tasks you lack (like legal compliance or deep financial planning).',
-            ],
-        },
-        {
-            'title': 'Operations & Software Tools',
-            'items': [
-                'Action: Keep the first version of the product as simple as possible. Decide exactly which affordable software tools you will use for basic hosting and tracking users.',
-                'Action: Write down how you will handle basic daily tasks early on, so the business runs smoothly as you slowly add new users.',
-            ],
-        },
-    ]
-    if comp_n > 60:
-        resource_areas[0]['items'].append('Budget for competitive intelligence and positioning work (not only ads).')
-    return {'risks': risks, 'resource_areas': resource_areas, 'source': 'fallback'}
-
-
-def generate_risks_resources(form_data, factors, score, category):
-    """
-    Input-grounded risk register and resource checklist via Gemini, with fallback.
-    """
-    description = (form_data.get('idea_description') or '')[:12000].strip()
-    if not description:
-        description = "No specific description provided. Assess potential risks and required resources based exclusively on the provided industry, metrics, team size, and initial funding."
-
-    summary = json.dumps({
-        'overall_score': score,
-        'category': category,
-        'factors': factors,
-        'initial_funding': form_data.get('initial_funding'),
-        'team_size': form_data.get('team_size'),
-        'competitors': form_data.get('competitors'),
-        'industry_sector': form_data.get('industry_sector'),
-        'market_type': form_data.get('market_type'),
-        'country_region': form_data.get('country_region'),
-        'market_demand': form_data.get('market_demand'),
-        'acquisition_difficulty': form_data.get('acquisition_difficulty'),
-        'barriers': form_data.get('barriers'),
-    }, indent=0)
-
-    prompt = f"""You are advising a new entrepreneur. Based ONLY on the startup description and the model summary below, provide a highly readable, jargon-free risk register and a practical resource checklist.
-Use proper business concepts, but explain them in simple, easy-to-understand language. Avoid complex buzzwords. Ensure any beginner founder could immediately understand what to do next.
-
-Startup description:
-{description}
-
-Model summary (use as context, do not invent external market data):
-{summary}
-
-Return ONLY valid JSON with this exact structure (no markdown):
-{{
-  "risks": [
-    {{"title": "Simple short title", "description": "1-3 easy-to-understand sentences explaining what could go wrong and how to avoid it.", "severity": "high" or "medium" or "low"}}
-  ],
-  "resource_areas": [
-    {{"title": "e.g. Budget & Cash Flow", "items": ["Clear, actionable checklist item", "..."]}},
-    {{"title": "e.g. Team Hiring Needs", "items": ["...", "..."]}},
-    {{"title": "e.g. Tools & Setup", "items": ["...", "..."]}}
-  ]
-}}
-
-Rules:
-- 4-6 distinct risks directly related to the idea. Explain the risk clearly without overcomplicating it.
-- 3-5 resource_areas with 2-4 items each. Items must be immediately actionable (e.g., "Set aside 3 months of emergency cash" rather than "Optimize runway capitalization").
-- severity must be exactly lowercase: high, medium, or low.
-"""
-
-    try:
-        response = client.models.generate_content(model='gemini-2.5-flash', contents=prompt)
-        text = (response.text or '').strip()
-        json_match = re.search(r'\{.*\}', text, re.DOTALL)
-        if json_match:
-            data = json.loads(json_match.group())
-            risks = data.get('risks') or []
-            areas = data.get('resource_areas') or []
-            if isinstance(risks, list) and isinstance(areas, list) and risks and areas:
-                out = {'risks': [], 'resource_areas': [], 'source': 'gemini'}
-                for r in risks[:8]:
-                    if not isinstance(r, dict):
-                        continue
-                    sev = (r.get('severity') or 'medium').lower()
-                    if sev not in ('high', 'medium', 'low'):
-                        sev = 'medium'
-                    out['risks'].append({
-                        'title': str(r.get('title', 'Risk'))[:200],
-                        'description': str(r.get('description', ''))[:1200],
-                        'severity': sev,
-                    })
-                for a in areas[:6]:
-                    if not isinstance(a, dict):
-                        continue
-                    items = a.get('items') or []
-                    if not isinstance(items, list):
-                        items = []
-                    out['resource_areas'].append({
-                        'title': str(a.get('title', 'Resources'))[:120],
-                        'items': [str(x)[:500] for x in items[:8]],
-                    })
-                if out['risks'] and out['resource_areas']:
-                    return out
-    except Exception as e:
-        print(f"❌ Risks/resources generation failed: {e}")
-        error_dict = fallback_risks_resources(form_data, factors, score, category)
-        error_dict['risks'].insert(0, {
-            'title': 'API Error Detected',
-            'description': f"Gemini API generation failed with error: {str(e)}. Please restart your server if you just updated your .env file.",
-            'severity': 'high'
-        })
-        return error_dict
-
-    return fallback_risks_resources(form_data, factors, score, category)
 
 # ===== ROUTES =====
 @app.route('/')
@@ -576,177 +338,147 @@ def new_analysis():
         return render_template('form.html')
     
 @app.route('/analyze/start', methods=['POST'])
-
 @login_required
-
 def analyze():
+    # Process PDF if provided
+    pdf_text = ""
+    if 'idea_pdf' in request.files:
+        file = request.files['idea_pdf']
+        if file.filename != '':
+            try:
+                reader = PyPDF2.PdfReader(file)
+                pdf_text = " ".join([page.extract_text() for page in reader.pages if page.extract_text()])
+            except Exception as e:
+                print(f"PDF extraction error: {e}")
+                
+    idea_description = request.form.get('idea_description', '')
+    combined_text = idea_description + "\n\n" + pdf_text
+    
+    # Extract AI parameters
+    ai_params = extract_startup_parameters(combined_text)
+    
+    # Get form data using AI params as fallback overrides
+    form_data = {
+        'startup_name': request.form.get('startup_name'),
+        'industry_sector': request.form.get('industry_sector'),
+        'market_type': request.form.get('market_type'),
+        'country_region': request.form.get('country_region'),
+        'initial_funding': float(request.form.get('initial_funding', 50000)),
+        'team_size': int(request.form.get('team_size', 5)),
+        'funding_rounds': int(request.form.get('funding_rounds', 1)),
+        'competitors': int(request.form.get('competitors', 50)),
+        'year_founded': int(request.form.get('year_founded', 2024)),
+        'market_demand': int(ai_params.get('market_demand', 5)),
+        'pain_point': int(ai_params.get('pain_point', 5)),
+        'novelty': int(ai_params.get('novelty', 5)),
+        'scalability': int(ai_params.get('scalability', 5)),
+        'barriers': int(ai_params.get('barriers', 5)),
+        'revenue_strength': int(ai_params.get('revenue_strength', 5)),
+        'acquisition_difficulty': int(ai_params.get('acquisition_difficulty', 5)),
+        'willingness_to_pay': int(ai_params.get('willingness_to_pay', 5)),
+        'idea_description': combined_text,
+        'ai_predictions_used': True if ai_params else False
+    }
+    
+    # Get prediction
+    score, category, factors = predict_startup(form_data)
+    
+    # Generate recommendations
+    recommendations = generate_recommendations(score, factors, category, form_data)
+    
+    # Save to database
+    import json
 
+    new_analysis_obj = Analysis(
+    user_id=current_user.id,
+    startup_name=form_data['startup_name'],
+    score=score,
+    category=category,
+    inputs=json.dumps(form_data),
+    factors=json.dumps(factors),
+    industry=form_data['industry_sector'],
+    market_type=form_data['market_type'],
+    initial_funding=form_data['initial_funding'],
+    team_size=form_data['team_size'],
+    country=form_data['country_region']
+    )
+
+    db.session.add(new_analysis_obj)
+    db.session.commit()
+    
+    return redirect(url_for('results', analysis_id=new_analysis_obj.id))
+
+@app.route('/results/<int:analysis_id>')
+@login_required
+def results(analysis_id):
+    analysis = Analysis.query.get_or_404(analysis_id)
+    
+    # Ensure user owns this analysis
+    if analysis.user_id != current_user.id:
+        flash('Access denied')
+        return redirect(url_for('dashboard'))
+    
+    # Load analysis data
+    inputs = json.loads(analysis.inputs)
+    factors = json.loads(analysis.factors)
+    
+    # Generate recommendations
+    recommendations = generate_recommendations(analysis.score, factors, analysis.category, inputs)
+    
+    analysis_data = {
+        'id': analysis.id,
+        'startup_name': analysis.startup_name,
+        'score': analysis.score,
+        'category': analysis.category,
+        'factors': factors,
+        'recommendations': recommendations,
+        'inputs': inputs
+    }
+    
+    return render_template('results.html', analysis=analysis_data)
+
+@app.route('/simulate', methods=['POST'])
+@login_required
+def simulate():
+    """API endpoint for real-time simulation using ML model"""
     try:
-
-        # -------------------------------
-
-        # ✅ SAFE HELPERS
-
-        # -------------------------------
-
-        def safe_float(val, default):
-
-            try:
-
-                return float(val)
-
-            except:
-
-                return default
-
-
-
-        def safe_int(val, default):
-
-            try:
-
-                return int(val)
-
-            except:
-
-                return default
-
-
-
-        # -------------------------------
-
-        # 📄 PDF PROCESSING
-
-        # -------------------------------
-
-        pdf_text = ""
-
-        if 'idea_pdf' in request.files:
-
-            file = request.files['idea_pdf']
-
-            if file and file.filename != '':
-
-                try:
-
-                    import PyPDF2
-
-                    reader = PyPDF2.PdfReader(file)
-
-                    pdf_text = " ".join([
-
-                        page.extract_text() or "" 
-
-                        for page in reader.pages
-
-                    ])
-
-                except Exception as e:
-                    print("PDF extraction error:", e)
-        # -------------------------------
-        # 🧠 TEXT COMBINE
-        # -------------------------------
-        idea_description = request.form.get('idea_description', '')
-        combined_text = idea_description + "\n\n" + pdf_text
-        # -------------------------------
-        # 🤖 AI PARAM EXTRACTION (SAFE)
-        # -------------------------------
-        try:
-            ai_params = extract_startup_parameters(combined_text)
-        except Exception as e:
-            print("AI extraction failed:", e)
-            ai_params = {}
-        # -------------------------------
-        # 📥 FORM DATA (SAFE)
-        # -------------------------------
-        form_data = {
-            'startup_name': request.form.get('startup_name', 'Unknown Startup'),
-            'industry_sector': request.form.get('industry_sector', 'Unknown'),
-            'market_type': request.form.get('market_type', 'Unknown'),
-            'country_region': request.form.get('country_region', 'Unknown'),
-            'initial_funding': safe_float(request.form.get('initial_funding'), 50000),
-            'team_size': safe_int(request.form.get('team_size'), 5),
-            'funding_rounds': safe_int(request.form.get('funding_rounds'), 1),
-            'competitors': safe_int(request.form.get('competitors'), 50),
-            'year_founded': safe_int(request.form.get('year_founded'), 2024),
-            'market_demand': safe_int(ai_params.get('market_demand'), 5),
-            'pain_point': safe_int(ai_params.get('pain_point'), 5),
-            'novelty': safe_int(ai_params.get('novelty'), 5),
-            'scalability': safe_int(ai_params.get('scalability'), 5),
-            'barriers': safe_int(ai_params.get('barriers'), 5),
-            'revenue_strength': safe_int(ai_params.get('revenue_strength'), 5),
-            'acquisition_difficulty': safe_int(ai_params.get('acquisition_difficulty'), 5),
-            'willingness_to_pay': safe_int(ai_params.get('willingness_to_pay'), 5),
-            'idea_description': combined_text,
-            'ai_predictions_used': True if ai_params else False
-        }
-        print("✅ FORM DATA:", form_data)
-        # -------------------------------
-        # 📊 PREDICTION (SAFE)
-        # -------------------------------
-        try:
-            score, category, factors = predict_startup(form_data)
-        except Exception as e:
-            print("Prediction error:", e)
-            score = 50
-            category = "Average"
-            factors = {
-                "Market": 50,
-                "Team": 50,
-                "Product": 50,
-                "Financials": 50,
-                "Competition": 50
-            }
-        print("✅ SCORE:", score)
-        # -------------------------------
-        # 📈 STRATEGY + RISKS (SAFE)
-        # -------------------------------
-        try:
-            form_data['strategy_suggestions'] = generate_dynamic_strategy(
-                form_data, factors, score, category
-            )
-        except Exception as e:
-            print("Strategy error:", e)
-            form_data['strategy_suggestions'] = []
-        try:
-            form_data['risks_resources'] = generate_risks_resources(
-                form_data, factors, score, category
-            )
-        except Exception as e:
-            print("Risk error:", e)
-            form_data['risks_resources'] = []
-        # -------------------------------
-        # 💾 DATABASE SAVE (SAFE)
-        # -------------------------------
-        try:
-            import json
-            new_analysis_obj = Analysis(
-                user_id=current_user.id,
-                startup_name=form_data['startup_name'],
-                score=score,
-                category=category,
-                inputs=json.dumps(form_data),
-                factors=json.dumps(factors),
-                industry=form_data['industry_sector'],
-                market_type=form_data['market_type'],
-                initial_funding=form_data['initial_funding'],
-                team_size=form_data['team_size'],
-                country=form_data['country_region']
-            )
-            db.session.add(new_analysis_obj)
-            db.session.commit()
-        except Exception as e:
-            print("DB ERROR:", e)
-            db.session.rollback()
-            return f"Database error: {str(e)}"
-        print("✅ SAVED TO DB")
-        # -------------------------------
-        # 🔁 REDIRECT
-        # -------------------------------
-        return redirect(url_for('results', analysis_id=new_analysis_obj.id))
+        data = request.json
+        analysis_id = data.get('analysis_id')
+        
+        analysis = Analysis.query.get(analysis_id)
+        if not analysis or analysis.user_id != current_user.id:
+            return jsonify({'error': 'Unauthorized or Not Found'}), 404
+            
+        # Get original form inputs
+        base_inputs = json.loads(analysis.inputs)
+        
+        # Apply deltas from frontend
+        funding_pct = float(data.get('funding_delta_pct', 0))
+        base_inputs['initial_funding'] = float(base_inputs.get('initial_funding', 0)) * (1 + (funding_pct / 100.0))
+        
+        team_delta = int(data.get('team_delta', 0))
+        base_inputs['team_size'] = max(1, int(base_inputs.get('team_size', 1)) + team_delta)
+        
+        comp_val = int(data.get('competition_val', 5))
+        base_inputs['competitors'] = comp_val * 10  # roughly scale 1-10 to 10-100
+        
+        mkt_pct = float(data.get('marketing_delta_pct', 0))
+        acq_diff = float(base_inputs.get('acquisition_difficulty', 5))
+        new_acq = max(1, acq_diff - (mkt_pct / 50.0))
+        base_inputs['acquisition_difficulty'] = round(new_acq)
+        
+        # Run true ML Prediction
+        score, category, factors = predict_startup(base_inputs)
+        
+        return jsonify({
+            'score': score,
+            'category': category,
+            'factors': factors
+        })
     except Exception as e:
-        print("🔥 CRITICAL ERROR:", e)
-        return f"Something went wrong: {str(e)}"
+        import traceback
+        traceback.print_exc()
+        return jsonify({'error': str(e)}), 400
 
 
 @app.route('/load_analysis/<int:analysis_id>')
@@ -763,8 +495,8 @@ def load_analysis(analysis_id):
     inputs = json.loads(analysis.inputs)
     factors = json.loads(analysis.factors)
     
-    # Generate strategy using the dynamic function
-    strategy_suggestions = inputs.get('strategy_suggestions') or generate_dynamic_strategy(inputs, factors, analysis.score, analysis.category)
+    # Generate recommendations
+    recommendations = generate_recommendations(analysis.score, factors, analysis.category, inputs)
     
     # Store in session
     session['current_analysis'] = {
@@ -773,11 +505,11 @@ def load_analysis(analysis_id):
         'score': analysis.score,
         'category': analysis.category,
         'factors': factors,
-        'strategy_suggestions': strategy_suggestions,
+        'recommendations': recommendations,
         'inputs': inputs
     }
     
-    return redirect(url_for('results', analysis_id=analysis.id))
+    return redirect(url_for('results'))
 
 # ===== CREATE DATABASE =====
 with app.app_context():
@@ -801,4 +533,4 @@ if __name__ == '__main__':
         print("⚠️ Running in fallback mode (model not loaded)")
     print("📝 Demo login: demo / demo123")
     print("="*50 + "\n")
-    app.run(host="0.0.0.0",port=int(os.environ.get("PORT",10000)))
+    app.run(host="0.0.0.0",port=10000)
