@@ -181,6 +181,39 @@
         .insight-label { font-size: 0.85rem; color: var(--text-muted); }
         .table-responsive { overflow-x: auto; }
         @media (max-width: 768px) { .market-overview, .trends-grid, .insights-grid { grid-template-columns: 1fr; } .competitor-table { font-size: 0.8rem; } .market-dashboard { padding: 16px; } }
+
+        /* PRINT STYLES */
+        @media print {
+            /* Hide navigation and controls */
+            nav { display: none !important; }
+            .tabs-nav { display: none !important; }
+            .action-btns { display: none !important; }
+            #tab-scenario { display: none !important; }
+            .btn { display: none !important; }
+
+            /* Show only printable tabs */
+            #tab-initial { display: block !important; }
+            #tab-strategy { display: block !important; }
+            #tab-risks { display: block !important; }
+            #tab-market { display: block !important; }
+
+            /* Clean up styling for print */
+            * { box-shadow: none !important; }
+            body { background: white !important; }
+            .dashboard { background: white !important; }
+            .card { background: white !important; box-shadow: none !important; border: 1px solid var(--border-color) !important; page-break-inside: avoid; margin-bottom: 2rem; }
+            .header-card { background: white !important; box-shadow: none !important; border-bottom: 2px solid var(--border-color) !important; page-break-inside: avoid; }
+            
+            /* Add spacing between sections */
+            .tab-content { page-break-inside: avoid; margin-bottom: 2rem; }
+            .card { page-break-inside: avoid; }
+            .rr-grid { page-break-inside: avoid; }
+            .market-overview, .trends-grid, .competitor-table, .gap-analysis, .insights-grid { page-break-inside: avoid; }
+            
+            /* Ensure content is readable */
+            .card-header { font-size: 1.25rem; margin-bottom: 1.5rem; border-bottom: 2px solid #ddd; padding-bottom: 0.8rem; }
+            .rec-item, .risk-row { break-inside: avoid; }
+        }
     </style>
 </head>
 <body>
@@ -206,7 +239,10 @@
                     <span class="meta-badge"><i class="fas fa-flag"></i> Built: {{ analysis.inputs.year_founded }}</span>
                 </div>
             </div>
-            <div>
+            <div style="display: flex; gap: 1rem;">
+                <button onclick="printAsPDF()" class="btn btn-secondary" title="Print analysis as PDF">
+                    <i class="fas fa-print"></i> Print
+                </button>
                 <a href="/dashboard" class="btn btn-secondary">My Dashboard</a>
             </div>
         </div>
@@ -580,6 +616,10 @@
             document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
             btnElement.classList.add('active');
+        }
+
+        function printAsPDF() {
+            window.print();
         }
     </script>
 </body>
