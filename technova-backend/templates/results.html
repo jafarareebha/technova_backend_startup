@@ -192,10 +192,10 @@
             .btn { display: none !important; }
 
             /* Show only printable tabs */
-            #tab-initial { display: block !important; }
-            #tab-strategy { display: block !important; }
-            #tab-risks { display: block !important; }
-            #tab-market { display: block !important; }
+            #tab-initial { display: block !important; visibility: visible !important; }
+            #tab-strategy { display: block !important; visibility: visible !important; }
+            #tab-risks { display: block !important; visibility: visible !important; }
+            #tab-market { display: block !important; visibility: visible !important; }
 
             /* Clean up styling for print */
             * { box-shadow: none !important; }
@@ -214,6 +214,9 @@
             .card-header { font-size: 1.25rem; margin-bottom: 1.5rem; border-bottom: 2px solid #ddd; padding-bottom: 0.8rem; }
             .rec-item, .risk-row { break-inside: avoid; }
         }
+
+        /* Print visibility class */
+        .print-visible { display: block !important; }
     </style>
 </head>
 <body>
@@ -240,7 +243,7 @@
                 </div>
             </div>
             <div style="display: flex; gap: 1rem;">
-                <button onclick="printAsPDF()" class="btn btn-secondary" title="Print analysis as PDF">
+                <button onclick="printReport()" class="btn btn-secondary" title="Print analysis as PDF">
                     <i class="fas fa-print"></i> Print
                 </button>
                 <a href="/dashboard" class="btn btn-secondary">My Dashboard</a>
@@ -618,8 +621,31 @@
             btnElement.classList.add('active');
         }
 
-        function printAsPDF() {
+        function printReport() {
+            // Store current active tab
+            const activeTab = document.querySelector('.tab-content.active');
+            
+            // Temporarily make required tabs visible
+            const printableTabs = ['tab-initial', 'tab-strategy', 'tab-risks', 'tab-market'];
+            printableTabs.forEach(id => {
+                document.getElementById(id).classList.add('print-visible');
+            });
+            
+            // Ensure scenario is hidden
+            document.getElementById('tab-scenario').style.display = 'none';
+            
+            // Print
             window.print();
+            
+            // Restore
+            printableTabs.forEach(id => {
+                document.getElementById(id).classList.remove('print-visible');
+            });
+            
+            // Restore active tab (though it should be fine)
+            if (activeTab) {
+                activeTab.classList.add('active');
+            }
         }
     </script>
 </body>
