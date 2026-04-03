@@ -67,17 +67,38 @@
         .tab-btn:hover { color: var(--primary); }
         .tab-btn.active { color: var(--primary); border-bottom: 3px solid var(--primary); }
 
-        .tab-content { display: none; animation: fadeIn 0.3s ease-in-out; }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+            min-height: 400px;
+        }
         .tab-content.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        .dashboard {
+            min-height: calc(100vh - 130px);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
 
         .card {
             background: var(--card-bg);
             border-radius: 12px;
             padding: 2.5rem;
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-            height: 100%;
+            height: auto;
         }
+
+        #tab-chat .card {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-height: 500px;
+            max-height: calc(100vh - 160px);
+            overflow: hidden;
+        }
+
         .card-header { font-size: 1.35rem; font-weight: 800; margin-bottom: 1.5rem; color: var(--text-main); border-bottom: 1px solid var(--border-color); padding-bottom: 0.8rem; display: flex; align-items: center; justify-content: space-between;}
 
         .donut-container { display: flex; flex-direction: column; align-items: center; text-align: center; }
@@ -130,6 +151,188 @@
         @media (max-width: 900px) { .rr-grid { grid-template-columns: 1fr; } }
         .rr-card { background: var(--card-bg); border-radius: 12px; padding: 1.75rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid var(--border-color); }
         .rr-card h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 1rem; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem; }
+
+        /* In-panel messenger-style chat */
+        .chat-panel {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-height: 320px;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #f8fafc;
+        }
+
+        .chat-items {
+            flex: 1;
+            min-height: 0;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            overflow-y: auto;
+            background: #f5f7fb;
+            scroll-behavior: smooth;
+        }
+
+        .chat-items::-webkit-scrollbar {
+            width: 8px;
+        }
+        .chat-items::-webkit-scrollbar-track { background: #e5e7eb; border-radius: 999px; }
+        .chat-items::-webkit-scrollbar-thumb { background: #a5b4fc; border-radius: 999px; }
+
+        .chat-footer {
+            display: flex;
+            gap: 0.6rem;
+            align-items: center;
+            border-top: 1px solid #e5e7eb;
+            padding: 0.6rem;
+            background: white;
+            position: sticky;
+            bottom: 0;
+            z-index: 2;
+        }
+
+        .chat-footer input {
+            flex: 1;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
+            padding: 0.65rem 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .chat-items::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .chat-items::-webkit-scrollbar-track {
+            background: #e5e7eb;
+            border-radius: 999px;
+        }
+
+        .chat-items::-webkit-scrollbar-thumb {
+            background: #a5b4fc;
+            border-radius: 999px;
+        }
+
+        .chat-msg {
+            max-width: 78%;
+            padding: 10px 14px;
+            border-radius: 16px;
+            line-height: 1.4;
+            border: 1px solid #dbeafe;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            font-size: 0.94rem;
+        }
+
+        .chat-msg.user {
+            margin-left: auto;
+            background: #e0f2fe;
+            border-color: #bfdbfe;
+        }
+
+        .chat-msg.bot {
+            margin-right: auto;
+            background: #ffffff;
+            border-color: #d1d5db;
+        }
+
+        .chat-footer {
+            display: flex;
+            gap: 0.6rem;
+            align-items: center;
+            border-top: 1px solid #e5e7eb;
+            padding: 0.6rem;
+            background: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .chat-footer input {
+            flex: 1;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
+            padding: 0.65rem 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .micro-btn, .send-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0.48rem 0.8rem;
+            cursor: pointer;
+            font-weight: 600;
+            min-width: 48px;
+        }
+
+        .micro-btn { background: #10b981; }
+
+        .chat-loading {
+            padding: 8px;
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .chat-loading span {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: #6b7280;
+            opacity: 0.4;
+            animation: dot-flash 1.2s infinite ease-in-out;
+        }
+
+        .chat-loading span:nth-child(2) { animation-delay: 0.2s; }
+        .chat-loading span:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes dot-flash {
+            0%, 80%, 100% { transform: scale(0.8); opacity: 0.3; }
+            40% { transform: scale(1.15); opacity: 1; }
+        }
+
+        .chat-typing { display: none; }
+
+        .chat-typing {
+            background: #ffffff;
+            border-top: 1px solid #e5e7eb;
+            color: #4b5563;
+            font-size: 0.85rem;
+            text-align: left;
+            width: 100%;
+        }
+
+        .chat-controls input {
+            flex: 1;
+            border: 1px solid #d1d5db;
+            border-radius: 10px;
+            padding: 0.55rem 0.75rem;
+        }
+
+        .chat-controls button {
+            border: none;
+            border-radius: 10px;
+            background: var(--primary);
+            color: white;
+            padding: 0.46rem 0.7rem;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .chat-controls button.mic {
+            background: #10b981;
+        }
+
+        @media (max-width: 1024px) {
+            .chat-sidebar { width: 300px; height: 500px; right: 12px; bottom: 70px; }
+        }
+        @media (max-width: 768px) {
+            .chat-sidebar { width: 90%; right: 5%; left: 5%; }
+        }
         .risk-row { padding: 1rem; margin-bottom: 0.75rem; border-radius: 8px; background: #f8fafc; border-left: 4px solid var(--border-color); }
         .risk-row.sev-high { border-left-color: var(--danger); background: #fef2f2; }
         .risk-row.sev-medium { border-left-color: var(--warning); background: #fffbeb; }
@@ -256,6 +459,7 @@
             <button class="tab-btn" onclick="switchTab('tab-strategy', this)">Strategy & Suggestions</button>
             <button class="tab-btn" onclick="switchTab('tab-risks', this)">Risks & Resources</button>
             <button class="tab-btn" onclick="switchTab('tab-market', this)">Market & Trends</button>
+            <button class="tab-btn" onclick="switchTab('tab-chat', this)">InsightBot</button>
         </div>
 
         {% set ov_color = '#10b981' if analysis.score >= 75 else ('#f59e0b' if analysis.score >= 50 else ('#ef4444' if analysis.score >= 25 else '#991b1b')) %}
@@ -515,6 +719,24 @@
                         </div>
                     </div>
                 </div>
+            </div> <!-- end market-dashboard -->
+        </div> <!-- end tab-market -->
+
+        <!-- TAB 6: InsightBot Chat -->
+        <div id="tab-chat" class="tab-content">
+            <div class="card" style="margin-bottom: 1rem;">
+                <div class="card-header">InsightBot Chat</div>
+                <div id="chatPanel" class="chat-panel">
+                    <div id="chatItems" class="chat-items"></div>
+                    <div id="chatLoading" class="chat-loading" style="display: none;"><span></span><span></span><span></span></div>
+                </div>
+                <div class="chat-footer">
+                    <button id="micBtn" class="micro-btn" title="Speak your question">🎙️</button>
+                    <input id="chatInput" type="text" placeholder="Ask about your current analysis or startup strategy..." />
+                    <button id="sendBtn" class="send-btn">Send</button>
+                </div>
+            </div>
+        </div>
 
                 <div class="insights-section">
                     <h3><i class="fas fa-chart-pie"></i> Market Insights</h3>
@@ -626,9 +848,10 @@
             const activeTab = document.querySelector('.tab-content.active');
             
             // Temporarily make required tabs visible
-            const printableTabs = ['tab-initial', 'tab-strategy', 'tab-risks', 'tab-market'];
+            const printableTabs = ['tab-initial', 'tab-strategy', 'tab-risks', 'tab-market', 'tab-chat'];
             printableTabs.forEach(id => {
-                document.getElementById(id).classList.add('print-visible');
+                const el = document.getElementById(id);
+                if (el) el.classList.add('print-visible');
             });
             
             // Ensure scenario is hidden
@@ -646,6 +869,133 @@
             if (activeTab) {
                 activeTab.classList.add('active');
             }
+        }
+    </script>
+
+    <script>
+        const CURRENT_ANALYSIS_ID = {{ analysis.id }};
+
+        const chatItems = document.getElementById('chatItems');
+        const chatInput = document.getElementById('chatInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const micBtn = document.getElementById('micBtn');
+        const chatLoading = document.getElementById('chatLoading');
+
+        function addChatMessage(text, sender) {
+            const msg = document.createElement('div');
+            msg.className = `chat-msg ${sender}`;
+            msg.textContent = text;
+            chatItems.appendChild(msg);
+            chatItems.scrollTop = chatItems.scrollHeight;
+            return msg;
+        }
+
+        function setLoading(loading) {
+            if (loading) {
+                chatLoading.style.display = 'flex';
+            } else {
+                chatLoading.style.display = 'none';
+            }
+        }
+
+        function speakText(text) {
+            if (!('speechSynthesis' in window)) return;
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.rate = 1;
+            utterance.pitch = 1;
+            window.speechSynthesis.cancel();
+            window.speechSynthesis.speak(utterance);
+        }
+
+        async function sendChatMessage() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+            addChatMessage(message, 'user');
+            chatInput.value = '';
+            chatInput.disabled = true;
+            sendBtn.disabled = true;
+            micBtn.disabled = true;
+
+            setLoading(true);
+
+            const botPlaceholder = document.createElement('div');
+            botPlaceholder.className = 'chat-msg bot';
+            botPlaceholder.textContent = '';
+            botPlaceholder.style.minHeight = '22px';
+            chatItems.appendChild(botPlaceholder);
+            chatItems.scrollTop = chatItems.scrollHeight;
+
+            try {
+                const response = await fetch('/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ analysis_id: CURRENT_ANALYSIS_ID, message })
+                });
+
+                const data = await response.json();
+                if (data.error) {
+                    botPlaceholder.textContent = 'Error: ' + data.error;
+                } else {
+                    botPlaceholder.textContent = data.message;
+                    speakText(data.message);
+                }
+            } catch (err) {
+                botPlaceholder.textContent = 'Network error: ' + err.message;
+            } finally {
+                setLoading(false);
+                chatInput.disabled = false;
+                sendBtn.disabled = false;
+                micBtn.disabled = false;
+                chatInput.focus();
+            }
+        }
+
+        sendBtn.addEventListener('click', sendChatMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendChatMessage();
+        });
+
+        let recognition;
+        let recognizing = false;
+
+        if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            recognition = new SpeechRecognition();
+            recognition.lang = 'en-US';
+            recognition.interimResults = false;
+            recognition.maxAlternatives = 1;
+
+            recognition.onresult = (event) => {
+                const transcript = event.results[0][0].transcript;
+                chatInput.value = transcript;
+                sendChatMessage();
+            };
+
+            recognition.onerror = (event) => {
+                console.log('Speech recognition error', event.error);
+                recognizing = false;
+                micBtn.textContent = '🎙️';
+            };
+
+            recognition.onend = () => {
+                recognizing = false;
+                micBtn.textContent = '🎙️';
+            };
+
+            micBtn.addEventListener('click', () => {
+                if (recognizing) {
+                    recognition.stop();
+                    recognizing = false;
+                    micBtn.textContent = '🎙️';
+                } else {
+                    recognition.start();
+                    recognizing = true;
+                    micBtn.textContent = '⏹️';
+                }
+            });
+        } else {
+            micBtn.disabled = true;
+            micBtn.title = 'Microphone not supported in this browser';
         }
     </script>
 </body>

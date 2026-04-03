@@ -7,6 +7,7 @@ import pandas as pd
 import numpy as np
 import json
 import os
+import re
 import google.generativeai as genai
 import PyPDF2
 from werkzeug.utils import secure_filename
@@ -185,46 +186,116 @@ def predict_startup(form_data):
         }
         return score, category, factors
 
-def generate_recommendations(score, factors, category, inputs):
-    """Generate strategy recommendations based on scores"""
+def fallback_recommendations(score, factors, category):
+    """Fallback rule-based recommendations when Gemini is unavailable."""
     recommendations = []
     
     if factors.get('Market', 50) < 50:
-        recommendations.append("📊 **Market Strategy**: Consider pivoting to a larger or faster-growing market segment. Your market score suggests limited opportunities.")
+        recommendations.append("📊 Market Strategy: Consider pivoting to a larger or faster-growing market segment. Your market score suggests limited opportunities.")
     else:
-        recommendations.append("📊 **Market Strategy**: Your market selection shows promise. Focus on capturing market share through targeted marketing.")
+        recommendations.append("📊 Market Strategy: Your market selection shows promise. Focus on capturing market share through targeted marketing.")
     
     if factors.get('Team', 50) < 50:
-        recommendations.append("👥 **Team Building**: Strengthen your team with experienced advisors or key hires in business development and technology.")
+        recommendations.append("👥 Team Building: Strengthen your team with experienced advisors or key hires in business development and technology.")
     else:
-        recommendations.append("👥 **Team Building**: Your team composition is solid. Consider adding complementary skills for scaling.")
+        recommendations.append("👥 Team Building: Your team composition is solid. Consider adding complementary skills for scaling.")
     
     if factors.get('Product', 50) < 50:
-        recommendations.append("💡 **Product Development**: Focus on product-market fit through customer discovery and iterative development.")
+        recommendations.append("💡 Product Development: Focus on product-market fit through customer discovery and iterative development.")
     else:
-        recommendations.append("💡 **Product Development**: Your product concept is strong. Accelerate development and gather user feedback.")
+        recommendations.append("💡 Product Development: Your product concept is strong. Accelerate development and gather user feedback.")
     
     if factors.get('Financials', 50) < 50:
-        recommendations.append("💰 **Financial Strategy**: Explore alternative funding sources or adjust burn rate to extend runway.")
+        recommendations.append("💰 Financial Strategy: Explore alternative funding sources or adjust burn rate to extend runway.")
     else:
-        recommendations.append("💰 **Financial Strategy**: Your financial foundation looks solid. Consider growth-stage funding options.")
+        recommendations.append("💰 Financial Strategy: Your financial foundation looks solid. Consider growth-stage funding options.")
     
     if factors.get('Competition', 50) < 50:
-        recommendations.append("⚔️ **Competitive Strategy**: Develop stronger differentiation from competitors. Identify unique value propositions.")
+        recommendations.append("⚔️ Competitive Strategy: Develop stronger differentiation from competitors. Identify unique value propositions.")
     else:
-        recommendations.append("⚔️ **Competitive Strategy**: You have competitive advantages. Defend them with IP and strategic partnerships.")
+        recommendations.append("⚔️ Competitive Strategy: You have competitive advantages. Defend them with IP and strategic partnerships.")
     
     # Category-specific advice
     if category == "Strong":
-        recommendations.append("🚀 **Growth Stage**: You're well-positioned for rapid growth. Focus on scaling operations and building brand.")
+        recommendations.append("🚀 Growth Stage: You're well-positioned for rapid growth. Focus on scaling operations and building brand.")
     elif category == "Moderate":
-        recommendations.append("📈 **Development Stage**: Good foundation. Address key weaknesses before major scaling.")
+        recommendations.append("📈 Development Stage: Good foundation. Address key weaknesses before major scaling.")
     elif category == "Weak":
-        recommendations.append("⚠️ **Improvement Needed**: Significant gaps to address. Consider refining your business model.")
+        recommendations.append("⚠️ Improvement Needed: Significant gaps to address. Consider refining your business model.")
     else:
-        recommendations.append("🔴 **Critical Attention Required**: Major challenges exist. Reassess core assumptions.")
+        recommendations.append("🔴 Critical Attention Required: Major challenges exist. Reassess core assumptions.")
     
     return recommendations[:5]  # Return top 5 recommendations
+
+
+def generate_recommendations(score, factors, category, inputs):
+    """Generate AI-powered strategy recommendations using Gemini, with rule-based fallback."""
+    description = (inputs.get('idea_description') or '')[:12000]
+    
+    if not description or len(description) < 15:
+        return fallback_recommendations(score, factors, category)
+    
+    # Build context for Gemini
+    startup_name = inputs.get('startup_name', 'Your Startup')
+    industry = inputs.get('industry_sector', 'Tech')
+    market_type = inputs.get('market_type', 'B2B')
+    funding = inputs.get('initial_funding', 0)
+    team_size = inputs.get('team_size', 1)
+    competitors = inputs.get('competitors', 0)
+    
+    prompt = f"""
+    Based on this startup's profile and evaluation, generate 5 strategic recommendations tailored specifically to THIS startup. 
+    Be concrete, actionable, and reference specific details about their idea, market, team, and finances.
+    
+    STARTUP CONTEXT:
+    - Name: {startup_name}
+    - Industry: {industry}
+    - Market Type: {market_type}
+    - Team Size: {team_size} people
+    - Initial Funding: ${funding:,.0f}
+    - Competitors: ~{competitors}
+    - Overall Score: {score:.1f}/100 (Category: {category})
+    
+    FACTOR SCORES:
+    - Market: {factors.get('Market', 50)}/100
+    - Team: {factors.get('Team', 50)}/100
+    - Product: {factors.get('Product', 50)}/100
+    - Financials: {factors.get('Financials', 50)}/100
+    - Competition: {factors.get('Competition', 50)}/100
+    
+    BUSINESS DESCRIPTION:
+    {description}
+    
+    Generate 5 specific strategy recommendations. For each, include:
+    1. A short emoji+title (e.g., "📊 Title: ")
+    2. 1-2 sentences of actionable, specific advice that references THEIR specific situation
+    
+    Return as a JSON array of strings. Example format:
+    [
+        "📊 Market Positioning: Since you have {team_size} people and ${funding/1000:.0f}k funding, focus on...",
+        "👥 Quick Win: Your {industry} space has {competitors} competitors, so...",
+        ...
+    ]
+    
+    Return ONLY the JSON array, no other text.
+    """
+    
+    try:
+        model = genai.GenerativeModel('gemini-2.5-flash')
+        response = model.generate_content(prompt)
+        
+        # Parse JSON from response
+        import re
+        json_match = re.search(r'\[.*\]', response.text, re.DOTALL)
+        if json_match:
+            recommendations = json.loads(json_match.group())
+            if isinstance(recommendations, list) and len(recommendations) > 0:
+                print(f"✅ Gemini recommendations generated for {startup_name}")
+                return recommendations[:5]
+    except Exception as e:
+        print(f"⚠️ Gemini recommendations failed: {e}. Using fallback.")
+    
+    return fallback_recommendations(score, factors, category)
 
 
 # ===== NLP GEMINI EXTRACTOR =====
@@ -604,6 +675,89 @@ def results(analysis_id):
     }
     
     return render_template('results.html', analysis=analysis_data)
+
+
+# ===== CHATBOT API =====
+
+def _build_chat_prompt(user_message, analysis, history=None):
+    history = history or []
+    ctx = [
+        "You are an intelligent startup advisor chatbot. Give practical advice in short paragraphs.",
+        "If the user asks about the current analysis, use exactly this analysis data.",
+        "If the user asks general startup questions, provide high-level guidance.",
+        "Do not fabricate metrics not in the analysis.",
+        "Always be concise and actionable."
+    ]
+    if analysis:
+        ctx.append("CURRENT ANALYSIS CONTEXT:")
+        ctx.append(f"Startup: {analysis.startup_name}")
+        ctx.append(f"Score: {analysis.score} ({analysis.category})")
+        ctx.append("Factors:")
+        for k, v in json.loads(analysis.factors).items():
+            ctx.append(f"- {k}: {v}")
+        ctx.append("Recommendations:")
+        for rec in generate_recommendations(analysis.score, json.loads(analysis.factors), analysis.category, json.loads(analysis.inputs)):
+            ctx.append(f"- {rec}")
+        rr = analysis.inputs and json.loads(analysis.inputs).get('risks_resources', {})
+        if rr and rr.get('risks'):
+            ctx.append("Key risks:")
+            for r in rr['risks']:
+                ctx.append(f"- {r.get('title','')}: {r.get('description','')}")
+
+    if history:
+        ctx.append("Conversation history:")
+        for item in history:
+            role = item.get('role')
+            text = item.get('content')
+            ctx.append(f"{role}: {text}")
+
+    ctx.append(f"User: {user_message}")
+    ctx.append("Assistant:")
+    return "\n".join(ctx)
+
+
+@app.route('/chat', methods=['POST'])
+@login_required
+def chat():
+    data = request.json or {}
+    analysis_id = data.get('analysis_id')
+    user_message = (data.get('message') or '').strip()
+
+    if not user_message:
+        return jsonify({'error': 'Message is required.'}), 400
+
+    analysis = Analysis.query.get(analysis_id)
+    if not analysis or analysis.user_id != current_user.id:
+        return jsonify({'error': 'Analysis not found or access denied.'}), 404
+
+    conversation_key = f"chat_history_{analysis_id}"
+    history = session.get(conversation_key, [])
+
+    prompt = _build_chat_prompt(user_message, analysis, history[-8:])
+
+    try:
+        model = genai.GenerativeModel('gemini-2.5-flash')
+        response = model.generate_content(prompt)
+        bot_text = response.text.strip() if hasattr(response, 'text') else str(response).strip()
+    except Exception as e:
+        bot_text = "I couldn't reach Gemini right now. Try again in a moment."
+        print(f"⚠️ Chatbot Gemini error: {e}")
+
+    history.append({'role': 'user', 'content': user_message})
+    history.append({'role': 'assistant', 'content': bot_text})
+    session[conversation_key] = history[-20:]
+
+    return jsonify({'message': bot_text, 'history': history[-20:]})
+
+
+@app.route('/chat/reset', methods=['POST'])
+@login_required
+def chat_reset():
+    analysis_id = request.json.get('analysis_id') if request.json else None
+    if analysis_id:
+        session.pop(f"chat_history_{analysis_id}", None)
+    return jsonify({'status': 'reset'})
+
 
 @app.route('/simulate', methods=['POST'])
 @login_required
